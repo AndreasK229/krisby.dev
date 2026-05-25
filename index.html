@@ -1,242 +1,164 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>krisby.dev</title>
+<h2>Writeup — Entra ID + Cloudflare Access + SCIM</h2>
 
-  <style>
-    body {
-      background: #0d1117;
-      color: #e6edf3;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 40px 20px;
-      line-height: 1.6;
-    }
+<p>
+Satte upp Entra ID som IdP mot Cloudflare Access för min privata domän
+för att få en bättre förståelse för hur federation, provisioning och Zero Trust fungerar i praktiken.
+</p>
 
-    .container {
-      max-width: 950px;
-      margin: auto;
-    }
+<p>
+Målet var att få:
+</p>
 
-    .hero {
-      text-align: center;
-      padding: 50px;
-      border: 1px solid #30363d;
-      border-radius: 14px;
-      background: #161b22;
-      box-shadow: 0 0 30px rgba(0,0,0,0.4);
-    }
+<ul>
+  <li>OIDC authentication via Entra ID</li>
+  <li>SCIM provisioning mellan systemen</li>
+  <li>Automatisk sync av users och grupper</li>
+  <li>Gruppbaserad access via Cloudflare Access</li>
+</ul>
 
-    h1 {
-      font-size: 46px;
-      margin-bottom: 10px;
-    }
+<h3>Arkitektur</h3>
 
-    .subtitle {
-      color: #8b949e;
-      font-size: 20px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 25px;
-    }
-
-    li {
-      margin: 10px 0;
-      color: #c9d1d9;
-    }
-
-    h2 {
-      margin-top: 60px;
-      margin-bottom: 20px;
-      color: #58a6ff;
-    }
-
-    .projects {
-      display: grid;
-      gap: 20px;
-    }
-
-    .project-card {
-      padding: 25px;
-      border: 1px solid #30363d;
-      border-radius: 12px;
-      background: #161b22;
-      transition: 0.2s;
-    }
-
-    .project-card:hover {
-      border-color: #58a6ff;
-      transform: translateY(-2px);
-    }
-
-    .project-card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
-
-    .project-card p {
-      color: #8b949e;
-    }
-
-    .writeup {
-      margin-top: 80px;
-      padding: 30px;
-      border: 1px solid #30363d;
-      border-radius: 12px;
-      background: #161b22;
-    }
-
-    .writeup h3 {
-      color: #58a6ff;
-      margin-top: 35px;
-    }
-
-    .code {
-      background: #0d1117;
-      border: 1px solid #30363d;
-      padding: 15px;
-      border-radius: 10px;
-      overflow-x: auto;
-      margin-top: 15px;
-      color: #c9d1d9;
-      font-family: monospace;
-    }
-
-    a {
-      color: #58a6ff;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      margin-top: 80px;
-      text-align: center;
-      color: #8b949e;
-      font-size: 14px;
-    }
-
-  </style>
-</head>
-
-<body>
-
-<div class="container">
-
-  <div class="hero">
-    <h1>Andreas Krisby</h1>
-
-    <p class="subtitle">
-      IAM • Cloud • Security
-    </p>
-
-    <ul>
-      <li>Entra ID</li>
-      <li>SCIM</li>
-      <li>Conditional Access</li>
-      <li>KQL</li>
-      <li>FIDO2</li>
-    </ul>
-  </div>
-
-  <h2>Projects</h2>
-
-  <div class="projects">
-
-    <div class="project-card">
-      <h3>Entra ID + Cloudflare Access</h3>
-
-      <p>
-        Setup av Entra ID som IdP mot Cloudflare Access med OIDC federation,
-        SCIM provisioning och gruppbaserad accesshantering.
-      </p>
-    </div>
-
-    <div class="project-card">
-      <h3>Conditional Access Lab</h3>
-
-      <p>
-        Testar MFA policies, device-based access och Zero Trust-flöden
-        i Entra ID.
-      </p>
-    </div>
-
-    <div class="project-card">
-      <h3>KQL & Log Analytics</h3>
-
-      <p>
-        Arbetar med KQL queries och logganalys för att förstå
-        autentiseringar, sign-in logs och security events.
-      </p>
-    </div>
-
-  </div>
-
-  <div class="writeup">
-
-    <h2>Writeup — Entra ID + Cloudflare Access + SCIM</h2>
-
-    <p>
-      Satte upp Entra ID som IdP mot Cloudflare Access för min domän
-      för att förstå hur auth, provisioning och Zero Trust faktiskt fungerar i praktiken.
-    </p>
-
-    <h3>Detta används</h3>
-
-    <ul>
-      <li>Microsoft Entra ID</li>
-      <li>Cloudflare Zero Trust</li>
-      <li>OIDC federation</li>
-      <li>SCIM provisioning</li>
-    </ul>
-
-    <h3>Flöde</h3>
-
-    <div class="code">
-      Entra ID → OIDC → Cloudflare Access<br>
-      Entra ID → SCIM → Cloudflare
-    </div>
-
-    <h3>Vad setupen gör</h3>
-
-    <ul>
-      <li>Entra ID fungerar som IdP</li>
-      <li>Users och grupper syncas automatiskt via SCIM</li>
-      <li>Access kan styras gruppbaserat</li>
-      <li>Deprovisioning sker automatiskt när användare tas bort</li>
-    </ul>
-
-    <h3>Problem under setup</h3>
-
-    <ul>
-      <li>Redirect URI mismatch</li>
-      <li>Fel Application ID</li>
-      <li>Invalid client secret</li>
-      <li>API permissions och admin consent</li>
-    </ul>
-
-    <h3>Lärdomar</h3>
-
-    <ul>
-      <li>SCIM förenklar provisioning och deprovisioning rejält</li>
-      <li>Gruppbaserad access sparar mycket manuellt arbete</li>
-      <li>Det är mycket lättare att förstå identity-flöden när man ser systemen prata med varandra live</li>
-    </ul>
-
-  </div>
-
-  <footer>
-    krisby.dev • IAM / Cloud / Security
-  </footer>
-
+<div class="code">
+Entra ID → OIDC → Cloudflare Access<br>
+Entra ID → SCIM → Cloudflare
 </div>
 
-</body>
-</html>
+<h3>Steg 1 — Skapa App Registration i Entra ID</h3>
+
+<p>
+Första steget var att skapa en App Registration i Entra ID.
+</p>
+
+<ul>
+  <li>Entra Admin Center → App registrations</li>
+  <li>New registration</li>
+  <li>Single tenant</li>
+</ul>
+
+<p>
+Redirect URI sattes till:
+</p>
+
+<div class="code">
+https://&lt;teamname&gt;.cloudflareaccess.com/cdn-cgi/access/callback
+</div>
+
+<p>
+Här fastnade jag först eftersom redirect URI måste matcha exakt mellan Entra och Cloudflare.
+</p>
+
+<h3>Steg 2 — API Permissions</h3>
+
+<p>
+Efter app registration behövdes rätt Microsoft Graph permissions.
+</p>
+
+<ul>
+  <li>openid</li>
+  <li>profile</li>
+  <li>email</li>
+  <li>User.Read</li>
+  <li>GroupMember.Read.All</li>
+</ul>
+
+<p>
+Efter det behövde admin consent godkännas för tenant.
+</p>
+
+<h3>Steg 3 — Client Secret</h3>
+
+<p>
+Sedan skapades en Client Secret under:
+</p>
+
+<div class="code">
+Certificates & secrets
+</div>
+
+<p>
+Viktigt här var att kopiera själva VALUE och inte Secret ID.
+Detta orsakade auth-problem innan jag upptäckte felet.
+</p>
+
+<h3>Steg 4 — Cloudflare Access</h3>
+
+<p>
+I Cloudflare Zero Trust lades Entra ID till som Identity Provider.
+</p>
+
+<p>
+Följande användes:
+</p>
+
+<ul>
+  <li>Application (client) ID</li>
+  <li>Tenant / Directory ID</li>
+  <li>Client Secret VALUE</li>
+</ul>
+
+<p>
+När allt var korrekt konfigurerat fungerade OIDC-auth mot Cloudflare Access.
+</p>
+
+<h3>Steg 5 — SCIM Provisioning</h3>
+
+<p>
+Efter auth fungerade sattes SCIM provisioning upp mellan systemen.
+</p>
+
+<p>
+I Cloudflare genererades:
+</p>
+
+<ul>
+  <li>SCIM Endpoint</li>
+  <li>SCIM Secret Token</li>
+</ul>
+
+<p>
+Dessa användes sedan i Entra under:
+</p>
+
+<div class="code">
+Enterprise Applications → Provisioning
+</div>
+
+<p>
+Provisioning sattes till:
+</p>
+
+<div class="code">
+Automatic
+</div>
+
+<p>
+Efter detta började users och grupper syncas automatiskt mellan systemen.
+</p>
+
+<h3>Problem under setup</h3>
+
+<ul>
+  <li>Tenant ID mismatch</li>
+  <li>Fel redirect URI</li>
+  <li>Invalid client secret</li>
+  <li>Fel API permissions</li>
+  <li>Admin consent saknades</li>
+</ul>
+
+<h3>Resultat</h3>
+
+<ul>
+  <li>Entra ID fungerar som central IdP</li>
+  <li>Users och grupper syncas via SCIM</li>
+  <li>Gruppbaserad access fungerar via Cloudflare Access</li>
+  <li>Provisioning och deprovisioning sker automatiskt</li>
+</ul>
+
+<h3>Lärdomar</h3>
+
+<ul>
+  <li>SCIM gör lifecycle management betydligt smidigare</li>
+  <li>Gruppbaserad provisioning sparar mycket manuellt arbete</li>
+  <li>Det är mycket lättare att förstå identity-flöden när man ser systemen prata live</li>
+  <li>Små detaljer som redirect URI och secrets är kritiska i federationsflöden</li>
+</ul>
