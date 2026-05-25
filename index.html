@@ -10,11 +10,13 @@
       background: #0d1117;
       color: #e6edf3;
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
     }
 
     .card {
@@ -45,21 +47,105 @@
     li {
       margin: 10px 0;
     }
+
+    h2 {
+      margin-top: 50px;
+      margin-bottom: 20px;
+      color: #58a6ff;
+    }
+
+    .projects {
+      display: grid;
+      gap: 20px;
+    }
+
+    .project-card {
+      padding: 20px;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      background: #161b22;
+      transition: 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: #58a6ff;
+      transform: translateY(-2px);
+    }
+
+    .project-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
   </style>
 </head>
 
 <body>
-  <div class="card">
-    <h1>Andreas Krisby</h1>
-    <p>IAM • Cloud • Security</p>
 
-    <ul>
-      <li>Entra ID</li>
-      <li>PIM</li>
-      <li>Conditional Access</li>
-      <li>KQL</li>
-      <li>FIDO2</li>
-    </ul>
+  <div class="container">
+
+    <div class="card">
+      <h1>Andreas Krisby</h1>
+
+      <p>IAM • Cloud • Security</p>
+
+      <ul>
+        <li>Entra ID</li>
+        <li>SCIM</li>
+        <li>Conditional Access</li>
+        <li>KQL</li>
+        <li>FIDO2</li>
+      </ul>
+    </div>
+
+    <h2>Projects</h2>
+
+    <div class="projects">
+
+      <div class="project-card">
+        <h3>Entra ID + Cloudflare Access</h3>
+
+        <p>
+          Setup av Entra ID som IdP mot Cloudflare Access med OIDC federation,
+          SCIM provisioning och gruppbaserad accesshantering.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>Conditional Access Lab</h3>
+
+        <p>
+          Testar MFA policies, device-based access och Zero Trust-flöden
+          i Entra ID.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>KQL & Log Analytics</h3>
+
+        <p>
+          Arbetar med KQL queries och logganalys för att förstå
+          autentiseringar, sign-in logs och security events.
+        </p>
+      </div>
+
+    </div>
+
   </div>
+
 </body>
 </html>
