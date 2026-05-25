@@ -7,6 +7,10 @@
 
   <style>
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background: #0d1117;
       color: #e6edf3;
@@ -55,7 +59,7 @@
     }
 
     h3 {
-      margin-top: 45px;
+      margin-top: 0;
       color: #58a6ff;
     }
 
@@ -65,12 +69,18 @@
       margin-top: 30px;
     }
 
+    .project-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
     .project-card {
       padding: 25px;
       border: 1px solid #30363d;
       border-radius: 12px;
       background: #161b22;
       transition: 0.2s;
+      cursor: pointer;
     }
 
     .project-card:hover {
@@ -137,35 +147,45 @@
 
   <div class="projects">
 
-    <div class="project-card">
-      <h3>Entra ID + Cloudflare Access</h3>
+    <a href="#entra-writeup" class="project-link">
 
-      <p>
-        Setup av Entra ID som IdP mot Cloudflare Access med OIDC federation,
-        SCIM provisioning och gruppbaserad accesshantering.
-      </p>
-    </div>
+      <div class="project-card">
+
+        <h3>Entra ID + Cloudflare Access</h3>
+
+        <p>
+          Setup av Entra ID som IdP mot Cloudflare Access med OIDC federation,
+          SCIM provisioning och gruppbaserad accesshantering.
+        </p>
+
+      </div>
+
+    </a>
 
     <div class="project-card">
+
       <h3>Conditional Access Lab</h3>
 
       <p>
         Testar MFA policies, device-based access och Zero Trust-flöden i Entra ID.
       </p>
+
     </div>
 
     <div class="project-card">
+
       <h3>KQL & Log Analytics</h3>
 
       <p>
         Arbetar med KQL queries och logganalys för att förstå sign-ins,
         autentiseringar och security events.
       </p>
+
     </div>
 
   </div>
 
-  <div class="writeup">
+  <div class="writeup" id="entra-writeup">
 
     <h2>Writeup — Entra ID + Cloudflare Access + SCIM</h2>
 
@@ -209,7 +229,7 @@
     </p>
 
     <div class="code">
-      https://&lt;teamname&gt;.cloudflareaccess.com/cdn-cgi/access/callback
+      https://team.cloudflareaccess.com/cdn-cgi/access/callback
     </div>
 
     <p>
