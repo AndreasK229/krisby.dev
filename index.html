@@ -18,15 +18,15 @@
     }
 
     .container {
-      max-width: 1050px;
+      max-width: 1100px;
       margin: auto;
     }
 
     .hero {
       text-align: center;
-      padding: 70px 40px;
+      padding: 80px 40px;
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
+      border-radius: 28px;
 
       background:
         linear-gradient(
@@ -43,37 +43,52 @@
     }
 
     h1 {
-      font-size: 58px;
+      font-size: 64px;
       margin-bottom: 10px;
       letter-spacing: -2px;
     }
 
     .subtitle {
       color: #94a3b8;
-      font-size: 20px;
+      font-size: 22px;
     }
 
-    .skills {
-      list-style: none;
-      padding: 0;
-      margin-top: 35px;
-    }
-
-    .skills li {
-      margin: 12px 0;
+    .hero-text {
+      max-width: 700px;
+      margin: 30px auto 0;
       color: #cbd5e1;
       font-size: 17px;
     }
 
+    .skills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 35px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .skills li {
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
     h2 {
-      margin-top: 80px;
-      margin-bottom: 25px;
+      margin-top: 90px;
+      margin-bottom: 30px;
       color: #7dd3fc;
-      font-size: 32px;
+      font-size: 34px;
     }
 
     .projects {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 24px;
       margin-top: 35px;
     }
@@ -84,8 +99,9 @@
     }
 
     .project-card {
+      height: 100%;
       padding: 30px;
-      border-radius: 20px;
+      border-radius: 24px;
 
       background:
         linear-gradient(
@@ -107,7 +123,7 @@
     .project-card:hover {
 
       transform:
-        translateY(-4px);
+        translateY(-5px);
 
       border-color:
         rgba(125,211,252,0.45);
@@ -128,11 +144,22 @@
       font-size: 16px;
     }
 
+    .tag {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.12);
+      color: #7dd3fc;
+      font-size: 13px;
+    }
+
     footer {
-      margin-top: 90px;
+      margin-top: 100px;
       text-align: center;
       color: #64748b;
       font-size: 14px;
+      padding-bottom: 20px;
     }
 
   </style>
@@ -150,14 +177,22 @@
       IAM • Cloud • Security
     </p>
 
+    <p class="hero-text">
+      Bygger praktiska IAM- och cloud security-labbar med fokus på
+      Microsoft Entra ID, hybrid identity, SCIM provisioning,
+      RBAC, Conditional Access och Zero Trust.
+    </p>
+
     <ul class="skills">
       <li>Entra ID</li>
-      <li>SCIM Provisioning</li>
+      <li>SCIM</li>
       <li>Conditional Access</li>
-      <li>KQL</li>
-      <li>FIDO2</li>
       <li>Cloudflare Zero Trust</li>
       <li>Microsoft Graph API</li>
+      <li>RBAC</li>
+      <li>KQL</li>
+      <li>FIDO2</li>
+      <li>Hybrid Identity</li>
     </ul>
 
   </div>
@@ -177,6 +212,8 @@
           med OIDC federation, SCIM provisioning och gruppbaserad accesshantering.
         </p>
 
+        <span class="tag">SCIM • OIDC • Zero Trust</span>
+
       </div>
 
     </a>
@@ -193,11 +230,13 @@
           PowerShell och JSON-baserad RBAC-data.
         </p>
 
+        <span class="tag">RBAC • AI • PowerShell</span>
+
       </div>
 
     </a>
 
-    <a href="writeups/JML-monitor.html" class="project-link">
+    <a href="writeups/jml-monitor.html" class="project-link">
 
       <div class="project-card">
 
@@ -208,6 +247,26 @@
           Microsoft Graph API, Python och gruppbaserad RBAC
           för att upptäcka access drift och Joiner / Mover / Leaver-förändringar.
         </p>
+
+        <span class="tag">Graph API • Python • JML</span>
+
+      </div>
+
+    </a>
+
+    <a href="writeups/Hybrid-identity.html" class="project-link">
+
+      <div class="project-card">
+
+        <h3>Hybrid Identity Lab</h3>
+
+        <p>
+          Byggde hybrid identity mellan on-prem Active Directory
+          och Microsoft Entra ID med Entra Connect,
+          sync-regler och gruppbaserad RBAC.
+        </p>
+
+        <span class="tag">AD • Entra Connect • Hybrid Identity</span>
 
       </div>
 
@@ -222,6 +281,8 @@
         sign-in risk och Zero Trust-flöden i Entra ID.
       </p>
 
+      <span class="tag">Conditional Access • MFA</span>
+
     </div>
 
     <div class="project-card">
@@ -233,6 +294,8 @@
         för att förstå sign-ins, autentiseringar,
         audit logs och security events.
       </p>
+
+      <span class="tag">KQL • Logs • Detection</span>
 
     </div>
 
