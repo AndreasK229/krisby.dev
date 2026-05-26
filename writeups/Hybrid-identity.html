@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hybrid Identity Lab</title>
+
+  <style>
+
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: Arial, sans-serif;
+      max-width: 950px;
+      margin: auto;
+      padding: 40px 20px;
+      line-height: 1.8;
+    }
+
+    h1, h2, h3 {
+      color: #58a6ff;
+    }
+
+    .code {
+      background: #161b22;
+      border: 1px solid #30363d;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      overflow-x: auto;
+      font-family: monospace;
+      color: #c9d1d9;
+    }
+
+    .step {
+      margin-top: 50px;
+      padding: 25px;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      background: #161b22;
+    }
+
+    a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+
+    ul {
+      margin-top: 15px;
+    }
+
+    li {
+      margin: 10px 0;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<a href="../index.html">← Back</a>
+
+<h1>Hybrid Identity Lab</h1>
+
+<p>
+Detta labbet byggdes för att förstå hybrid identity mellan on-prem Active Directory och Microsoft Entra ID i praktiken.
+</p>
+
+<p>
+Fokus låg på:
+</p>
+
+<ul>
+  <li>Hybrid identity</li>
+  <li>Entra Connect</li>
+  <li>Sync mellan AD och Entra</li>
+  <li>Gruppbaserad RBAC</li>
+  <li>Identity lifecycle</li>
+</ul>
+
+<h2>Arkitektur</h2>
+
+<div class="code">
+On-Prem AD → Entra Connect → Microsoft Entra ID
+</div>
+
+<div class="step">
+
+<h2>Steg 1 — Installera Windows Server 2022</h2>
+
+<p>
+Först skapades en ny VM i Oracle VirtualBox.
+</p>
+
+<p>
+Miljö:
+</p>
+
+<ul>
+  <li>Oracle VirtualBox</li>
+  <li>Windows Server 2022</li>
+</ul>
+
+<p>
+Efter installation:
+</p>
+
+<ul>
+  <li>Statisk IP konfigurerades</li>
+  <li>Servern bytte namn</li>
+  <li>Servern startades om</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 2 — Installera Active Directory</h2>
+
+<p>
+Sedan installerades Active Directory Domain Services.
+</p>
+
+<ul>
+  <li>Server Manager</li>
+  <li>Add Roles and Features</li>
+  <li>Active Directory Domain Services</li>
+</ul>
+
+<p>
+Servern promotades sedan till Domain Controller.
+</p>
+
+<p>
+Domän:
+</p>
+
+<div class="code">
+lab.local
+</div>
+
+<p>
+Efter detta startades servern om.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 3 — Skapa OU-struktur</h2>
+
+<p>
+I Active Directory Users and Computers skapades OU-struktur för att separera users och grupper.
+</p>
+
+<p>
+OU:
+</p>
+
+<ul>
+  <li>HR</li>
+  <li>IT</li>
+  <li>Groups</li>
+</ul>
+
+<p>
+Tanken:
+</p>
+
+<ul>
+  <li>OU används för struktur</li>
+  <li>Grupper används för access</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 4 — Skapa users</h2>
+
+<p>
+Users skapades i respektive OU.
+</p>
+
+<p>
+HR:
+</p>
+
+<ul>
+  <li>Anna HR</li>
+  <li>Erik HR</li>
+</ul>
+
+<p>
+IT:
+</p>
+
+<ul>
+  <li>Johan IT</li>
+  <li>Sara IT</li>
+</ul>
+
+<p>
+Users placerades sedan i rätt OU:
+</p>
+
+<ul>
+  <li>OU=HR</li>
+  <li>OU=IT</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 5 — Skapa globala säkerhetsgrupper</h2>
+
+<p>
+I OU=Groups skapades globala säkerhetsgrupper.
+</p>
+
+<p>
+Grupper:
+</p>
+
+<ul>
+  <li>GG_HR_Read</li>
+  <li>GG_IT_Admin</li>
+  <li>GG_App_Reader</li>
+</ul>
+
+<p>
+Inställningar:
+</p>
+
+<ul>
+  <li>Group scope → Global</li>
+  <li>Group type → Security</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 6 — Lägg users i grupper</h2>
+
+<p>
+Users placerades i grupper för att simulera RBAC.
+</p>
+
+<p>
+Exempel:
+</p>
+
+<div class="code">
+Anna HR → GG_HR_Read
+
+Johan IT → GG_IT_Admin
+</div>
+
+<p>
+Fokus:
+</p>
+
+<div class="code">
+User → Group → Access
+</div>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 7 — Installera Entra Connect</h2>
+
+<p>
+För att bygga hybrid identity installerades Microsoft Entra Connect.
+</p>
+
+<ul>
+  <li>Ladda ner Entra Connect</li>
+  <li>Installera programmet</li>
+  <li>Logga in med Entra Global Admin</li>
+  <li>Koppla lokal AD-domän</li>
+</ul>
+
+<p>
+Password Hash Sync aktiverades under setup.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 8 — Testa sync</h2>
+
+<p>
+Efter installation verifierades sync i Microsoft Entra Admin Center.
+</p>
+
+<p>
+Verifierade:
+</p>
+
+<ul>
+  <li>Users syns i Entra</li>
+  <li>Grupper syns i Entra</li>
+  <li>Gruppmedlemskap syns korrekt</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 9 — Köra manuell sync</h2>
+
+<p>
+För att testa sync snabbare användes PowerShell.
+</p>
+
+<p>
+Importera modul:
+</p>
+
+<div class="code">
+Import-Module ADSync
+</div>
+
+<p>
+Köra Delta sync:
+</p>
+
+<div class="code">
+Start-ADSyncSyncCycle -PolicyType Delta
+</div>
+
+<p>
+Köra Initial sync:
+</p>
+
+<div class="code">
+Start-ADSyncSyncCycle -PolicyType Initial
+</div>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 10 — Felsökning</h2>
+
+<p>
+Under setup uppstod problem med sync.
+</p>
+
+<p>
+Fel:
+</p>
+
+<ul>
+  <li>Token/certifikat-autentisering fungerade inte</li>
+</ul>
+
+<p>
+Orsak:
+</p>
+
+<ul>
+  <li>Fel systemtid (NTP)</li>
+</ul>
+
+<p>
+Lärdom:
+</p>
+
+<p>
+Auth- och tokenflöden är väldigt känsliga för korrekt systemtid.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 11 — Testa förändringar</h2>
+
+<p>
+Efter att sync fungerade testades olika förändringar:
+</p>
+
+<ul>
+  <li>Lägga users i grupper</li>
+  <li>Ta bort users ur grupper</li>
+  <li>Ändra users</li>
+  <li>Disable users</li>
+</ul>
+
+<p>
+Efter varje förändring:
+</p>
+
+<ul>
+  <li>Kördes Delta sync</li>
+  <li>Verifierades resultatet i Entra</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 12 — RBAC-tänk</h2>
+
+<p>
+Fokus låg på gruppbaserad access istället för direkt access till users.
+</p>
+
+<p>
+Exempel:
+</p>
+
+<div class="code">
+GG_App_Reader → Reader access
+</div>
+
+<p>
+Tanken:
+</p>
+
+<div class="code">
+User → Group → Access
+</div>
+
+<p>
+Detta gör RBAC mycket enklare att hantera i större miljöer.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Resultat</h2>
+
+<p>
+Labbet kunde nu:
+</p>
+
+<ul>
+  <li>Synca identiteter mellan on-prem och Entra</li>
+  <li>Synca grupper och medlemskap</li>
+  <li>Hantera hybrid identity</li>
+  <li>Testa gruppbaserad RBAC</li>
+  <li>Visa identity lifecycle i praktiken</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Lärdomar</h2>
+
+<ul>
+  <li>AD fungerar som source of truth</li>
+  <li>Entra speglar identiteter från on-prem</li>
+  <li>Entra Connect styrs av sync rules</li>
+  <li>RBAC bör gå via grupper</li>
+  <li>Delta vs Initial sync påverkar hur snabbt förändringar slår igenom</li>
+  <li>Auth- och tokenflöden är beroende av korrekt systemtid</li>
+</ul>
+
+</div>
+
+</body>
+</html>
