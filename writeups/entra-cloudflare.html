@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entra ID + Cloudflare Access</title>
+  <title>Entra ID + Cloudflare Access + SCIM</title>
 
   <style>
 
@@ -11,10 +11,10 @@
       background: #0d1117;
       color: #e6edf3;
       font-family: Arial, sans-serif;
-      max-width: 900px;
+      max-width: 950px;
       margin: auto;
       padding: 40px 20px;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
     h1, h2, h3 {
@@ -26,13 +26,31 @@
       border: 1px solid #30363d;
       padding: 15px;
       border-radius: 10px;
-      font-family: monospace;
       margin-top: 15px;
+      overflow-x: auto;
+      font-family: monospace;
+      color: #c9d1d9;
+    }
+
+    .step {
+      margin-top: 50px;
+      padding: 25px;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      background: #161b22;
     }
 
     a {
       color: #58a6ff;
       text-decoration: none;
+    }
+
+    ul {
+      margin-top: 15px;
+    }
+
+    li {
+      margin: 10px 0;
     }
 
   </style>
@@ -46,9 +64,20 @@
 <h1>Entra ID + Cloudflare Access + SCIM</h1>
 
 <p>
-Satte upp Entra ID som IdP mot Cloudflare Access för min domän
-för att förstå federation, provisioning och Zero Trust bättre i praktiken.
+Detta labbet sattes upp för att förstå hur federation, provisioning och Zero Trust fungerar i praktiken mellan Entra ID och Cloudflare Access.
 </p>
+
+<p>
+Målet var att:
+</p>
+
+<ul>
+  <li>Använda Entra ID som Identity Provider</li>
+  <li>Sätta upp OIDC authentication</li>
+  <li>Sätta upp SCIM provisioning</li>
+  <li>Automatisera sync av users och grupper</li>
+  <li>Testa gruppbaserad access via Cloudflare Access</li>
+</ul>
 
 <h2>Arkitektur</h2>
 
@@ -58,31 +87,332 @@ Entra ID → OIDC → Cloudflare Access
 Entra ID → SCIM → Cloudflare
 </div>
 
-<h2>Detta används</h2>
+<div class="step">
+
+<h2>Steg 1 — Skapa App Registration i Entra ID</h2>
+
+<p>
+Första steget var att skapa en App Registration i Entra ID.
+</p>
 
 <ul>
-  <li>Microsoft Entra ID</li>
+  <li>Gå till Entra Admin Center</li>
+  <li>App registrations</li>
+  <li>New registration</li>
+</ul>
+
+<p>
+Val:
+</p>
+
+<ul>
+  <li>Name → Cloudflare Access</li>
+  <li>Supported account types → Single tenant</li>
+</ul>
+
+<p>
+Redirect URI lämnades tom först.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 2 — Skapa Identity Provider i Cloudflare</h2>
+
+<p>
+Efter App Registration skapades Identity Provider i Cloudflare Zero Trust.
+</p>
+
+<ul>
+  <li>Cloudflare Dashboard</li>
+  <li>Zero Trust</li>
+  <li>Settings</li>
+  <li>Authentication</li>
+  <li>Add new</li>
+  <li>Azure AD</li>
+</ul>
+
+<p>
+Cloudflare genererade då redirect URI som behövdes i Entra ID.
+</p>
+
+<div class="code">
+https://team.cloudflareaccess.com/cdn-cgi/access/callback
+</div>
+
+<p>
+Denna URI kopierades tillbaka till App Registration i Entra.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 3 — Konfigurera Redirect URI</h2>
+
+<p>
+I Entra:
+</p>
+
+<ul>
+  <li>App registrations</li>
   <li>Cloudflare Access</li>
-  <li>OIDC federation</li>
-  <li>SCIM provisioning</li>
+  <li>Authentication</li>
+  <li>Add platform</li>
+  <li>Web</li>
 </ul>
 
-<h2>Problem under setup</h2>
+<p>
+Redirect URI:
+</p>
+
+<div class="code">
+https://team.cloudflareaccess.com/cdn-cgi/access/callback
+</div>
+
+<p>
+Här fastnade jag först eftersom redirect URI måste matcha exakt mellan systemen.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 4 — API Permissions</h2>
+
+<p>
+Sedan lades Microsoft Graph permissions till.
+</p>
 
 <ul>
-  <li>Redirect URI mismatch</li>
-  <li>Invalid client secret</li>
   <li>API permissions</li>
-  <li>Admin consent</li>
+  <li>Add permission</li>
+  <li>Microsoft Graph</li>
 </ul>
+
+<p>
+Delegated permissions:
+</p>
+
+<ul>
+  <li>openid</li>
+  <li>profile</li>
+  <li>email</li>
+  <li>User.Read</li>
+  <li>GroupMember.Read.All</li>
+</ul>
+
+<p>
+Efter detta:
+</p>
+
+<ul>
+  <li>Grant admin consent</li>
+</ul>
+
+<p>
+Utan admin consent fungerade inte vissa delar korrekt.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 5 — Skapa Client Secret</h2>
+
+<p>
+Sedan skapades en Client Secret:
+</p>
+
+<ul>
+  <li>Certificates & secrets</li>
+  <li>New client secret</li>
+</ul>
+
+<p>
+Cloudflare behövde:
+</p>
+
+<ul>
+  <li>Application (client) ID</li>
+  <li>Directory (tenant) ID</li>
+  <li>Client Secret VALUE</li>
+</ul>
+
+<p>
+Viktigt:
+</p>
+
+<p>
+Det är VALUE som ska användas och inte Secret ID.
+Detta skapade auth-problem innan jag upptäckte felet.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 6 — Koppla Entra ID mot Cloudflare</h2>
+
+<p>
+I Cloudflare Zero Trust:
+</p>
+
+<ul>
+  <li>Settings</li>
+  <li>Authentication</li>
+  <li>Azure AD</li>
+</ul>
+
+<p>
+Följande fylldes i:
+</p>
+
+<ul>
+  <li>Client ID</li>
+  <li>Tenant ID</li>
+  <li>Client Secret</li>
+</ul>
+
+<p>
+Efter detta fungerade login via Entra ID mot Cloudflare Access.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 7 — Testa Authentication Flow</h2>
+
+<p>
+En subdomän skapades:
+</p>
+
+<div class="code">
+test.krisby.dev
+</div>
+
+<p>
+Sedan skapades en Access Application:
+</p>
+
+<ul>
+  <li>Zero Trust</li>
+  <li>Access</li>
+  <li>Applications</li>
+  <li>Add application</li>
+  <li>Self-hosted</li>
+</ul>
+
+<p>
+Domain:
+</p>
+
+<div class="code">
+test.krisby.dev
+</div>
+
+<p>
+När sidan öppnades:
+</p>
+
+<ul>
+  <li>Cloudflare redirectade till Entra ID</li>
+  <li>Authentication skedde via Entra</li>
+  <li>Token skickades tillbaka till Cloudflare</li>
+  <li>Access gavs efter lyckad auth</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 8 — Sätta upp SCIM Provisioning</h2>
+
+<p>
+Efter att authentication fungerade sattes SCIM provisioning upp.
+</p>
+
+<p>
+I Cloudflare:
+</p>
+
+<ul>
+  <li>Settings</li>
+  <li>SCIM</li>
+</ul>
+
+<p>
+Cloudflare genererade:
+</p>
+
+<ul>
+  <li>SCIM Endpoint</li>
+  <li>SCIM Token</li>
+</ul>
+
+<p>
+I Entra:
+</p>
+
+<ul>
+  <li>Enterprise Applications</li>
+  <li>Cloudflare Access</li>
+  <li>Provisioning</li>
+</ul>
+
+<p>
+Provisioning mode:
+</p>
+
+<div class="code">
+Automatic
+</div>
+
+<p>
+SCIM endpoint och token klistrades in.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 9 — Gruppbaserad Provisioning</h2>
+
+<p>
+Grupper skapades i Entra ID och tilldelades till Enterprise Application.
+</p>
+
+<p>
+Efter sync började:
+</p>
+
+<ul>
+  <li>Users syncas automatiskt</li>
+  <li>Grupper syncas automatiskt</li>
+  <li>Access hanteras gruppbaserat</li>
+</ul>
+
+<p>
+Provisioning och deprovisioning fungerade sedan automatiskt via SCIM.
+</p>
+
+</div>
+
+<div class="step">
 
 <h2>Lärdomar</h2>
 
 <ul>
-  <li>SCIM förenklar provisioning och deprovisioning</li>
+  <li>SCIM förenklar lifecycle management rejält</li>
   <li>Gruppbaserad access sparar mycket manuellt arbete</li>
-  <li>Det är mycket lättare att förstå authflöden när systemen kör live</li>
+  <li>Redirect URI måste matcha exakt</li>
+  <li>Client Secret VALUE och Secret ID är inte samma sak</li>
+  <li>Det är mycket lättare att förstå auth-flöden när systemen kör live</li>
 </ul>
+
+</div>
 
 </body>
 </html>
