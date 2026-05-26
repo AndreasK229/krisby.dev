@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditional Access + Identity Protection Lab</title>
+
+  <style>
+
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: Arial, sans-serif;
+      max-width: 950px;
+      margin: auto;
+      padding: 40px 20px;
+      line-height: 1.8;
+    }
+
+    h1, h2, h3 {
+      color: #58a6ff;
+    }
+
+    .code {
+      background: #161b22;
+      border: 1px solid #30363d;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      overflow-x: auto;
+      font-family: monospace;
+      color: #c9d1d9;
+    }
+
+    .step {
+      margin-top: 50px;
+      padding: 25px;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      background: #161b22;
+    }
+
+    a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+
+    ul {
+      margin-top: 15px;
+    }
+
+    li {
+      margin: 10px 0;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<a href="../index.html">← Back</a>
+
+<h1>Conditional Access + Identity Protection Lab</h1>
+
+<p>
+Detta labbet byggdes för att förstå hur riskbaserad Conditional Access och Identity Protection fungerar i Microsoft Entra ID.
+</p>
+
+<p>
+Målet var att:
+</p>
+
+<ul>
+  <li>Skapa riskbaserade Conditional Access-policies</li>
+  <li>Tvinga MFA vid risky sign-ins</li>
+  <li>Förstå user risk och sign-in risk</li>
+  <li>Testa Identity Protection i praktiken</li>
+  <li>Analysera risky users och risky sign-ins</li>
+</ul>
+
+<h2>Arkitektur</h2>
+
+<div class="code">
+User Sign-In → Identity Protection → Risk Detection → Conditional Access → MFA
+</div>
+
+<div class="step">
+
+<h2>Steg 1 — Förberedelser</h2>
+
+<p>
+Först verifierades att tenant hade rätt funktioner aktiverade.
+</p>
+
+<ul>
+  <li>Microsoft Entra ID P2</li>
+  <li>Identity Protection</li>
+  <li>Conditional Access</li>
+</ul>
+
+<p>
+Ett separat testkonto skapades:
+</p>
+
+<div class="code">
+test-risk-user@tenant.onmicrosoft.com
+</div>
+
+<p>
+Sedan tilldelades:
+</p>
+
+<ul>
+  <li>Microsoft Entra ID P2-licens</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 2 — Konfigurera MFA</h2>
+
+<p>
+Första inloggningen gjordes med testkontot.
+</p>
+
+<p>
+MFA registrerades med:
+</p>
+
+<ul>
+  <li>Microsoft Authenticator</li>
+</ul>
+
+<p>
+Efter detta verifierades att MFA fungerade korrekt.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 3 — Skapa Conditional Access Policy</h2>
+
+<p>
+I Entra Admin Center:
+</p>
+
+<ul>
+  <li>Protection</li>
+  <li>Conditional Access</li>
+  <li>Policies</li>
+  <li>New Policy</li>
+</ul>
+
+<p>
+Policynamn:
+</p>
+
+<div class="code">
+CA - Require MFA for Risky Sign-ins
+</div>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 4 — Konfigurera users</h2>
+
+<p>
+Under:
+</p>
+
+<div class="code">
+Assignments → Users
+</div>
+
+<p>
+Valdes:
+</p>
+
+<ul>
+  <li>All users</li>
+  <li>eller specifikt testkonto</li>
+</ul>
+
+<p>
+Break glass/admin-konto exkluderades från policyn.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 5 — Konfigurera risk conditions</h2>
+
+<p>
+Under:
+</p>
+
+<div class="code">
+Conditions → Sign-in risk
+</div>
+
+<p>
+Val:
+</p>
+
+<ul>
+  <li>Medium and High</li>
+</ul>
+
+<p>
+Configure:
+</p>
+
+<div class="code">
+Yes
+</div>
+
+<p>
+Sedan:
+</p>
+
+<div class="code">
+Conditions → User risk
+</div>
+
+<p>
+Val:
+</p>
+
+<ul>
+  <li>Medium and High</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 6 — Konfigurera Access Controls</h2>
+
+<p>
+Under:
+</p>
+
+<div class="code">
+Access controls → Grant
+</div>
+
+<p>
+Val:
+</p>
+
+<ul>
+  <li>Grant access</li>
+  <li>Require multi-factor authentication</li>
+</ul>
+
+<p>
+Sedan:
+</p>
+
+<div class="code">
+Select
+</div>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 7 — Enable policy</h2>
+
+<p>
+Under:
+</p>
+
+<div class="code">
+Enable policy
+</div>
+
+<p>
+Valdes:
+</p>
+
+<ul>
+  <li>On</li>
+</ul>
+
+<p>
+Sedan klickades:
+</p>
+
+<div class="code">
+Create
+</div>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 8 — Testa risky sign-ins</h2>
+
+<p>
+Olika inloggningsscenarion testades för att försöka trigga Identity Protection.
+</p>
+
+<p>
+Testade bland annat:
+</p>
+
+<ul>
+  <li>VPN</li>
+  <li>Incognito-läge</li>
+  <li>InPrivate-sessioner</li>
+  <li>Olika browsers</li>
+  <li>Upprepade sign-ins</li>
+  <li>Flera nya sessioner</li>
+</ul>
+
+<p>
+Målet var att se om Entra började markera användaren eller sign-ins som risky.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 9 — Övervaka Identity Protection</h2>
+
+<p>
+I Entra Admin Center:
+</p>
+
+<div class="code">
+Protection → Identity Protection
+</div>
+
+<p>
+Kontrollerade:
+</p>
+
+<ul>
+  <li>Risky users</li>
+  <li>Risky sign-ins</li>
+  <li>Risk detections</li>
+</ul>
+
+<p>
+Efter ett tag dök testkontot upp som:
+</p>
+
+<div class="code">
+Risky User
+</div>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 10 — Hantera risky user</h2>
+
+<p>
+Öppnade användaren under:
+</p>
+
+<div class="code">
+Identity Protection → Risky users
+</div>
+
+<p>
+Testade olika åtgärder:
+</p>
+
+<h3>Revoke sessions</h3>
+
+<p>
+Tvingade användaren att logga in igen.
+</p>
+
+<h3>Confirm user safe</h3>
+
+<p>
+Markerade användaren som säker.
+</p>
+
+<h3>Dismiss user risk</h3>
+
+<p>
+Tog bort riskstatus manuellt.
+</p>
+
+<h3>Confirm compromised</h3>
+
+<p>
+Markerade användaren som komprometterad.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 11 — Testa What If Tool</h2>
+
+<p>
+I Conditional Access:
+</p>
+
+<div class="code">
+Conditional Access → What If
+</div>
+
+<p>
+Valde:
+</p>
+
+<ul>
+  <li>Test user</li>
+  <li>Cloud app</li>
+  <li>Location/sign-in conditions</li>
+</ul>
+
+<p>
+Verifierade:
+</p>
+
+<ul>
+  <li>Vilka policies som appliceras</li>
+  <li>Om MFA triggas</li>
+  <li>Hur Conditional Access påverkar sign-ins</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Resultat</h2>
+
+<p>
+Labbet kunde nu:
+</p>
+
+<ul>
+  <li>Identifiera risky users</li>
+  <li>Identifiera risky sign-ins</li>
+  <li>Tvinga MFA vid risk</li>
+  <li>Hantera risknivåer dynamiskt</li>
+  <li>Testa riskbaserad Conditional Access</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Lärdomar</h2>
+
+<ul>
+  <li>User risk och sign-in risk är två olika saker</li>
+  <li>Conditional Access kan reagera dynamiskt på risknivåer</li>
+  <li>MFA är effektivt skydd vid risky sign-ins</li>
+  <li>Identity Protection kan upptäcka avvikande beteenden</li>
+  <li>What If Tool är viktigt innan utrullning av policies</li>
+  <li>Risky users kan hanteras direkt i Entra</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Teknik som användes</h2>
+
+<ul>
+  <li>Microsoft Entra ID</li>
+  <li>Conditional Access</li>
+  <li>Identity Protection</li>
+  <li>MFA</li>
+  <li>What If Tool</li>
+  <li>VPN</li>
+  <li>Incognito/InPrivate Sessions</li>
+</ul>
+
+</div>
+
+</body>
+</html>
