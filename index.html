@@ -32,7 +32,7 @@
         Arial,
         sans-serif;
 
-      padding: 40px 20px;
+      padding: 20px;
     }
 
     .container {
@@ -66,17 +66,18 @@
     .hero {
 
       display: flex;
-      gap: 50px;
-      align-items: center;
-      flex-wrap: wrap;
 
-      margin-bottom: 60px;
+      gap: 50px;
+
+      align-items: center;
+
+      margin-bottom: 70px;
     }
 
     .profile-pic {
 
-      width: 230px;
-      height: 230px;
+      width: 200px;
+      height: 200px;
 
       border-radius: 50%;
 
@@ -90,11 +91,12 @@
         0 0 100px rgba(139,92,246,0.15);
 
       background: #0d1117;
+
+      flex-shrink: 0;
     }
 
     .hero-text {
       flex: 1;
-      min-width: 300px;
     }
 
     h1 {
@@ -106,6 +108,8 @@
       letter-spacing: -3px;
 
       color: white;
+
+      line-height: 1;
     }
 
     .subtitle {
@@ -229,7 +233,7 @@
 
     .project-card h3 {
 
-      font-size: 30px;
+      font-size: 28px;
 
       margin-bottom: 18px;
 
@@ -283,34 +287,66 @@
 
     @media(max-width: 900px) {
 
-      h1 {
-        font-size: 50px;
+      body {
+        padding: 12px;
       }
 
-      .subtitle {
-        font-size: 22px;
+      .main-card {
+        padding: 25px;
       }
 
       .hero {
+
+        flex-direction: column;
+
         text-align: center;
+
+        gap: 30px;
       }
 
       .hero-text {
         text-align: center;
       }
 
+      h1 {
+
+        font-size: 54px;
+
+        line-height: 1.1;
+      }
+
+      .subtitle {
+
+        font-size: 22px;
+      }
+
+      .description {
+
+        font-size: 18px;
+
+        line-height: 1.7;
+      }
+
       .skills {
+
         justify-content: center;
       }
 
       .profile-pic {
+
         width: 180px;
         height: 180px;
+      }
+
+      .projects {
+
+        grid-template-columns: 1fr;
       }
 
     }
 
   </style>
+
 </head>
 
 <body>
