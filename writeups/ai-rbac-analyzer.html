@@ -202,4 +202,136 @@ prompt.txt
 
 <div class="step">
 
-<h
+<h2>Steg 5 — Installera Ollama</h2>
+
+<p>
+För att köra AI-modellen lokalt installerades:
+</p>
+
+<ul>
+  <li>Ollama</li>
+  <li>Llama3</li>
+</ul>
+
+<p>
+Modellen hämtades med:
+</p>
+
+<div class="code">
+ollama pull llama3
+</div>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 6 — Bygga PowerShell-script</h2>
+
+<p>
+Sedan skapades ett PowerShell-script som:
+</p>
+
+<ul>
+  <li>Läser prompt.txt</li>
+  <li>Läser RBAC JSON-data</li>
+  <li>Skickar informationen till Ollama</li>
+</ul>
+
+<p>
+Script:
+</p>
+
+<div class="code">
+$prompt = Get-Content -Raw "prompt.txt"
+
+$data = Get-Content -Raw "example-rbac.json"
+
+$input = "$prompt `n`n RBAC DATA:`n$data"
+
+$input | ollama run llama3
+</div>
+
+<p>
+Scriptet sparades som:
+</p>
+
+<div class="code">
+run-agent.ps1
+</div>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 7 — Köra analysen</h2>
+
+<p>
+Scriptet kördes via PowerShell:
+</p>
+
+<div class="code">
+.\run-agent.ps1
+</div>
+
+<p>
+AI:n analyserade sedan:
+</p>
+
+<ul>
+  <li>RBAC-roller</li>
+  <li>Scope</li>
+  <li>Risker</li>
+  <li>Least privilege-förslag</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 8 — Resultat</h2>
+
+<p>
+Projektet gjorde det tydligare:
+</p>
+
+<ul>
+  <li>Hur bred Contributor-access kan bli</li>
+  <li>Hur viktigt scope är inom Azure RBAC</li>
+  <li>Hur lätt det är att ge för mycket access</li>
+  <li>Hur viktigt least privilege är</li>
+</ul>
+
+<p>
+Det blev också tydligt att AI kan hjälpa till att analysera access snabbare, men att man fortfarande måste förstå RBAC och säkerhetsmodellen själv.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Möjliga nästa steg</h2>
+
+<ul>
+  <li>Hämta RBAC-data direkt från Azure API</li>
+  <li>Analysera större miljöer</li>
+  <li>Förbättra AI-analysen ytterligare</li>
+  <li>Identifiera överprivilegierade konton automatiskt</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Lärdomar</h2>
+
+<ul>
+  <li>RBAC blir snabbt komplext i större miljöer</li>
+  <li>Scope är kritiskt för least privilege</li>
+  <li>AI kan fungera som stöd för snabbare analys</li>
+  <li>Det är mycket lättare att förstå RBAC när man bygger och testar själv</li>
+</ul>
+
+</div>
+
+</body>
+</html>
