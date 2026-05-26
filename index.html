@@ -7,10 +7,6 @@
 
   <style>
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       background: #0d1117;
       color: #e6edf3;
@@ -27,7 +23,7 @@
 
     .hero {
       text-align: center;
-      padding: 50px;
+      padding: 60px 40px;
       border: 1px solid #30363d;
       border-radius: 14px;
       background: #161b22;
@@ -35,7 +31,7 @@
     }
 
     h1 {
-      font-size: 48px;
+      font-size: 52px;
       margin-bottom: 10px;
     }
 
@@ -44,22 +40,20 @@
       font-size: 20px;
     }
 
-    ul {
-      padding-left: 20px;
+    .skills {
+      list-style: none;
+      padding: 0;
+      margin-top: 30px;
     }
 
-    li {
+    .skills li {
       margin: 10px 0;
+      color: #c9d1d9;
     }
 
     h2 {
       margin-top: 70px;
       margin-bottom: 20px;
-      color: #58a6ff;
-    }
-
-    h3 {
-      margin-top: 0;
       color: #58a6ff;
     }
 
@@ -88,27 +82,13 @@
       transform: translateY(-2px);
     }
 
+    .project-card h3 {
+      margin-top: 0;
+      color: #58a6ff;
+    }
+
     .project-card p {
       color: #8b949e;
-    }
-
-    .writeup {
-      margin-top: 80px;
-      padding: 35px;
-      border: 1px solid #30363d;
-      border-radius: 14px;
-      background: #161b22;
-    }
-
-    .code {
-      background: #0d1117;
-      border: 1px solid #30363d;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 15px;
-      overflow-x: auto;
-      font-family: monospace;
-      color: #c9d1d9;
     }
 
     footer {
@@ -133,12 +113,13 @@
       IAM • Cloud • Security
     </p>
 
-    <ul style="list-style:none; padding:0; margin-top:25px;">
+    <ul class="skills">
       <li>Entra ID</li>
       <li>SCIM</li>
       <li>Conditional Access</li>
       <li>KQL</li>
       <li>FIDO2</li>
+      <li>Cloudflare Zero Trust</li>
     </ul>
 
   </div>
@@ -156,6 +137,21 @@
         <p>
           Setup av Entra ID som IdP mot Cloudflare Access med OIDC federation,
           SCIM provisioning och gruppbaserad accesshantering.
+        </p>
+
+      </div>
+
+    </a>
+
+    <a href="writeups/ai-rbac-analyzer.html" class="project-link">
+
+      <div class="project-card">
+
+        <h3>AI RBAC Analyzer</h3>
+
+        <p>
+          Lokalt AI-projekt för analys av Azure RBAC, least privilege
+          och överbehörighet med Ollama och PowerShell.
         </p>
 
       </div>
@@ -182,175 +178,6 @@
       </p>
 
     </div>
-
-  </div>
-
-  <div class="writeup" id="entra-writeup">
-
-    <h2>Writeup — Entra ID + Cloudflare Access + SCIM</h2>
-
-    <p>
-      Satte upp Entra ID som IdP mot Cloudflare Access för min privata domän
-      för att förstå hur federation, provisioning och Zero Trust fungerar i praktiken.
-    </p>
-
-    <p>
-      Målet var att få:
-    </p>
-
-    <ul>
-      <li>OIDC authentication via Entra ID</li>
-      <li>SCIM provisioning mellan systemen</li>
-      <li>Automatisk sync av users och grupper</li>
-      <li>Gruppbaserad access via Cloudflare Access</li>
-    </ul>
-
-    <h3>Arkitektur</h3>
-
-    <div class="code">
-      Entra ID → OIDC → Cloudflare Access<br><br>
-      Entra ID → SCIM → Cloudflare
-    </div>
-
-    <h3>Steg 1 — Skapa App Registration i Entra ID</h3>
-
-    <p>
-      Första steget var att skapa en App Registration i Entra ID.
-    </p>
-
-    <ul>
-      <li>Entra Admin Center → App registrations</li>
-      <li>New registration</li>
-      <li>Single tenant</li>
-    </ul>
-
-    <p>
-      Redirect URI sattes till:
-    </p>
-
-    <div class="code">
-      https://team.cloudflareaccess.com/cdn-cgi/access/callback
-    </div>
-
-    <p>
-      Här fastnade jag först eftersom redirect URI måste matcha exakt mellan Entra och Cloudflare.
-    </p>
-
-    <h3>Steg 2 — API Permissions</h3>
-
-    <p>
-      Efter app registration behövdes rätt Microsoft Graph permissions.
-    </p>
-
-    <ul>
-      <li>openid</li>
-      <li>profile</li>
-      <li>email</li>
-      <li>User.Read</li>
-      <li>GroupMember.Read.All</li>
-    </ul>
-
-    <p>
-      Efter detta behövde admin consent godkännas för tenant.
-    </p>
-
-    <h3>Steg 3 — Client Secret</h3>
-
-    <p>
-      Sedan skapades en Client Secret under:
-    </p>
-
-    <div class="code">
-      Certificates & secrets
-    </div>
-
-    <p>
-      Viktigt här var att kopiera själva VALUE och inte Secret ID.
-      Detta orsakade auth-problem innan jag upptäckte felet.
-    </p>
-
-    <h3>Steg 4 — Cloudflare Access</h3>
-
-    <p>
-      I Cloudflare Zero Trust lades Entra ID till som Identity Provider.
-    </p>
-
-    <p>
-      Följande användes:
-    </p>
-
-    <ul>
-      <li>Application (client) ID</li>
-      <li>Tenant / Directory ID</li>
-      <li>Client Secret VALUE</li>
-    </ul>
-
-    <p>
-      När allt var korrekt konfigurerat fungerade OIDC-auth mot Cloudflare Access.
-    </p>
-
-    <h3>Steg 5 — SCIM Provisioning</h3>
-
-    <p>
-      Efter att auth fungerade sattes SCIM provisioning upp mellan systemen.
-    </p>
-
-    <p>
-      I Cloudflare genererades:
-    </p>
-
-    <ul>
-      <li>SCIM Endpoint</li>
-      <li>SCIM Secret Token</li>
-    </ul>
-
-    <p>
-      Dessa användes sedan i Entra under:
-    </p>
-
-    <div class="code">
-      Enterprise Applications → Provisioning
-    </div>
-
-    <p>
-      Provisioning sattes till:
-    </p>
-
-    <div class="code">
-      Automatic
-    </div>
-
-    <p>
-      Efter detta började users och grupper syncas automatiskt mellan systemen.
-    </p>
-
-    <h3>Problem under setup</h3>
-
-    <ul>
-      <li>Tenant ID mismatch</li>
-      <li>Fel redirect URI</li>
-      <li>Invalid client secret</li>
-      <li>Fel API permissions</li>
-      <li>Admin consent saknades</li>
-    </ul>
-
-    <h3>Resultat</h3>
-
-    <ul>
-      <li>Entra ID fungerar som central IdP</li>
-      <li>Users och grupper syncas via SCIM</li>
-      <li>Gruppbaserad access fungerar via Cloudflare Access</li>
-      <li>Provisioning och deprovisioning sker automatiskt</li>
-    </ul>
-
-    <h3>Lärdomar</h3>
-
-    <ul>
-      <li>SCIM förenklar provisioning och deprovisioning rejält</li>
-      <li>Gruppbaserad provisioning sparar mycket manuellt arbete</li>
-      <li>Det är mycket lättare att förstå identity-flöden när man ser systemen prata live</li>
-      <li>Små detaljer som redirect URI och secrets är kritiska i federationsflöden</li>
-    </ul>
 
   </div>
 
