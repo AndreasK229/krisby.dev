@@ -11,13 +11,13 @@
       background: #0d1117;
       color: #e6edf3;
       font-family: Arial, sans-serif;
-      max-width: 900px;
+      max-width: 950px;
       margin: auto;
       padding: 40px 20px;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
-    h1, h2 {
+    h1, h2, h3 {
       color: #58a6ff;
     }
 
@@ -26,8 +26,31 @@
       border: 1px solid #30363d;
       padding: 15px;
       border-radius: 10px;
-      font-family: monospace;
       margin-top: 15px;
+      overflow-x: auto;
+      font-family: monospace;
+      color: #c9d1d9;
+    }
+
+    .step {
+      margin-top: 50px;
+      padding: 25px;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      background: #161b22;
+    }
+
+    a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+
+    ul {
+      margin-top: 15px;
+    }
+
+    li {
+      margin: 10px 0;
     }
 
   </style>
@@ -41,38 +64,142 @@
 <h1>AI RBAC Analyzer</h1>
 
 <p>
-Projekt för att analysera Azure RBAC med hjälp av AI, PowerShell och Ollama.
+Projektet byggdes för att förstå Azure RBAC bättre i praktiken och samtidigt testa hur AI kan användas för att analysera access och överbehörighet.
 </p>
-
-<h2>Syfte</h2>
 
 <p>
-Målet var att förstå RBAC och least privilege bättre i praktiken.
+Målet var inte att bygga ett färdigt enterprise-verktyg utan att kombinera teori med praktisk testning i en egen Azure-miljö.
 </p>
 
-<h2>Teknik</h2>
-
-<ul>
-  <li>Azure RBAC</li>
-  <li>PowerShell</li>
-  <li>Ollama</li>
-  <li>Llama3</li>
-  <li>JSON</li>
-</ul>
-
-<h2>Flöde</h2>
+<h2>Arkitektur</h2>
 
 <div class="code">
-Azure RBAC → JSON export → PowerShell → Ollama → AI analysis
+Azure RBAC → JSON Export → PowerShell → Ollama → AI Analysis
 </div>
 
-<h2>Lärdomar</h2>
+<div class="step">
+
+<h2>Steg 1 — Skapa testmiljö i Azure</h2>
+
+<p>
+Först skapades en egen labbmiljö i Azure för att kunna testa RBAC och accesshantering.
+</p>
+
+<p>
+Följande resurser skapades:
+</p>
 
 <ul>
-  <li>Contributor-roller kan bli väldigt breda</li>
-  <li>Scope är kritiskt inom RBAC</li>
-  <li>AI kan hjälpa till att analysera access snabbare</li>
+  <li>Resource Group</li>
+  <li>Virtuella maskiner</li>
+  <li>Nätverksresurser</li>
 </ul>
 
-</body>
-</html>
+<p>
+Sedan skapades grupper och användare för olika typer av access:
+</p>
+
+<ul>
+  <li>vm-tech</li>
+  <li>vnet-tech</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 2 — Tilldela RBAC-roller</h2>
+
+<p>
+Olika Azure RBAC-roller tilldelades till grupperna.
+</p>
+
+<p>
+Exempel:
+</p>
+
+<ul>
+  <li>Virtual Machine Contributor</li>
+  <li>Network Contributor</li>
+</ul>
+
+<p>
+Rollerna sattes på Resource Group-nivå för att kunna analysera scope och access.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 3 — Exportera RBAC-data</h2>
+
+<p>
+Efter att rollerna var på plats exporterades RBAC-information till JSON-format.
+</p>
+
+<p>
+Filen innehöll exempelvis:
+</p>
+
+<ul>
+  <li>principalName</li>
+  <li>roleDefinitionName</li>
+  <li>scope</li>
+</ul>
+
+<p>
+Exempel:
+</p>
+
+<div class="code">
+[
+  {
+    "principalName": "vm-tech",
+    "roleDefinitionName": "Virtual Machine Contributor",
+    "scope": "/subscriptions/.../resourceGroups/RG-TEST-LAB"
+  }
+]
+</div>
+
+<p>
+Filen sparades som:
+</p>
+
+<div class="code">
+example-rbac.json
+</div>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 4 — Skapa prompt till AI:n</h2>
+
+<p>
+En prompt skapades för att styra hur modellen skulle analysera RBAC-informationen.
+</p>
+
+<p>
+Prompten instruerade modellen att:
+</p>
+
+<ul>
+  <li>Analysera roller</li>
+  <li>Identifiera bred access</li>
+  <li>Analysera scope</li>
+  <li>Ge least privilege-förslag</li>
+</ul>
+
+<p>
+Prompten sparades som:
+</p>
+
+<div class="code">
+prompt.txt
+</div>
+
+</div>
+
+<div class="step">
+
+<h
