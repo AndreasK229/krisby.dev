@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI RBAC Analyzer</title>
+  <title>JML Monitor Lab</title>
 
   <style>
 
@@ -61,57 +61,316 @@
 
 <a href="../index.html">← Back</a>
 
-<h1>AI RBAC Analyzer</h1>
+<h1>JML Monitor Lab</h1>
 
 <p>
-Projektet byggdes för att förstå Azure RBAC bättre i praktiken och samtidigt testa hur AI kan användas för att analysera access och överbehörighet.
+Detta projekt byggdes för att förstå Joiner / Mover / Leaver-processer,
+gruppbaserad RBAC och hur access förändras över tid i Microsoft Entra ID.
 </p>
 
 <p>
-Målet var inte att bygga ett färdigt enterprise-verktyg utan att kombinera teori med praktisk testning i en egen Azure-miljö.
+Målet var också att förstå hur Microsoft Graph API fungerar i praktiken
+och hur man kan upptäcka access drift och risker via automation.
 </p>
 
 <h2>Arkitektur</h2>
 
 <div class="code">
-Azure RBAC → JSON Export → PowerShell → Ollama → AI Analysis
+Entra ID → Microsoft Graph API → Python → State Comparison → JML Detection
 </div>
 
 <div class="step">
 
-<h2>Steg 1 — Skapa testmiljö i Azure</h2>
+<h2>Steg 1 — Skapa Entra-labb</h2>
 
 <p>
-Först skapades en egen labbmiljö i Azure för att kunna testa RBAC och accesshantering.
+Först skapades en testmiljö i Microsoft Entra ID.
 </p>
 
 <p>
-Följande resurser skapades:
+Flera users skapades för att simulera olika typer av access:
 </p>
 
 <ul>
-  <li>Resource Group</li>
-  <li>Virtuella maskiner</li>
-  <li>Nätverksresurser</li>
+  <li>HR users</li>
+  <li>IT users</li>
+  <li>Admin users</li>
+  <li>Production users</li>
 </ul>
 
 <p>
-Sedan skapades grupper och användare för olika typer av access:
+Sedan skapades grupper:
 </p>
 
 <ul>
-  <li>vm-tech</li>
-  <li>vnet-tech</li>
+  <li>HR</li>
+  <li>Admin</li>
+  <li>Production</li>
+  <li>Technical administrator VM</li>
+  <li>VNET TECH</li>
+</ul>
+
+<p>
+Users placerades sedan i olika grupper för att simulera RBAC.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 2 — Registrera app i Entra ID</h2>
+
+<p>
+För att kunna använda Microsoft Graph API skapades en App Registration.
+</p>
+
+<ul>
+  <li>Entra ID</li>
+  <li>App registrations</li>
+  <li>New registration</li>
+</ul>
+
+<p>
+Appen fick namnet:
+</p>
+
+<div class="code">
+JML-Monitor
+</div>
+
+<p>
+Efter skapandet sparades:
+</p>
+
+<ul>
+  <li>Tenant ID</li>
+  <li>Client ID</li>
 </ul>
 
 </div>
 
 <div class="step">
 
-<h2>Steg 2 — Tilldela RBAC-roller</h2>
+<h2>Steg 3 — Skapa Client Secret</h2>
 
 <p>
-Olika Azure RBAC-roller tilldelades till grupperna.
+Sedan skapades en Client Secret för authentication mot Microsoft identity platform.
+</p>
+
+<ul>
+  <li>Certificates & secrets</li>
+  <li>New client secret</li>
+</ul>
+
+<p>
+Secret-värdet sparades direkt eftersom det bara visas en gång.
+</p>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 4 — API Permissions</h2>
+
+<p>
+För att kunna läsa users, grupper och audit-data behövdes Microsoft Graph permissions.
+</p>
+
+<ul>
+  <li>API permissions</li>
+  <li>Add permission</li>
+  <li>Microsoft Graph</li>
+</ul>
+
+<p>
+Permissions:
+</p>
+
+<ul>
+  <li>User.Read.All</li>
+  <li>Group.Read.All</li>
+  <li>Directory.Read.All</li>
+  <li>AuditLog.Read.All</li>
+</ul>
+
+<p>
+Efter detta gavs:
+</p>
+
+<div class="code">
+Grant admin consent
+</div>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 5 — Installera Python</h2>
+
+<p>
+För att bygga monitorn installerades:
+</p>
+
+<ul>
+  <li>Python</li>
+  <li>VS Code</li>
+</ul>
+
+<p>
+Sedan installerades requests:
+</p>
+
+<div class="code">
+pip install requests
+</div>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 6 — Skapa Python-script</h2>
+
+<p>
+Ett Python-script skapades:
+</p>
+
+<div class="code">
+get_token.py
+</div>
+
+<p>
+Scriptet skulle:
+</p>
+
+<ul>
+  <li>Autentisera mot Entra ID</li>
+  <li>Hämta users</li>
+  <li>Hämta gruppmedlemskap</li>
+  <li>Analysera access</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 7 — Authentication mot Entra</h2>
+
+<p>
+Scriptet började med authentication mot Microsoft identity platform.
+</p>
+
+<p>
+Använde:
+</p>
+
+<ul>
+  <li>tenant_id</li>
+  <li>client_id</li>
+  <li>client_secret</li>
+</ul>
+
+<p>
+Token hämtades via:
+</p>
+
+<div class="code">
+https://login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token
+</div>
+
+<p>
+Grant type:
+</p>
+
+<div class="code">
+client_credentials
+</div>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 8 — Hämta users från Graph API</h2>
+
+<p>
+Efter authentication hämtades users från Microsoft Graph API.
+</p>
+
+<div class="code">
+https://graph.microsoft.com/v1.0/users
+</div>
+
+<p>
+Följande data hämtades:
+</p>
+
+<ul>
+  <li>displayName</li>
+  <li>userPrincipalName</li>
+  <li>id</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 9 — Loopa users</h2>
+
+<p>
+Alla users loopades:
+</p>
+
+<div class="code">
+for user in users["value"]
+</div>
+
+<p>
+För varje user hämtades:
+</p>
+
+<ul>
+  <li>Namn</li>
+  <li>UPN</li>
+  <li>ID</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 10 — Hämta gruppmedlemskap</h2>
+
+<p>
+För varje user hämtades gruppmedlemskap via Graph API:
+</p>
+
+<div class="code">
+https://graph.microsoft.com/v1.0/users/{user_id}/memberOf
+</div>
+
+<p>
+Sedan loopades grupperna:
+</p>
+
+<div class="code">
+for g in groups.get("value", [])
+</div>
+
+<p>
+Gruppnamn sparades i:
+</p>
+
+<div class="code">
+user_groups = []
+</div>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 11 — Skapa JML-logik</h2>
+
+<p>
+Efter att users och grupper hämtats byggdes logik för att upptäcka risker och förändringar.
 </p>
 
 <p>
@@ -119,203 +378,119 @@ Exempel:
 </p>
 
 <ul>
-  <li>Virtual Machine Contributor</li>
-  <li>Network Contributor</li>
+  <li>Admin access</li>
+  <li>HR + Admin (SoD-konflikt)</li>
+  <li>Disabled konto med access</li>
+  <li>Nya grupper</li>
+  <li>Borttagen access</li>
+  <li>Access som låg kvar</li>
 </ul>
-
-<p>
-Rollerna sattes på Resource Group-nivå för att kunna analysera scope och access.
-</p>
 
 </div>
 
 <div class="step">
 
-<h2>Steg 3 — Exportera RBAC-data</h2>
+<h2>Steg 12 — Skapa state snapshot</h2>
 
 <p>
-Efter att rollerna var på plats exporterades RBAC-information till JSON-format.
+För att kunna jämföra förändringar över tid skapades:
 </p>
 
+<div class="code">
+state.json
+</div>
+
 <p>
-Filen innehöll exempelvis:
+Den sparade:
 </p>
 
 <ul>
-  <li>principalName</li>
-  <li>roleDefinitionName</li>
-  <li>scope</li>
+  <li>User ID</li>
+  <li>Namn</li>
+  <li>Grupper</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Steg 13 — Jämföra historik</h2>
+
+<p>
+Vid nästa körning:
+</p>
+
+<ul>
+  <li>Lästes tidigare state.json</li>
+  <li>Ny data hämtades från Graph API</li>
+  <li>Skillnader jämfördes</li>
 </ul>
 
 <p>
 Exempel:
 </p>
 
-<div class="code">
-[
-  {
-    "principalName": "vm-tech",
-    "roleDefinitionName": "Virtual Machine Contributor",
-    "scope": "/subscriptions/.../resourceGroups/RG-TEST-LAB"
-  }
-]
-</div>
-
-<p>
-Filen sparades som:
-</p>
-
-<div class="code">
-example-rbac.json
-</div>
-
-</div>
-
-<div class="step">
-
-<h2>Steg 4 — Skapa prompt till AI:n</h2>
-
-<p>
-En prompt skapades för att styra hur modellen skulle analysera RBAC-informationen.
-</p>
-
-<p>
-Prompten instruerade modellen att:
-</p>
-
 <ul>
-  <li>Analysera roller</li>
-  <li>Identifiera bred access</li>
-  <li>Analysera scope</li>
-  <li>Ge least privilege-förslag</li>
-</ul>
-
-<p>
-Prompten sparades som:
-</p>
-
-<div class="code">
-prompt.txt
-</div>
-
-</div>
-
-<div class="step">
-
-<h2>Steg 5 — Installera Ollama</h2>
-
-<p>
-För att köra AI-modellen lokalt installerades:
-</p>
-
-<ul>
-  <li>Ollama</li>
-  <li>Llama3</li>
-</ul>
-
-<p>
-Modellen hämtades med:
-</p>
-
-<div class="code">
-ollama pull llama3
-</div>
-
-</div>
-
-<div class="step">
-
-<h2>Steg 6 — Bygga PowerShell-script</h2>
-
-<p>
-Sedan skapades ett PowerShell-script som:
-</p>
-
-<ul>
-  <li>Läser prompt.txt</li>
-  <li>Läser RBAC JSON-data</li>
-  <li>Skickar informationen till Ollama</li>
-</ul>
-
-<p>
-Script:
-</p>
-
-<div class="code">
-$prompt = Get-Content -Raw "prompt.txt"
-
-$data = Get-Content -Raw "example-rbac.json"
-
-$input = "$prompt `n`n RBAC DATA:`n$data"
-
-$input | ollama run llama3
-</div>
-
-<p>
-Scriptet sparades som:
-</p>
-
-<div class="code">
-run-agent.ps1
-</div>
-
-</div>
-
-<div class="step">
-
-<h2>Steg 7 — Köra analysen</h2>
-
-<p>
-Scriptet kördes via PowerShell:
-</p>
-
-<div class="code">
-.\run-agent.ps1
-</div>
-
-<p>
-AI:n analyserade sedan:
-</p>
-
-<ul>
-  <li>RBAC-roller</li>
-  <li>Scope</li>
-  <li>Risker</li>
-  <li>Least privilege-förslag</li>
+  <li>Nya grupper</li>
+  <li>Borttagna grupper</li>
+  <li>Förändrad access</li>
 </ul>
 
 </div>
 
 <div class="step">
 
-<h2>Steg 8 — Resultat</h2>
+<h2>Steg 14 — Exempel på detektion</h2>
 
 <p>
-Projektet gjorde det tydligare:
+Monitorn kunde sedan visa:
 </p>
 
-<ul>
-  <li>Hur bred Contributor-access kan bli</li>
-  <li>Hur viktigt scope är inom Azure RBAC</li>
-  <li>Hur lätt det är att ge för mycket access</li>
-  <li>Hur viktigt least privilege är</li>
-</ul>
+<div class="code">
+⚠️ NY ACCESS
 
-<p>
-Det blev också tydligt att AI kan hjälpa till att analysera access snabbare, men att man fortfarande måste förstå RBAC och säkerhetsmodellen själv.
-</p>
+🚨 BORTTAGEN ACCESS
+
+🚨 RISK: Admin access
+
+🚨 RISK: SoD-konflikt
+</div>
 
 </div>
 
 <div class="step">
 
-<h2>Möjliga nästa steg</h2>
+<h2>Steg 15 — Skydda secrets</h2>
+
+<p>
+Under projektet upptäcktes att secrets varit exponerade i script.
+</p>
+
+<p>
+Detta åtgärdades genom att:
+</p>
 
 <ul>
-  <li>Hämta RBAC-data direkt från Azure API</li>
-  <li>Analysera större miljöer</li>
-  <li>Förbättra AI-analysen ytterligare</li>
-  <li>Identifiera överprivilegierade konton automatiskt</li>
+  <li>Skapa nytt secret</li>
+  <li>Flytta secrets till .env</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Resultat</h2>
+
+<p>
+Monitorn kunde nu:
+</p>
+
+<ul>
+  <li>Övervaka gruppförändringar</li>
+  <li>Upptäcka access drift</li>
+  <li>Visa mover/leaver-scenarion</li>
+  <li>Analysera RBAC via grupper</li>
+  <li>Jämföra historik över tid</li>
 </ul>
 
 </div>
@@ -325,10 +500,27 @@ Det blev också tydligt att AI kan hjälpa till att analysera access snabbare, m
 <h2>Lärdomar</h2>
 
 <ul>
-  <li>RBAC blir snabbt komplext i större miljöer</li>
-  <li>Scope är kritiskt för least privilege</li>
-  <li>AI kan fungera som stöd för snabbare analys</li>
-  <li>Det är mycket lättare att förstå RBAC när man bygger och testar själv</li>
+  <li>RBAC blir tydligare via grupper</li>
+  <li>Historik behövs för att upptäcka förändringar</li>
+  <li>Access drift syns först vid jämförelse</li>
+  <li>JML blir tydligt i praktiken</li>
+  <li>Graph API ger mycket värdefull data</li>
+  <li>Security handlar mycket om logik och struktur</li>
+</ul>
+
+</div>
+
+<div class="step">
+
+<h2>Möjliga nästa steg</h2>
+
+<ul>
+  <li>Teams alerts</li>
+  <li>Audit log monitor</li>
+  <li>Sign-in detection</li>
+  <li>Risk scoring</li>
+  <li>Identity monitoring agent</li>
+  <li>Conditional Access integration</li>
 </ul>
 
 </div>
