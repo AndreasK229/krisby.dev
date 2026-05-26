@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI RBAC Analyzer</title>
+
+  <style>
+
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      line-height: 1.7;
+    }
+
+    h1, h2 {
+      color: #58a6ff;
+    }
+
+    .code {
+      background: #161b22;
+      border: 1px solid #30363d;
+      padding: 15px;
+      border-radius: 10px;
+      font-family: monospace;
+      margin-top: 15px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<a href="../index.html">← Back</a>
+
+<h1>AI RBAC Analyzer</h1>
+
+<p>
+Projekt för att analysera Azure RBAC med hjälp av AI, PowerShell och Ollama.
+</p>
+
+<h2>Syfte</h2>
+
+<p>
+Målet var att förstå RBAC och least privilege bättre i praktiken.
+</p>
+
+<h2>Teknik</h2>
+
+<ul>
+  <li>Azure RBAC</li>
+  <li>PowerShell</li>
+  <li>Ollama</li>
+  <li>Llama3</li>
+  <li>JSON</li>
+</ul>
+
+<h2>Flöde</h2>
+
+<div class="code">
+Azure RBAC → JSON export → PowerShell → Ollama → AI analysis
+</div>
+
+<h2>Lärdomar</h2>
+
+<ul>
+  <li>Contributor-roller kan bli väldigt breda</li>
+  <li>Scope är kritiskt inom RBAC</li>
+  <li>AI kan hjälpa till att analysera access snabbare</li>
+</ul>
+
+</body>
+</html>
