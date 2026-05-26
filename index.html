@@ -7,31 +7,50 @@
 
   <style>
 
-    body {
-      background:
-        radial-gradient(circle at top left, #111827 0%, #0b1120 35%, #050816 100%);
-      color: #e2e8f0;
-      font-family: Inter, Arial, sans-serif;
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+
+      background:
+        radial-gradient(circle at top left,
+        #111827 0%,
+        #0b1120 35%,
+        #050816 100%);
+
+      color: #e2e8f0;
+
+      font-family:
+        Inter,
+        Arial,
+        sans-serif;
+
       padding: 40px 20px;
-      line-height: 1.7;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1400px;
       margin: auto;
     }
 
-    .hero {
-      text-align: center;
-      padding: 80px 40px;
-      border: 1px solid rgba(255,255,255,0.08);
+    .main-card {
+
       border-radius: 28px;
+
+      border:
+        1px solid rgba(255,255,255,0.08);
 
       background:
         linear-gradient(
           145deg,
-          rgba(15,23,42,0.92),
+          rgba(15,23,42,0.94),
           rgba(17,24,39,0.82)
         );
 
@@ -40,57 +59,131 @@
       box-shadow:
         0 0 40px rgba(59,130,246,0.10),
         0 0 120px rgba(139,92,246,0.08);
+
+      padding: 40px;
     }
 
-    h1 {
-      font-size: 64px;
-      margin-bottom: 10px;
-      letter-spacing: -2px;
+    .hero {
+
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      flex-wrap: wrap;
+
+      margin-bottom: 60px;
     }
 
-    .subtitle {
-      color: #94a3b8;
-      font-size: 22px;
+    .profile-pic {
+
+      width: 230px;
+      height: 230px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      border:
+        2px solid rgba(96,165,250,0.7);
+
+      box-shadow:
+        0 0 30px rgba(59,130,246,0.35),
+        0 0 100px rgba(139,92,246,0.15);
+
+      background: #0d1117;
     }
 
     .hero-text {
-      max-width: 700px;
-      margin: 30px auto 0;
+      flex: 1;
+      min-width: 300px;
+    }
+
+    h1 {
+
+      font-size: 72px;
+
+      margin-bottom: 10px;
+
+      letter-spacing: -3px;
+
+      color: white;
+    }
+
+    .subtitle {
+
+      color: #38bdf8;
+
+      font-size: 28px;
+
+      margin-bottom: 30px;
+    }
+
+    .description {
+
       color: #cbd5e1;
-      font-size: 17px;
+
+      font-size: 19px;
+
+      max-width: 850px;
+
+      line-height: 1.8;
+
+      margin-bottom: 35px;
     }
 
     .skills {
+
       display: flex;
-      justify-content: center;
+
       flex-wrap: wrap;
+
       gap: 14px;
-      margin-top: 35px;
-      padding: 0;
-      list-style: none;
     }
 
-    .skills li {
+    .skill {
+
       padding: 10px 18px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #cbd5e1;
-      font-size: 14px;
+
+      border-radius: 14px;
+
+      background:
+        rgba(255,255,255,0.04);
+
+      border:
+        1px solid rgba(255,255,255,0.08);
+
+      color: #dbeafe;
+
+      font-size: 15px;
+
+      transition: 0.2s;
+    }
+
+    .skill:hover {
+
+      border-color:
+        rgba(56,189,248,0.45);
+
+      transform:
+        translateY(-2px);
     }
 
     h2 {
-      margin-top: 90px;
-      margin-bottom: 30px;
-      color: #7dd3fc;
-      font-size: 34px;
+
+      font-size: 38px;
+
+      margin-bottom: 35px;
+
+      color: white;
     }
 
     .projects {
+
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(340px, 1fr));
+
       gap: 24px;
-      margin-top: 35px;
     }
 
     .project-link {
@@ -99,25 +192,26 @@
     }
 
     .project-card {
-      height: 100%;
+
       padding: 30px;
+
       border-radius: 24px;
 
       background:
         linear-gradient(
           145deg,
           rgba(15,23,42,0.95),
-          rgba(17,24,39,0.75)
+          rgba(17,24,39,0.78)
         );
 
-      border: 1px solid rgba(255,255,255,0.08);
+      border:
+        1px solid rgba(255,255,255,0.08);
 
       transition: 0.25s ease;
 
-      backdrop-filter: blur(12px);
+      position: relative;
 
-      box-shadow:
-        0 0 25px rgba(0,0,0,0.25);
+      overflow: hidden;
     }
 
     .project-card:hover {
@@ -126,7 +220,7 @@
         translateY(-5px);
 
       border-color:
-        rgba(125,211,252,0.45);
+        rgba(56,189,248,0.4);
 
       box-shadow:
         0 0 30px rgba(56,189,248,0.18),
@@ -134,32 +228,86 @@
     }
 
     .project-card h3 {
-      margin-top: 0;
-      color: #7dd3fc;
-      font-size: 24px;
+
+      font-size: 30px;
+
+      margin-bottom: 18px;
+
+      color: white;
+
+      line-height: 1.3;
     }
 
     .project-card p {
+
       color: #94a3b8;
+
+      line-height: 1.8;
+
+      margin-bottom: 25px;
+
       font-size: 16px;
     }
 
+    .tags {
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
     .tag {
-      display: inline-block;
-      margin-top: 18px;
+
       padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(56,189,248,0.12);
+
+      border-radius: 12px;
+
+      background:
+        rgba(56,189,248,0.12);
+
       color: #7dd3fc;
+
       font-size: 13px;
     }
 
     footer {
-      margin-top: 100px;
+
       text-align: center;
+
+      margin-top: 80px;
+
       color: #64748b;
-      font-size: 14px;
-      padding-bottom: 20px;
+
+      font-size: 15px;
+    }
+
+    @media(max-width: 900px) {
+
+      h1 {
+        font-size: 50px;
+      }
+
+      .subtitle {
+        font-size: 22px;
+      }
+
+      .hero {
+        text-align: center;
+      }
+
+      .hero-text {
+        text-align: center;
+      }
+
+      .skills {
+        justify-content: center;
+      }
+
+      .profile-pic {
+        width: 180px;
+        height: 180px;
+      }
+
     }
 
   </style>
@@ -169,146 +317,236 @@
 
 <div class="container">
 
-  <div class="hero">
+  <div class="main-card">
 
-    <h1>Andreas Krisby</h1>
+    <div class="hero">
 
-    <p class="subtitle">
-      IAM • Cloud • Security
-    </p>
+      <img src="assets/me.jpg"
+      alt="Andreas Krisby"
+      class="profile-pic">
 
-    <p class="hero-text">
-      Bygger praktiska IAM- och cloud security-labbar med fokus på
-      Microsoft Entra ID, hybrid identity, SCIM provisioning,
-      RBAC, Conditional Access och Zero Trust.
-    </p>
+      <div class="hero-text">
 
-    <ul class="skills">
-      <li>Entra ID</li>
-      <li>SCIM</li>
-      <li>Conditional Access</li>
-      <li>Cloudflare Zero Trust</li>
-      <li>Microsoft Graph API</li>
-      <li>RBAC</li>
-      <li>KQL</li>
-      <li>FIDO2</li>
-      <li>Hybrid Identity</li>
-      <li>Identity Protection</li>
-    </ul>
+        <h1>Andreas Krisby</h1>
 
-  </div>
-
-  <h2>Projects & Writeups</h2>
-
-  <div class="projects">
-
-    <a href="writeups/entra-cloudflare.html" class="project-link">
-
-      <div class="project-card">
-
-        <h3>Entra ID + Cloudflare Access</h3>
-
-        <p>
-          Setup av Entra ID som Identity Provider mot Cloudflare Access
-          med OIDC federation, SCIM provisioning och gruppbaserad accesshantering.
+        <p class="subtitle">
+          IAM • Cloud • Security
         </p>
 
-        <span class="tag">SCIM • OIDC • Zero Trust</span>
+        <p class="description">
 
-      </div>
+          Bygger praktiska IAM- och cloud security-labbar med fokus på
+          Microsoft Entra ID, hybrid identity, SCIM provisioning,
+          RBAC, Conditional Access och Zero Trust.
 
-    </a>
-
-    <a href="writeups/ai-rbac-analyzer.html" class="project-link">
-
-      <div class="project-card">
-
-        <h3>AI RBAC Analyzer</h3>
-
-        <p>
-          Lokalt AI-projekt för analys av Azure RBAC,
-          least privilege och överbehörighet med Ollama,
-          PowerShell och JSON-baserad RBAC-data.
         </p>
 
-        <span class="tag">RBAC • AI • PowerShell</span>
+        <div class="skills">
+
+          <div class="skill">Entra ID</div>
+          <div class="skill">SCIM</div>
+          <div class="skill">Conditional Access</div>
+          <div class="skill">Cloudflare Zero Trust</div>
+          <div class="skill">Microsoft Graph API</div>
+          <div class="skill">RBAC</div>
+          <div class="skill">KQL</div>
+          <div class="skill">FIDO2</div>
+          <div class="skill">Hybrid Identity</div>
+          <div class="skill">Identity Protection</div>
+
+        </div>
 
       </div>
-
-    </a>
-
-    <a href="writeups/JML-monitor.html" class="project-link">
-
-      <div class="project-card">
-
-        <h3>JML Monitor Lab</h3>
-
-        <p>
-          Byggde en JML-monitor mot Microsoft Entra ID med
-          Microsoft Graph API, Python och gruppbaserad RBAC
-          för att upptäcka access drift och Joiner / Mover / Leaver-förändringar.
-        </p>
-
-        <span class="tag">Graph API • Python • JML</span>
-
-      </div>
-
-    </a>
-
-    <a href="writeups/Hybrid-identity.html" class="project-link">
-
-      <div class="project-card">
-
-        <h3>Hybrid Identity Lab</h3>
-
-        <p>
-          Byggde hybrid identity mellan on-prem Active Directory
-          och Microsoft Entra ID med Entra Connect,
-          sync-regler och gruppbaserad RBAC.
-        </p>
-
-        <span class="tag">AD • Entra Connect • Hybrid Identity</span>
-
-      </div>
-
-    </a>
-
-    <a href="writeups/Conditional-access.html" class="project-link">
-
-      <div class="project-card">
-
-        <h3>Conditional Access + Identity Protection</h3>
-
-        <p>
-          Riskbaserad Conditional Access-policy i Microsoft Entra ID
-          med MFA, risky sign-ins, risky users och Identity Protection.
-        </p>
-
-        <span class="tag">Conditional Access • MFA • Identity Protection</span>
-
-      </div>
-
-    </a>
-
-    <div class="project-card">
-
-      <h3>KQL & Log Analytics</h3>
-
-      <p>
-        Arbetar med KQL queries och logganalys
-        för att förstå sign-ins, autentiseringar,
-        audit logs och security events.
-      </p>
-
-      <span class="tag">KQL • Logs • Detection</span>
 
     </div>
 
-  </div>
+    <h2>Projects & Writeups</h2>
 
-  <footer>
-    krisby.dev • IAM / Cloud / Security
-  </footer>
+    <div class="projects">
+
+      <a href="writeups/entra-cloudflare.html"
+      class="project-link">
+
+        <div class="project-card">
+
+          <h3>
+            Entra ID +
+            Cloudflare Access
+          </h3>
+
+          <p>
+
+            Setup av Entra ID som Identity Provider
+            mot Cloudflare Access med OIDC federation,
+            SCIM provisioning och gruppbaserad accesshantering.
+
+          </p>
+
+          <div class="tags">
+
+            <div class="tag">SCIM</div>
+            <div class="tag">OIDC</div>
+            <div class="tag">Zero Trust</div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      <a href="writeups/ai-rbac-analyzer.html"
+      class="project-link">
+
+        <div class="project-card">
+
+          <h3>
+            AI RBAC
+            Analyzer
+          </h3>
+
+          <p>
+
+            Lokalt AI-projekt för analys av Azure RBAC,
+            least privilege och överbehörighet med Ollama,
+            PowerShell och JSON-baserad RBAC-data.
+
+          </p>
+
+          <div class="tags">
+
+            <div class="tag">RBAC</div>
+            <div class="tag">AI</div>
+            <div class="tag">PowerShell</div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      <a href="writeups/jml-monitor.html"
+      class="project-link">
+
+        <div class="project-card">
+
+          <h3>
+            JML Monitor
+            Lab
+          </h3>
+
+          <p>
+
+            Byggde en JML-monitor mot Microsoft Entra ID
+            med Graph API, Python och gruppbaserad RBAC
+            för att upptäcka access drift och JML-förändringar.
+
+          </p>
+
+          <div class="tags">
+
+            <div class="tag">Graph API</div>
+            <div class="tag">Python</div>
+            <div class="tag">JML</div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      <a href="writeups/Hybrid-identity.html"
+      class="project-link">
+
+        <div class="project-card">
+
+          <h3>
+            Hybrid
+            Identity Lab
+          </h3>
+
+          <p>
+
+            Byggde hybrid identity mellan on-prem Active Directory
+            och Microsoft Entra ID med Entra Connect,
+            sync-regler och gruppbaserad RBAC.
+
+          </p>
+
+          <div class="tags">
+
+            <div class="tag">AD</div>
+            <div class="tag">Entra Connect</div>
+            <div class="tag">Hybrid</div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      <a href="writeups/Conditional-access.html"
+      class="project-link">
+
+        <div class="project-card">
+
+          <h3>
+            Conditional Access +
+            Identity Protection
+          </h3>
+
+          <p>
+
+            Riskbaserad Conditional Access-policy i Microsoft Entra ID
+            med MFA, risky sign-ins, risky users och Identity Protection.
+
+          </p>
+
+          <div class="tags">
+
+            <div class="tag">Conditional Access</div>
+            <div class="tag">MFA</div>
+            <div class="tag">Identity Protection</div>
+
+          </div>
+
+        </div>
+
+      </a>
+
+      <div class="project-card">
+
+        <h3>
+          KQL & Log
+          Analytics
+        </h3>
+
+        <p>
+
+          Arbetar med KQL queries och logganalys
+          för att förstå sign-ins, autentiseringar,
+          audit logs och security events.
+
+        </p>
+
+        <div class="tags">
+
+          <div class="tag">KQL</div>
+          <div class="tag">Logs</div>
+          <div class="tag">Detection</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <footer>
+
+      krisby.dev • IAM / Cloud / Security
+
+    </footer>
+
+  </div>
 
 </div>
 
