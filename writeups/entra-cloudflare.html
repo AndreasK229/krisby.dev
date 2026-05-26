@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entra ID + Cloudflare Access</title>
+
+  <style>
+
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3 {
+      color: #58a6ff;
+    }
+
+    .code {
+      background: #161b22;
+      border: 1px solid #30363d;
+      padding: 15px;
+      border-radius: 10px;
+      font-family: monospace;
+      margin-top: 15px;
+    }
+
+    a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<a href="../index.html">← Back</a>
+
+<h1>Entra ID + Cloudflare Access + SCIM</h1>
+
+<p>
+Satte upp Entra ID som IdP mot Cloudflare Access för min domän
+för att förstå federation, provisioning och Zero Trust bättre i praktiken.
+</p>
+
+<h2>Arkitektur</h2>
+
+<div class="code">
+Entra ID → OIDC → Cloudflare Access
+
+Entra ID → SCIM → Cloudflare
+</div>
+
+<h2>Detta används</h2>
+
+<ul>
+  <li>Microsoft Entra ID</li>
+  <li>Cloudflare Access</li>
+  <li>OIDC federation</li>
+  <li>SCIM provisioning</li>
+</ul>
+
+<h2>Problem under setup</h2>
+
+<ul>
+  <li>Redirect URI mismatch</li>
+  <li>Invalid client secret</li>
+  <li>API permissions</li>
+  <li>Admin consent</li>
+</ul>
+
+<h2>Lärdomar</h2>
+
+<ul>
+  <li>SCIM förenklar provisioning och deprovisioning</li>
+  <li>Gruppbaserad access sparar mycket manuellt arbete</li>
+  <li>Det är mycket lättare att förstå authflöden när systemen kör live</li>
+</ul>
+
+</body>
+</html>
