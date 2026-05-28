@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hybrid identity Lab · krisby.dev</title>
+<meta name="description" content="Build a hybrid identity environment with Windows Server 2022, Active Directory and Entra Connect — step by step from empty VM to synced identity environment.">
+<meta name="author" content="Andreas Krisby">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Inter:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/theme.css">
+
+
+
+<meta name="generator" content="Hugo 0.161.1">
+
+</head>
+<body>
+  <div class="pa-root">
+    <nav class="pa-nav">
+  <a href="/" class="pa-brand">
+    <span class="pa-brand-mark">k</span>
+    <div>
+      <div class="pa-brand-name">krisby.dev</div>
+      <div class="pa-brand-sub">Notebook · Identity &amp; Cloud</div>
+    </div>
+  </a>
+
+  <ul class="pa-navlinks">
+    <li><a href="/" class="pa-navlink">Home</a></li>
+    <li><a href="/writeups/" class="pa-navlink is-active">Articles</a></li>
+    <li><a href="/about/" class="pa-navlink">About</a></li>
+  </ul>
+
+  <div class="pa-navside">
+    <div class="pa-lang-switch">
+      
+      
+      
+        
+          <span class="pa-lang-current">English</span>
+        
+        <span class="pa-lang-sep">·</span>
+      
+        
+          
+            
+              
+              <a href="/sv/writeups/hybrid-identity-labb/" class="pa-lang-link">Svenska</a>
+            
+          
+        
+        
+      
+    </div>
+
+    
+    <a href="https://github.com/AndreasK229" target="_blank" rel="noopener noreferrer">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      GitHub
+    </a>
+    
+    
+    <a href="https://linkedin.com/in/krisby" target="_blank" rel="noopener noreferrer">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+      LinkedIn
+    </a>
+    
+  </div>
+</nav>
+
+    <div class="pa-shell">
+      
+<div class="pa-art-wrap">
+  <div class="pa-art">
+
+    <aside class="pa-art-toc">
+      
+      <h4>Contents</h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#step-1--install-windows-server-2022">Step 1 – Install Windows Server 2022</a></li>
+    <li><a href="#step-2--install-active-directory">Step 2 – Install Active Directory</a></li>
+    <li><a href="#step-3--create-ou-structure">Step 3 – Create OU structure</a></li>
+    <li><a href="#step-4--create-users">Step 4 – Create users</a></li>
+    <li><a href="#step-5--create-global-security-groups">Step 5 – Create global security groups</a></li>
+    <li><a href="#step-6--add-users-to-groups">Step 6 – Add users to groups</a></li>
+    <li><a href="#step-7--install-entra-connect">Step 7 – Install Entra Connect</a></li>
+    <li><a href="#step-8--test-sync">Step 8 – Test sync</a></li>
+    <li><a href="#step-9--run-manual-sync">Step 9 – Run manual sync</a></li>
+    <li><a href="#step-10--troubleshooting">Step 10 – Troubleshooting</a></li>
+    <li><a href="#step-11--test-changes">Step 11 – Test changes</a></li>
+    <li><a href="#step-12--rbac-thinking">Step 12 – RBAC thinking</a></li>
+    <li><a href="#lessons">Lessons</a></li>
+  </ul>
+</nav>
+      
+    </aside>
+
+    <article class="pa-art-body">
+      <div class="pa-art-eyebrow">Lab · Active Directory</div>
+      <h1>Hybrid identity Lab</h1>
+      <div class="pa-art-meta">
+        <span>By <b>Andreas Krisby</b></span>
+        <span>2026-01-20</span>
+        <span><b>2</b> min read</span>
+      </div>
+
+      <p>Build a hybrid identity between on-prem AD and Entra and test how users, groups and sync work in practice.</p>
+<p><strong>Environment:</strong> Windows Server 2022 · Oracle VirtualBox · Active Directory · Microsoft Entra ID · Entra Connect</p>
+<h2 id="step-1--install-windows-server-2022">Step 1 – Install Windows Server 2022</h2>
+<ol>
+<li>Create a new VM in Oracle VirtualBox.</li>
+<li>Install Windows Server 2022.</li>
+<li>Give the server a static IP.</li>
+<li>Rename the server.</li>
+<li>Restart the server.</li>
+</ol>
+<h2 id="step-2--install-active-directory">Step 2 – Install Active Directory</h2>
+<ol>
+<li>Open Server Manager.</li>
+<li>Click Add Roles and Features.</li>
+<li>Install Active Directory Domain Services.</li>
+<li>Promote the server to Domain Controller.</li>
+<li>Create domain: <code>lab.local</code></li>
+<li>Restart the server.</li>
+</ol>
+<h2 id="step-3--create-ou-structure">Step 3 – Create OU structure</h2>
+<p>In Active Directory Users and Computers, create the following OUs:</p>
+<ul>
+<li><strong>HR</strong></li>
+<li><strong>IT</strong></li>
+<li><strong>Groups</strong></li>
+</ul>
+<p>OUs are used for structure. Groups are used for access.</p>
+<h2 id="step-4--create-users">Step 4 – Create users</h2>
+<p><strong>HR:</strong> Anna HR, Erik HR<br>
+<strong>IT:</strong> Johan IT, Sara IT</p>
+<p>Place HR users in <code>OU=HR</code> and IT users in <code>OU=IT</code>.</p>
+<h2 id="step-5--create-global-security-groups">Step 5 – Create global security groups</h2>
+<p>In <code>OU=Groups</code>, create groups with <em>Group scope = Global</em> and <em>Group type = Security</em>:</p>
+<ul>
+<li><code>GG_HR_Read</code></li>
+<li><code>GG_IT_Admin</code></li>
+<li><code>GG_App_Reader</code></li>
+</ul>
+<h2 id="step-6--add-users-to-groups">Step 6 – Add users to groups</h2>
+<pre tabindex="0"><code>Anna HR  → GG_HR_Read
+Johan IT → GG_IT_Admin
+</code></pre><p>Principle: <strong>User → Group → Access</strong></p>
+<h2 id="step-7--install-entra-connect">Step 7 – Install Entra Connect</h2>
+<ol>
+<li>Download Microsoft Entra Connect.</li>
+<li>Install the software.</li>
+<li>Sign in with Entra Global Admin.</li>
+<li>Connect the local AD domain.</li>
+<li>Enable Password Hash Sync.</li>
+<li>Complete the installation.</li>
+</ol>
+<h2 id="step-8--test-sync">Step 8 – Test sync</h2>
+<p>Open Microsoft Entra Admin Center and verify that users, groups and group memberships are visible.</p>
+<h2 id="step-9--run-manual-sync">Step 9 – Run manual sync</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">Import-Module</span> ADSync
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Delta sync</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">Start-ADSyncSyncCycle</span> -PolicyType Delta
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Initial sync</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">Start-ADSyncSyncCycle</span> -PolicyType Initial
+</span></span></code></pre></div><h2 id="step-10--troubleshooting">Step 10 – Troubleshooting</h2>
+<p><strong>Problem:</strong> Sync failed.<br>
+<strong>Error:</strong> Certificate/token authentication didn&rsquo;t work.<br>
+<strong>Cause:</strong> Wrong system time (NTP).<br>
+<strong>Lesson:</strong> Auth flow is sensitive to correct time.</p>
+<h2 id="step-11--test-changes">Step 11 – Test changes</h2>
+<p>Tested:</p>
+<ul>
+<li>Adding users to groups</li>
+<li>Removing users from groups</li>
+<li>Changing users</li>
+<li>Disabling users</li>
+</ul>
+<p>After each change, Delta sync was run and the change was verified in Entra.</p>
+<h2 id="step-12--rbac-thinking">Step 12 – RBAC thinking</h2>
+<p>RBAC should go through groups, not directly on individual users:</p>
+<pre tabindex="0"><code>User → Group → Access
+GG_App_Reader → Reader access
+</code></pre><h2 id="lessons">Lessons</h2>
+<ul>
+<li>AD is source of truth — Entra mirrors identities from on-prem</li>
+<li>Entra Connect is controlled by sync rules</li>
+<li>RBAC should go through groups</li>
+<li>Delta vs Initial sync affects how quickly changes take effect</li>
+<li>Auth/token flows depend on correct system time</li>
+</ul>
+
+
+      <nav class="pa-art-nav">
+        
+        <a class="is-disabled">
+          <small>← Previous</small>
+          <strong>Start of archive</strong>
+        </a>
+        
+
+        
+        <a href="/writeups/jml-monitor-labb/" class="pa-nav-r">
+          <small>Next →</small>
+          <strong>JML Monitor Lab</strong>
+        </a>
+        
+      </nav>
+    </article>
+
+    <aside class="pa-art-aside">
+      
+      <div class="pa-aside-block">
+        <h5>Tags</h5>
+        <p>Active Directory · Entra ID · Hybrid Identity · Entra Connect</p>
+      </div>
+      
+      <div class="pa-aside-block">
+        <h5>Citation</h5>
+        <p class="pa-citation">Krisby, A. (2026). Hybrid identity Lab. https://krisby.dev/writeups/hybrid-identity-labb/</p>
+      </div>
+      <div class="pa-aside-block">
+        <h5>Subscribe</h5>
+        <p><a href="/index.xml">RSS feed →</a></p>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+    </div>
+  </div>
+  <script src="/js/theme.js"></script>
+</body>
+</html>

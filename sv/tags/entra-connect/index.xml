@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Entra Connect on krisby.dev</title>
+    <link>https://krisby.dev/sv/tags/entra-connect/</link>
+    <description>Recent content in Entra Connect on krisby.dev</description>
+    <generator>Hugo</generator>
+    <language>sv</language>
+    <lastBuildDate>Tue, 20 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://krisby.dev/sv/tags/entra-connect/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hybrid identity Lab</title>
+      <link>https://krisby.dev/sv/writeups/hybrid-identity-labb/</link>
+      <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/sv/writeups/hybrid-identity-labb/</guid>
+      <description>&lt;p&gt;Bygga en hybrid identity mellan on-prem AD och Entra och testa hur users, grupper och sync fungerar i praktiken.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Miljö:&lt;/strong&gt; Windows Server 2022 · Oracle VirtualBox · Active Directory · Microsoft Entra ID · Entra Connect&lt;/p&gt;&#xA;&lt;h2 id=&#34;steg-1--installera-windows-server-2022&#34;&gt;Steg 1 – Installera Windows Server 2022&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Skapa ny VM i Oracle VirtualBox.&lt;/li&gt;&#xA;&lt;li&gt;Installera Windows Server 2022.&lt;/li&gt;&#xA;&lt;li&gt;Ge servern statisk IP.&lt;/li&gt;&#xA;&lt;li&gt;Byt namn på servern.&lt;/li&gt;&#xA;&lt;li&gt;Starta om servern.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;steg-2--installera-active-directory&#34;&gt;Steg 2 – Installera Active Directory&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Öppna Server Manager.&lt;/li&gt;&#xA;&lt;li&gt;Klicka Add Roles and Features.&lt;/li&gt;&#xA;&lt;li&gt;Installera Active Directory Domain Services.&lt;/li&gt;&#xA;&lt;li&gt;Promota servern till Domain Controller.&lt;/li&gt;&#xA;&lt;li&gt;Skapa domän: &lt;code&gt;lab.local&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Starta om servern.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;steg-3--skapa-ou-struktur&#34;&gt;Steg 3 – Skapa OU-struktur&lt;/h2&gt;&#xA;&lt;p&gt;I Active Directory Users and Computers, skapa följande OU:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

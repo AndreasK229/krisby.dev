@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SCIM on krisby.dev</title>
+    <link>https://krisby.dev/tags/scim/</link>
+    <description>Recent content in SCIM on krisby.dev</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 23 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://krisby.dev/tags/scim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Entra ID &#43; Cloudflare Access &#43; SCIM</title>
+      <link>https://krisby.dev/writeups/entra-cloudflare-scim/</link>
+      <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/writeups/entra-cloudflare-scim/</guid>
+      <description>&lt;p&gt;This lab was set up to understand how federation, provisioning and Zero Trust work in practice between Entra ID and Cloudflare Access.&lt;/p&gt;&#xA;&lt;p&gt;The goal was to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Use Entra ID as Identity Provider&lt;/li&gt;&#xA;&lt;li&gt;Set up OIDC authentication&lt;/li&gt;&#xA;&lt;li&gt;Set up SCIM provisioning&lt;/li&gt;&#xA;&lt;li&gt;Automate sync of users and groups&lt;/li&gt;&#xA;&lt;li&gt;Test group-based access via Cloudflare Access&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Entra ID → OIDC → Cloudflare Access&#xA;&#xA;Entra ID → SCIM → Cloudflare&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;step-1--create-app-registration-in-entra-id&#34;&gt;Step 1 — Create App Registration in Entra ID&lt;/h2&gt;&#xA;&lt;p&gt;The first step was to create an App Registration in Entra ID.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

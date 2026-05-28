@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 68">
+  <defs>
+    <linearGradient id="jg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0F6CBD"/>
+      <stop offset="100%" stop-color="#50E6FF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ── JOINER ── -->
+  <circle cx="15" cy="24" r="9" fill="url(#jg)"/>
+  <path d="M3,49 Q3,37 15,37 Q27,37 27,49" fill="url(#jg)"/>
+  <!-- Green + badge -->
+  <circle cx="23" cy="14" r="7" fill="#22c55e"/>
+  <line x1="23" y1="9.5" x2="23" y2="18.5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="18.5" y1="14" x2="27.5" y2="14" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- Arrow J → M -->
+  <line x1="29" y1="43" x2="36" y2="43" stroke="#50E6FF" stroke-width="1.6" stroke-linecap="round"/>
+  <polyline points="33.5,40.5 36,43 33.5,45.5" fill="none" stroke="#50E6FF" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- ── MOVER ── -->
+  <circle cx="50" cy="24" r="9" fill="url(#jg)"/>
+  <path d="M38,49 Q38,37 50,37 Q62,37 62,49" fill="url(#jg)"/>
+  <!-- Blue ⇄ badge -->
+  <circle cx="58" cy="14" r="7" fill="#0078D4"/>
+  <line x1="52" y1="12" x2="63" y2="12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+  <polyline points="61,10 63,12 61,14" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <line x1="64" y1="16" x2="53" y2="16" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+  <polyline points="55,14 53,16 55,18" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Arrow M → L -->
+  <line x1="64" y1="43" x2="71" y2="43" stroke="#50E6FF" stroke-width="1.6" stroke-linecap="round"/>
+  <polyline points="68.5,40.5 71,43 68.5,45.5" fill="none" stroke="#50E6FF" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- ── LEAVER ── -->
+  <circle cx="85" cy="24" r="9" fill="#3a4455"/>
+  <path d="M73,49 Q73,37 85,37 Q97,37 97,49" fill="#3a4455"/>
+  <!-- Red × badge -->
+  <circle cx="92" cy="14" r="7" fill="#ef4444"/>
+  <line x1="88.5" y1="10.5" x2="95.5" y2="17.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <line x1="95.5" y1="10.5" x2="88.5" y2="17.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Labels J M L -->
+  <text x="15" y="62" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#50E6FF">J</text>
+  <text x="50" y="62" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#50E6FF">M</text>
+  <text x="85" y="62" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#8a96ac">L</text>
+</svg>

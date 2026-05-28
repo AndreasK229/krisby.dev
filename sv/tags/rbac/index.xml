@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RBAC on krisby.dev</title>
+    <link>https://krisby.dev/sv/tags/rbac/</link>
+    <description>Recent content in RBAC on krisby.dev</description>
+    <generator>Hugo</generator>
+    <language>sv</language>
+    <lastBuildDate>Fri, 13 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://krisby.dev/sv/tags/rbac/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI RBAC Analyzer</title>
+      <link>https://krisby.dev/sv/writeups/ai-rbac-analyzer/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/sv/writeups/ai-rbac-analyzer/</guid>
+      <description>&lt;p&gt;Jag ville förstå Azure RBAC bättre i praktiken och samtidigt testa om AI kan användas som stöd för att snabbare hitta överbehörighet och risker i access. Målet var inte att bygga ett perfekt verktyg, utan att kombinera teori med praktisk testning.&lt;/p&gt;&#xA;&lt;h2 id=&#34;steg-1--idé-och-syfte&#34;&gt;Steg 1 – Idé och syfte&lt;/h2&gt;&#xA;&lt;p&gt;Analysera Azure RBAC-tilldelningar med en lokal LLM. Modellen ska:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Identifiera bred access&lt;/li&gt;&#xA;&lt;li&gt;Analysera scope&lt;/li&gt;&#xA;&lt;li&gt;Ge förbättringsförslag utifrån least privilege&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;steg-2--skapa-testmiljö-i-azure&#34;&gt;Steg 2 – Skapa testmiljö i Azure&lt;/h2&gt;&#xA;&lt;p&gt;Skapade:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

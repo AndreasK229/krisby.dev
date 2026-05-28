@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Labbar on krisby.dev</title>
+    <link>https://krisby.dev/sv/writeups/</link>
+    <description>Recent content in Labbar on krisby.dev</description>
+    <generator>Hugo</generator>
+    <language>sv</language>
+    <lastBuildDate>Mon, 25 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://krisby.dev/sv/writeups/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Conditional Access &#43; Identity Protection Lab</title>
+      <link>https://krisby.dev/sv/writeups/conditional-access-identity-protection/</link>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/sv/writeups/conditional-access-identity-protection/</guid>
+      <description>&lt;p&gt;Detta labbet byggdes för att förstå hur riskbaserad Conditional Access och Identity Protection fungerar i Microsoft Entra ID.&lt;/p&gt;&#xA;&lt;p&gt;Målet var att:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Skapa riskbaserade Conditional Access-policies&lt;/li&gt;&#xA;&lt;li&gt;Tvinga MFA vid risky sign-ins&lt;/li&gt;&#xA;&lt;li&gt;Förstå user risk och sign-in risk&lt;/li&gt;&#xA;&lt;li&gt;Testa Identity Protection i praktiken&lt;/li&gt;&#xA;&lt;li&gt;Analysera risky users och risky sign-ins&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;arkitektur&#34;&gt;Arkitektur&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;User Sign-In → Identity Protection → Risk Detection → Conditional Access → MFA&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;steg-1--förberedelser&#34;&gt;Steg 1 — Förberedelser&lt;/h2&gt;&#xA;&lt;p&gt;Verifiera att tenant har rätt funktioner aktiverade:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Entra ID &#43; Cloudflare Access &#43; SCIM</title>
+      <link>https://krisby.dev/sv/writeups/entra-cloudflare-scim/</link>
+      <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/sv/writeups/entra-cloudflare-scim/</guid>
+      <description>&lt;p&gt;Detta labbet sattes upp för att förstå hur federation, provisioning och Zero Trust fungerar i praktiken mellan Entra ID och Cloudflare Access.&lt;/p&gt;&#xA;&lt;p&gt;Målet var att:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Använda Entra ID som Identity Provider&lt;/li&gt;&#xA;&lt;li&gt;Sätta upp OIDC authentication&lt;/li&gt;&#xA;&lt;li&gt;Sätta upp SCIM provisioning&lt;/li&gt;&#xA;&lt;li&gt;Automatisera sync av users och grupper&lt;/li&gt;&#xA;&lt;li&gt;Testa gruppbaserad access via Cloudflare Access&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;arkitektur&#34;&gt;Arkitektur&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Entra ID → OIDC → Cloudflare Access&#xA;&#xA;Entra ID → SCIM → Cloudflare&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;steg-1--skapa-app-registration-i-entra-id&#34;&gt;Steg 1 — Skapa App Registration i Entra ID&lt;/h2&gt;&#xA;&lt;p&gt;Första steget var att skapa en App Registration i Entra ID.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI RBAC Analyzer</title>
+      <link>https://krisby.dev/sv/writeups/ai-rbac-analyzer/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/sv/writeups/ai-rbac-analyzer/</guid>
+      <description>&lt;p&gt;Jag ville förstå Azure RBAC bättre i praktiken och samtidigt testa om AI kan användas som stöd för att snabbare hitta överbehörighet och risker i access. Målet var inte att bygga ett perfekt verktyg, utan att kombinera teori med praktisk testning.&lt;/p&gt;&#xA;&lt;h2 id=&#34;steg-1--idé-och-syfte&#34;&gt;Steg 1 – Idé och syfte&lt;/h2&gt;&#xA;&lt;p&gt;Analysera Azure RBAC-tilldelningar med en lokal LLM. Modellen ska:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Identifiera bred access&lt;/li&gt;&#xA;&lt;li&gt;Analysera scope&lt;/li&gt;&#xA;&lt;li&gt;Ge förbättringsförslag utifrån least privilege&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;steg-2--skapa-testmiljö-i-azure&#34;&gt;Steg 2 – Skapa testmiljö i Azure&lt;/h2&gt;&#xA;&lt;p&gt;Skapade:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>JML Monitor Lab</title>
+      <link>https://krisby.dev/sv/writeups/jml-monitor-labb/</link>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/sv/writeups/jml-monitor-labb/</guid>
+      <description>&lt;p&gt;Byggde en enkel JML-monitor mot Microsoft Entra ID för att förstå Joiner/Mover/Leaver, gruppbaserad RBAC, hur access förändras över tid, och hur man kan upptäcka access drift. Och för att förstå hur Graph API fungerar i praktiken.&lt;/p&gt;&#xA;&lt;h2 id=&#34;steg-1--skapa-entra-labb&#34;&gt;Steg 1 – Skapa Entra-labb&lt;/h2&gt;&#xA;&lt;p&gt;Skapade users i Microsoft Entra ID:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;HR users&lt;/li&gt;&#xA;&lt;li&gt;IT users&lt;/li&gt;&#xA;&lt;li&gt;Admin users&lt;/li&gt;&#xA;&lt;li&gt;Production users&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Skapade grupper: HR, Admin, Production, Technical administrator VM, VNET TECH.&lt;/p&gt;&#xA;&lt;p&gt;Lade users i olika grupper för att simulera RBAC.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hybrid identity Lab</title>
+      <link>https://krisby.dev/sv/writeups/hybrid-identity-labb/</link>
+      <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/sv/writeups/hybrid-identity-labb/</guid>
+      <description>&lt;p&gt;Bygga en hybrid identity mellan on-prem AD och Entra och testa hur users, grupper och sync fungerar i praktiken.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Miljö:&lt;/strong&gt; Windows Server 2022 · Oracle VirtualBox · Active Directory · Microsoft Entra ID · Entra Connect&lt;/p&gt;&#xA;&lt;h2 id=&#34;steg-1--installera-windows-server-2022&#34;&gt;Steg 1 – Installera Windows Server 2022&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Skapa ny VM i Oracle VirtualBox.&lt;/li&gt;&#xA;&lt;li&gt;Installera Windows Server 2022.&lt;/li&gt;&#xA;&lt;li&gt;Ge servern statisk IP.&lt;/li&gt;&#xA;&lt;li&gt;Byt namn på servern.&lt;/li&gt;&#xA;&lt;li&gt;Starta om servern.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;steg-2--installera-active-directory&#34;&gt;Steg 2 – Installera Active Directory&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Öppna Server Manager.&lt;/li&gt;&#xA;&lt;li&gt;Klicka Add Roles and Features.&lt;/li&gt;&#xA;&lt;li&gt;Installera Active Directory Domain Services.&lt;/li&gt;&#xA;&lt;li&gt;Promota servern till Domain Controller.&lt;/li&gt;&#xA;&lt;li&gt;Skapa domän: &lt;code&gt;lab.local&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Starta om servern.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;steg-3--skapa-ou-struktur&#34;&gt;Steg 3 – Skapa OU-struktur&lt;/h2&gt;&#xA;&lt;p&gt;I Active Directory Users and Computers, skapa följande OU:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

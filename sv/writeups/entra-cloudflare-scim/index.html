@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entra ID &#43; Cloudflare Access &#43; SCIM · krisby.dev</title>
+<meta name="description" content="Federation, OIDC-authentication och automatisk SCIM-provisioning mellan Entra ID och Cloudflare Access — steg för steg med vanliga fällor dokumenterade.">
+<meta name="author" content="Andreas Krisby">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Inter:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/theme.css">
+
+
+
+<meta name="generator" content="Hugo 0.161.1">
+
+</head>
+<body>
+  <div class="pa-root">
+    <nav class="pa-nav">
+  <a href="/" class="pa-brand">
+    <span class="pa-brand-mark">k</span>
+    <div>
+      <div class="pa-brand-name">krisby.dev</div>
+      <div class="pa-brand-sub">Notebook · Identity &amp; Cloud</div>
+    </div>
+  </a>
+
+  <ul class="pa-navlinks">
+    <li><a href="/" class="pa-navlink">Hem</a></li>
+    <li><a href="/sv/writeups/" class="pa-navlink is-active">Artiklar</a></li>
+    <li><a href="/sv/about/" class="pa-navlink">Om</a></li>
+  </ul>
+
+  <div class="pa-navside">
+    <div class="pa-lang-switch">
+      
+      
+      
+        
+          
+            
+            <a href="/writeups/entra-cloudflare-scim/" class="pa-lang-link">English</a>
+          
+        
+        <span class="pa-lang-sep">·</span>
+      
+        
+          <span class="pa-lang-current">Svenska</span>
+        
+        
+      
+    </div>
+
+    
+    <a href="https://github.com/AndreasK229" target="_blank" rel="noopener noreferrer">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      GitHub
+    </a>
+    
+    
+    <a href="https://linkedin.com/in/krisby" target="_blank" rel="noopener noreferrer">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+      LinkedIn
+    </a>
+    
+  </div>
+</nav>
+
+    <div class="pa-shell">
+      
+<div class="pa-art-wrap">
+  <div class="pa-art">
+
+    <aside class="pa-art-toc">
+      
+      <h4>Contents</h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#arkitektur">Arkitektur</a></li>
+    <li><a href="#steg-1--skapa-app-registration-i-entra-id">Steg 1 — Skapa App Registration i Entra ID</a></li>
+    <li><a href="#steg-2--skapa-identity-provider-i-cloudflare">Steg 2 — Skapa Identity Provider i Cloudflare</a></li>
+    <li><a href="#steg-3--konfigurera-redirect-uri">Steg 3 — Konfigurera Redirect URI</a></li>
+    <li><a href="#steg-4--api-permissions">Steg 4 — API Permissions</a></li>
+    <li><a href="#steg-5--skapa-client-secret">Steg 5 — Skapa Client Secret</a></li>
+    <li><a href="#steg-6--koppla-entra-id-mot-cloudflare">Steg 6 — Koppla Entra ID mot Cloudflare</a></li>
+    <li><a href="#steg-7--testa-authentication-flow">Steg 7 — Testa Authentication Flow</a></li>
+    <li><a href="#steg-8--sätta-upp-scim-provisioning">Steg 8 — Sätta upp SCIM Provisioning</a></li>
+    <li><a href="#steg-9--gruppbaserad-provisioning">Steg 9 — Gruppbaserad Provisioning</a></li>
+    <li><a href="#lärdomar">Lärdomar</a></li>
+  </ul>
+</nav>
+      
+    </aside>
+
+    <article class="pa-art-body">
+      <div class="pa-art-eyebrow">Lab · Entra ID</div>
+      <h1>Entra ID &#43; Cloudflare Access &#43; SCIM</h1>
+      <div class="pa-art-meta">
+        <span>By <b>Andreas Krisby</b></span>
+        <span>2026-05-23</span>
+        <span><b>3</b> min read</span>
+      </div>
+
+      <p>Detta labbet sattes upp för att förstå hur federation, provisioning och Zero Trust fungerar i praktiken mellan Entra ID och Cloudflare Access.</p>
+<p>Målet var att:</p>
+<ul>
+<li>Använda Entra ID som Identity Provider</li>
+<li>Sätta upp OIDC authentication</li>
+<li>Sätta upp SCIM provisioning</li>
+<li>Automatisera sync av users och grupper</li>
+<li>Testa gruppbaserad access via Cloudflare Access</li>
+</ul>
+<h2 id="arkitektur">Arkitektur</h2>
+<pre tabindex="0"><code>Entra ID → OIDC → Cloudflare Access
+
+Entra ID → SCIM → Cloudflare
+</code></pre><h2 id="steg-1--skapa-app-registration-i-entra-id">Steg 1 — Skapa App Registration i Entra ID</h2>
+<p>Första steget var att skapa en App Registration i Entra ID.</p>
+<ul>
+<li>Entra Admin Center → App registrations → New registration</li>
+<li>Name: <code>Cloudflare Access</code></li>
+<li>Supported account types: Single tenant</li>
+</ul>
+<p>Redirect URI lämnades tom i detta steg.</p>
+<h2 id="steg-2--skapa-identity-provider-i-cloudflare">Steg 2 — Skapa Identity Provider i Cloudflare</h2>
+<p>Efter App Registration skapades Identity Provider i Cloudflare Zero Trust.</p>
+<ul>
+<li>Cloudflare Dashboard → Zero Trust → Settings → Authentication → Add new → Azure AD</li>
+</ul>
+<p>Cloudflare genererade då den redirect URI som behövdes i Entra ID:</p>
+<pre tabindex="0"><code>https://team.cloudflareaccess.com/cdn-cgi/access/callback
+</code></pre><p>Denna URI kopierades tillbaka till App Registration i Entra.</p>
+<h2 id="steg-3--konfigurera-redirect-uri">Steg 3 — Konfigurera Redirect URI</h2>
+<p>I Entra: App registrations → Cloudflare Access → Authentication → Add platform → Web</p>
+<p>Redirect URI:</p>
+<pre tabindex="0"><code>https://team.cloudflareaccess.com/cdn-cgi/access/callback
+</code></pre><p>Här fastnade jag först eftersom redirect URI måste matcha exakt mellan systemen.</p>
+<h2 id="steg-4--api-permissions">Steg 4 — API Permissions</h2>
+<p>Lägg till Microsoft Graph — Delegated permissions:</p>
+<ul>
+<li><code>openid</code></li>
+<li><code>profile</code></li>
+<li><code>email</code></li>
+<li><code>User.Read</code></li>
+<li><code>GroupMember.Read.All</code></li>
+</ul>
+<p>Sedan: <strong>Grant admin consent</strong></p>
+<p>Utan admin consent fungerade inte vissa delar korrekt.</p>
+<h2 id="steg-5--skapa-client-secret">Steg 5 — Skapa Client Secret</h2>
+<p>Certificates &amp; secrets → New client secret</p>
+<p>Cloudflare behövde:</p>
+<ul>
+<li>Application (client) ID</li>
+<li>Directory (tenant) ID</li>
+<li>Client Secret <strong>VALUE</strong></li>
+</ul>
+<blockquote>
+<p>Det är VALUE som ska användas — inte Secret ID. Detta skapade auth-problem innan jag upptäckte felet.</p>
+</blockquote>
+<h2 id="steg-6--koppla-entra-id-mot-cloudflare">Steg 6 — Koppla Entra ID mot Cloudflare</h2>
+<p>I Cloudflare Zero Trust → Settings → Authentication → Azure AD:</p>
+<ul>
+<li>Client ID</li>
+<li>Tenant ID</li>
+<li>Client Secret</li>
+</ul>
+<p>Efter detta fungerade login via Entra ID mot Cloudflare Access.</p>
+<h2 id="steg-7--testa-authentication-flow">Steg 7 — Testa Authentication Flow</h2>
+<p>Skapade en subdomän <code>test.krisby.dev</code> och en Access Application:</p>
+<p>Zero Trust → Access → Applications → Add application → Self-hosted → <code>test.krisby.dev</code></p>
+<p>När sidan öppnades:</p>
+<ol>
+<li>Cloudflare redirectade till Entra ID</li>
+<li>Authentication skedde via Entra</li>
+<li>Token skickades tillbaka till Cloudflare</li>
+<li>Access gavs efter lyckad auth</li>
+</ol>
+<h2 id="steg-8--sätta-upp-scim-provisioning">Steg 8 — Sätta upp SCIM Provisioning</h2>
+<p>I Cloudflare: Settings → SCIM</p>
+<p>Cloudflare genererade SCIM Endpoint och SCIM Token.</p>
+<p>I Entra: Enterprise Applications → Cloudflare Access → Provisioning</p>
+<p>Provisioning mode: <code>Automatic</code></p>
+<p>SCIM endpoint och token klistrades in.</p>
+<h2 id="steg-9--gruppbaserad-provisioning">Steg 9 — Gruppbaserad Provisioning</h2>
+<p>Grupper skapades i Entra ID och tilldelades till Enterprise Application. Efter sync:</p>
+<ul>
+<li>Users syncas automatiskt</li>
+<li>Grupper syncas automatiskt</li>
+<li>Access hanteras gruppbaserat</li>
+</ul>
+<p>Provisioning och deprovisioning fungerade sedan automatiskt via SCIM.</p>
+<h2 id="lärdomar">Lärdomar</h2>
+<ul>
+<li>SCIM förenklar lifecycle management rejält</li>
+<li>Gruppbaserad access sparar mycket manuellt arbete</li>
+<li>Redirect URI måste matcha exakt</li>
+<li>Client Secret VALUE och Secret ID är inte samma sak</li>
+<li>Det är mycket lättare att förstå auth-flöden när systemen kör live</li>
+</ul>
+
+
+      <nav class="pa-art-nav">
+        
+        <a href="/sv/writeups/ai-rbac-analyzer/">
+          <small>← Previous</small>
+          <strong>AI RBAC Analyzer</strong>
+        </a>
+        
+
+        
+        <a href="/sv/writeups/conditional-access-identity-protection/" class="pa-nav-r">
+          <small>Next →</small>
+          <strong>Conditional Access &#43; Identity Protection Lab</strong>
+        </a>
+        
+      </nav>
+    </article>
+
+    <aside class="pa-art-aside">
+      
+      <div class="pa-aside-block">
+        <h5>Tags</h5>
+        <p>Entra ID · Cloudflare · SCIM · Zero Trust · OIDC</p>
+      </div>
+      
+      <div class="pa-aside-block">
+        <h5>Citation</h5>
+        <p class="pa-citation">Krisby, A. (2026). Entra ID &#43; Cloudflare Access &#43; SCIM. https://krisby.dev/writeups/entra-cloudflare-scim/</p>
+      </div>
+      <div class="pa-aside-block">
+        <h5>Subscribe</h5>
+        <p><a href="/index.xml">RSS feed →</a></p>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+    </div>
+  </div>
+  <script src="/js/theme.js"></script>
+</body>
+</html>
