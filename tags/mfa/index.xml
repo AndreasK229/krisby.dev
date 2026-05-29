@@ -5,15 +5,15 @@
     <link>https://krisby.dev/tags/mfa/</link>
     <description>Recent content in MFA on krisby.dev</description>
     <generator>Hugo</generator>
-    <language>en</language>
+    <language>sv</language>
     <lastBuildDate>Mon, 25 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://krisby.dev/tags/mfa/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Conditional Access &#43; Identity Protection Lab</title>
+      <title>Conditional Access &amp; Identity Protection</title>
       <link>https://krisby.dev/writeups/conditional-access-identity-protection/</link>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <guid>https://krisby.dev/writeups/conditional-access-identity-protection/</guid>
-      <description>&lt;p&gt;This lab was built to understand how risk-based Conditional Access and Identity Protection work in Microsoft Entra ID.&lt;/p&gt;&#xA;&lt;p&gt;The goal was to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Create risk-based Conditional Access policies&lt;/li&gt;&#xA;&lt;li&gt;Force MFA on risky sign-ins&lt;/li&gt;&#xA;&lt;li&gt;Understand user risk and sign-in risk&lt;/li&gt;&#xA;&lt;li&gt;Test Identity Protection in practice&lt;/li&gt;&#xA;&lt;li&gt;Analyze risky users and risky sign-ins&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;User Sign-In → Identity Protection → Risk Detection → Conditional Access → MFA&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;step-1--preparation&#34;&gt;Step 1 — Preparation&lt;/h2&gt;&#xA;&lt;p&gt;Verify that the tenant has the right features enabled:&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;bakgrund&#34;&gt;Bakgrund&lt;/h2&gt;&#xA;&lt;p&gt;Jag ville förstå hur Microsoft Entra Identity Protection fungerar i praktiken och hur riskbaserad Conditional Access kan användas för att skydda användarkonton.&lt;/p&gt;&#xA;&lt;p&gt;Istället för att kräva MFA vid varje inloggning ville jag se hur Entra kan reagera när en användare eller en inloggning bedöms som riskfylld.&lt;/p&gt;&#xA;&lt;h2 id=&#34;det-jag-byggde&#34;&gt;Det jag byggde&lt;/h2&gt;&#xA;&lt;p&gt;I labbet konfigurerade jag:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Identity Protection&lt;/li&gt;&#xA;&lt;li&gt;Riskbaserad Conditional Access&lt;/li&gt;&#xA;&lt;li&gt;MFA via Microsoft Authenticator&lt;/li&gt;&#xA;&lt;li&gt;Testkonto för simulering av olika inloggningsscenarier&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;det-jag-testade&#34;&gt;Det jag testade&lt;/h2&gt;&#xA;&lt;p&gt;Jag testade bland annat:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

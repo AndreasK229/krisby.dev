@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FIDO2 on krisby.dev</title>
+    <link>https://krisby.dev/tags/fido2/</link>
+    <description>Recent content in FIDO2 on krisby.dev</description>
+    <generator>Hugo</generator>
+    <language>sv</language>
+    <lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://krisby.dev/tags/fido2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Identitetscentrerad säkerhetsdesign för vårdmiljöer</title>
+      <link>https://krisby.dev/writeups/healthcare-identity-security/</link>
+      <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/writeups/healthcare-identity-security/</guid>
+      <description>&lt;h2 id=&#34;bakgrund&#34;&gt;Bakgrund&lt;/h2&gt;&#xA;&lt;p&gt;Jag byggde det här projektet för att utforska hur identitets- och åtkomsthantering kan utformas för en mindre vårdmiljö som hanterar känslig information.&lt;/p&gt;&#xA;&lt;p&gt;Målet var att få en bättre förståelse för hur tekniker som Microsoft Entra ID, Conditional Access, FIDO2, RBAC och Managed Identities kan samverka som en del av en modern säkerhetsdesign.&lt;/p&gt;&#xA;&lt;p&gt;Istället för att fokusera främst på nätverksbaserad säkerhet ville jag undersöka vad som händer när identiteten blir den primära säkerhetsgränsen.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

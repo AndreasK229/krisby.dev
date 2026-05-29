@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JML on krisby.dev</title>
+    <link>https://krisby.dev/en/tags/jml/</link>
+    <description>Recent content in JML on krisby.dev</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 10 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://krisby.dev/en/tags/jml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JML Monitor for Microsoft Entra ID</title>
+      <link>https://krisby.dev/en/writeups/jml-monitor-labb/</link>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/en/writeups/jml-monitor-labb/</guid>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to better understand Joiner, Mover and Leaver (JML) processes in practice, how access changes over time, and how access drift can be detected within Microsoft Entra ID.&lt;/p&gt;&#xA;&lt;p&gt;At the same time, I wanted to gain hands-on experience with Microsoft Graph API and explore how identity data can be analyzed programmatically.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-built&#34;&gt;What I Built&lt;/h2&gt;&#xA;&lt;p&gt;I developed a simple monitoring solution that collects users and group memberships from Microsoft Entra ID and compares the current state against historical snapshots.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

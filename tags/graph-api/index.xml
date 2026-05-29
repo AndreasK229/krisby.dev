@@ -5,15 +5,15 @@
     <link>https://krisby.dev/tags/graph-api/</link>
     <description>Recent content in Graph API on krisby.dev</description>
     <generator>Hugo</generator>
-    <language>en</language>
+    <language>sv</language>
     <lastBuildDate>Tue, 10 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://krisby.dev/tags/graph-api/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>JML Monitor Lab</title>
+      <title>JML Monitor för Microsoft Entra ID</title>
       <link>https://krisby.dev/writeups/jml-monitor-labb/</link>
       <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
       <guid>https://krisby.dev/writeups/jml-monitor-labb/</guid>
-      <description>&lt;p&gt;Built a simple JML monitor for Microsoft Entra ID to understand Joiner/Mover/Leaver patterns, group-based RBAC, how access changes over time, and how to detect access drift. Also to understand how Graph API works in practice.&lt;/p&gt;&#xA;&lt;h2 id=&#34;step-1--create-entra-lab&#34;&gt;Step 1 – Create Entra lab&lt;/h2&gt;&#xA;&lt;p&gt;Created users in Microsoft Entra ID:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;HR users&lt;/li&gt;&#xA;&lt;li&gt;IT users&lt;/li&gt;&#xA;&lt;li&gt;Admin users&lt;/li&gt;&#xA;&lt;li&gt;Production users&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Created groups: HR, Admin, Production, Technical administrator VM, VNET TECH.&lt;/p&gt;&#xA;&lt;p&gt;Added users to different groups to simulate RBAC.&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;bakgrund&#34;&gt;Bakgrund&lt;/h2&gt;&#xA;&lt;p&gt;Jag ville förstå Joiner, Mover och Leaver-processer (JML) bättre i praktiken, hur access förändras över tid och hur access drift kan upptäckas i Microsoft Entra ID.&lt;/p&gt;&#xA;&lt;p&gt;Samtidigt ville jag få mer praktisk erfarenhet av Microsoft Graph API och undersöka hur identitetsdata kan analyseras automatiskt istället för manuellt.&lt;/p&gt;&#xA;&lt;h2 id=&#34;det-jag-byggde&#34;&gt;Det jag byggde&lt;/h2&gt;&#xA;&lt;p&gt;Jag utvecklade en enkel monitor som hämtar användare och gruppmedlemskap från Microsoft Entra ID och jämför aktuell data med tidigare snapshots.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -2,150 +2,150 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on krisby.dev</title>
-    <link>https://krisby.dev/sv/tags/</link>
+    <link>http://localhost:1313/sv/tags/</link>
     <description>Recent content in Tags on krisby.dev</description>
     <generator>Hugo</generator>
     <language>sv</language>
     <lastBuildDate>Mon, 25 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://krisby.dev/sv/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/sv/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Conditional Access</title>
-      <link>https://krisby.dev/sv/tags/conditional-access/</link>
+      <link>http://localhost:1313/sv/tags/conditional-access/</link>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/conditional-access/</guid>
+      <guid>http://localhost:1313/sv/tags/conditional-access/</guid>
       <description></description>
     </item>
     <item>
       <title>Entra ID</title>
-      <link>https://krisby.dev/sv/tags/entra-id/</link>
+      <link>http://localhost:1313/sv/tags/entra-id/</link>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/entra-id/</guid>
+      <guid>http://localhost:1313/sv/tags/entra-id/</guid>
       <description></description>
     </item>
     <item>
       <title>Identity Protection</title>
-      <link>https://krisby.dev/sv/tags/identity-protection/</link>
+      <link>http://localhost:1313/sv/tags/identity-protection/</link>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/identity-protection/</guid>
+      <guid>http://localhost:1313/sv/tags/identity-protection/</guid>
       <description></description>
     </item>
     <item>
       <title>MFA</title>
-      <link>https://krisby.dev/sv/tags/mfa/</link>
+      <link>http://localhost:1313/sv/tags/mfa/</link>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/mfa/</guid>
+      <guid>http://localhost:1313/sv/tags/mfa/</guid>
       <description></description>
     </item>
     <item>
       <title>Zero Trust</title>
-      <link>https://krisby.dev/sv/tags/zero-trust/</link>
+      <link>http://localhost:1313/sv/tags/zero-trust/</link>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/zero-trust/</guid>
+      <guid>http://localhost:1313/sv/tags/zero-trust/</guid>
       <description></description>
     </item>
     <item>
       <title>Cloudflare</title>
-      <link>https://krisby.dev/sv/tags/cloudflare/</link>
+      <link>http://localhost:1313/sv/tags/cloudflare/</link>
       <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/cloudflare/</guid>
+      <guid>http://localhost:1313/sv/tags/cloudflare/</guid>
       <description></description>
     </item>
     <item>
       <title>OIDC</title>
-      <link>https://krisby.dev/sv/tags/oidc/</link>
+      <link>http://localhost:1313/sv/tags/oidc/</link>
       <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/oidc/</guid>
+      <guid>http://localhost:1313/sv/tags/oidc/</guid>
       <description></description>
     </item>
     <item>
       <title>SCIM</title>
-      <link>https://krisby.dev/sv/tags/scim/</link>
+      <link>http://localhost:1313/sv/tags/scim/</link>
       <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/scim/</guid>
+      <guid>http://localhost:1313/sv/tags/scim/</guid>
       <description></description>
     </item>
     <item>
       <title>AI</title>
-      <link>https://krisby.dev/sv/tags/ai/</link>
+      <link>http://localhost:1313/sv/tags/ai/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/ai/</guid>
+      <guid>http://localhost:1313/sv/tags/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Azure</title>
-      <link>https://krisby.dev/sv/tags/azure/</link>
+      <link>http://localhost:1313/sv/tags/azure/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/azure/</guid>
+      <guid>http://localhost:1313/sv/tags/azure/</guid>
       <description></description>
     </item>
     <item>
       <title>Ollama</title>
-      <link>https://krisby.dev/sv/tags/ollama/</link>
+      <link>http://localhost:1313/sv/tags/ollama/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/ollama/</guid>
+      <guid>http://localhost:1313/sv/tags/ollama/</guid>
       <description></description>
     </item>
     <item>
       <title>PowerShell</title>
-      <link>https://krisby.dev/sv/tags/powershell/</link>
+      <link>http://localhost:1313/sv/tags/powershell/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/powershell/</guid>
+      <guid>http://localhost:1313/sv/tags/powershell/</guid>
       <description></description>
     </item>
     <item>
       <title>RBAC</title>
-      <link>https://krisby.dev/sv/tags/rbac/</link>
+      <link>http://localhost:1313/sv/tags/rbac/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/rbac/</guid>
+      <guid>http://localhost:1313/sv/tags/rbac/</guid>
       <description></description>
     </item>
     <item>
       <title>Graph API</title>
-      <link>https://krisby.dev/sv/tags/graph-api/</link>
+      <link>http://localhost:1313/sv/tags/graph-api/</link>
       <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/graph-api/</guid>
+      <guid>http://localhost:1313/sv/tags/graph-api/</guid>
       <description></description>
     </item>
     <item>
       <title>Identity Governance</title>
-      <link>https://krisby.dev/sv/tags/identity-governance/</link>
+      <link>http://localhost:1313/sv/tags/identity-governance/</link>
       <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/identity-governance/</guid>
+      <guid>http://localhost:1313/sv/tags/identity-governance/</guid>
       <description></description>
     </item>
     <item>
       <title>JML</title>
-      <link>https://krisby.dev/sv/tags/jml/</link>
+      <link>http://localhost:1313/sv/tags/jml/</link>
       <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/jml/</guid>
+      <guid>http://localhost:1313/sv/tags/jml/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>https://krisby.dev/sv/tags/python/</link>
+      <link>http://localhost:1313/sv/tags/python/</link>
       <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/python/</guid>
+      <guid>http://localhost:1313/sv/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Active Directory</title>
-      <link>https://krisby.dev/sv/tags/active-directory/</link>
+      <link>http://localhost:1313/sv/tags/active-directory/</link>
       <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/active-directory/</guid>
+      <guid>http://localhost:1313/sv/tags/active-directory/</guid>
       <description></description>
     </item>
     <item>
       <title>Entra Connect</title>
-      <link>https://krisby.dev/sv/tags/entra-connect/</link>
+      <link>http://localhost:1313/sv/tags/entra-connect/</link>
       <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/entra-connect/</guid>
+      <guid>http://localhost:1313/sv/tags/entra-connect/</guid>
       <description></description>
     </item>
     <item>
       <title>Hybrid Identity</title>
-      <link>https://krisby.dev/sv/tags/hybrid-identity/</link>
+      <link>http://localhost:1313/sv/tags/hybrid-identity/</link>
       <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/sv/tags/hybrid-identity/</guid>
+      <guid>http://localhost:1313/sv/tags/hybrid-identity/</guid>
       <description></description>
     </item>
   </channel>

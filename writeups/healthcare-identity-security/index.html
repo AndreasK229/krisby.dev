@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Identitetscentrerad säkerhetsdesign för vårdmiljöer · krisby.dev</title>
+<meta name="description" content="Utformning av identitets- och åtkomsthantering för en mindre vårdmiljö — byggd kring Microsoft Entra ID som central identitetsplattform.">
+<meta name="author" content="Andreas Krisby">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Inter:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/theme.css">
+
+
+
+<meta name="generator" content="Hugo 0.161.1">
+
+</head>
+<body>
+  <div class="pa-root">
+    <nav class="pa-nav">
+  <a href="/" class="pa-brand">
+    <span class="pa-brand-mark">k</span>
+    <div>
+      <div class="pa-brand-name">krisby.dev</div>
+      <div class="pa-brand-sub">Notebook · Identity &amp; Cloud</div>
+    </div>
+  </a>
+
+  <ul class="pa-navlinks">
+    <li><a href="/" class="pa-navlink">Hem</a></li>
+    <li><a href="/sv/writeups/" class="pa-navlink is-active">Artiklar</a></li>
+    <li><a href="/sv/about/" class="pa-navlink">Om</a></li>
+  </ul>
+
+  <div class="pa-lang-switch">
+    <span class="pa-lang-current">Svenska</span>
+    
+      <span class="pa-lang-sep">·</span>
+      <a href="/en/writeups/healthcare-identity-security/" class="pa-lang-link">English</a>
+    
+  </div>
+
+  <div class="pa-navside">
+    
+    <a href="https://github.com/AndreasK229" target="_blank" rel="noopener noreferrer">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      GitHub
+    </a>
+    
+    
+    <a href="https://linkedin.com/in/andreas-krisby-703978268" target="_blank" rel="noopener noreferrer">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+      LinkedIn
+    </a>
+    
+  </div>
+</nav>
+
+    <div class="pa-shell">
+      
+<div class="pa-art-wrap">
+  <div class="pa-art">
+
+    <aside class="pa-art-toc">
+      
+      <h4>Contents</h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#bakgrund">Bakgrund</a></li>
+    <li><a href="#utmaningen">Utmaningen</a></li>
+    <li><a href="#det-jag-byggde">Det jag byggde</a></li>
+    <li><a href="#identitets--och-åtkomstmodell">Identitets- och åtkomstmodell</a></li>
+    <li><a href="#säkerhetskontroller">Säkerhetskontroller</a></li>
+    <li><a href="#vad-jag-lärde-mig">Vad jag lärde mig</a></li>
+    <li><a href="#reflektion">Reflektion</a></li>
+  </ul>
+</nav>
+      
+    </aside>
+
+    <article class="pa-art-body">
+      <div class="pa-art-eyebrow">Projekt · Entra ID</div>
+      <h1>Identitetscentrerad säkerhetsdesign för vårdmiljöer</h1>
+      <div class="pa-art-meta">
+        <span>By <b>Andreas Krisby</b></span>
+        <span>2026-05-29</span>
+        <span><b>2</b> min read</span>
+      </div>
+
+      <h2 id="bakgrund">Bakgrund</h2>
+<p>Jag byggde det här projektet för att utforska hur identitets- och åtkomsthantering kan utformas för en mindre vårdmiljö som hanterar känslig information.</p>
+<p>Målet var att få en bättre förståelse för hur tekniker som Microsoft Entra ID, Conditional Access, FIDO2, RBAC och Managed Identities kan samverka som en del av en modern säkerhetsdesign.</p>
+<p>Istället för att fokusera främst på nätverksbaserad säkerhet ville jag undersöka vad som händer när identiteten blir den primära säkerhetsgränsen.</p>
+<h2 id="utmaningen">Utmaningen</h2>
+<p>Vårdmiljöer innehåller ofta många olika användartyper med olika behov av åtkomst.</p>
+<p>I projektet ville jag utforska frågor som:</p>
+<ul>
+<li>Hur ska åtkomst hanteras för olika roller?</li>
+<li>Hur kan externa konsulter få säker åtkomst?</li>
+<li>Hur kan åtkomst tas bort när den inte längre behövs?</li>
+<li>Hur kan säkerheten förbättras utan att skapa onödig komplexitet?</li>
+</ul>
+<h2 id="det-jag-byggde">Det jag byggde</h2>
+<p>Jag skapade en mindre Azure-baserad miljö med Microsoft Entra ID som central identitetsplattform.</p>
+<p>Miljön bestod av:</p>
+<ul>
+<li>Microsoft Entra ID</li>
+<li>Azure Web App</li>
+<li>Azure Blob Storage</li>
+<li>FIDO2-lösenordsfri autentisering</li>
+<li>Conditional Access</li>
+<li>Säkerhetsgrupper</li>
+<li>Rollbaserad åtkomstkontroll (RBAC)</li>
+<li>Managed Identities</li>
+</ul>
+<p>Projektet inspirerades av vanliga utmaningar inom vården där flera användartyper behöver olika nivåer av åtkomst till känslig information.</p>
+<h2 id="identitets--och-åtkomstmodell">Identitets- och åtkomstmodell</h2>
+<p>Åtkomst hanterades genom grupper och roller istället för att tilldelas direkt till enskilda användare.</p>
+<p>Flera olika användartyper simulerades, bland annat:</p>
+<ul>
+<li>Undersköterskor</li>
+<li>Sjuksköterskor</li>
+<li>Läkare</li>
+<li>Biomedicinska analytiker</li>
+<li>Externa konsulter</li>
+</ul>
+<p>Målet var att undersöka hur rollbaserad åtkomstkontroll kan förenkla administrationen samtidigt som onödiga behörigheter minimeras.</p>
+<h2 id="säkerhetskontroller">Säkerhetskontroller</h2>
+<p>För att stärka säkerheten implementerade jag bland annat:</p>
+<ul>
+<li>FIDO2-autentisering</li>
+<li>Conditional Access-policys</li>
+<li>Multifaktorautentisering (MFA)</li>
+<li>Gruppbaserad RBAC</li>
+<li>Managed Identities</li>
+<li>Loggning och granskning</li>
+</ul>
+<p>Fokus låg på att tillämpa etablerade säkerhetsprinciper på ett praktiskt sätt snarare än att bygga en onödigt komplex miljö.</p>
+<h2 id="vad-jag-lärde-mig">Vad jag lärde mig</h2>
+<p>Projektet hjälpte mig att bättre förstå hur olika identitets- och säkerhetstekniker hänger ihop.</p>
+<p>Några av de områden jag utforskade var:</p>
+<ul>
+<li>Identitetslivscykelhantering</li>
+<li>Access governance</li>
+<li>Rollbaserad åtkomstkontroll</li>
+<li>Hantering av externa användare</li>
+<li>Conditional Access</li>
+<li>Managed Identities</li>
+<li>Identitetsbaserad säkerhetsdesign</li>
+</ul>
+<p>Projektet förstärkte också min förståelse för hur central identiteten har blivit i moderna säkerhetsarkitekturer.</p>
+<h2 id="reflektion">Reflektion</h2>
+<p>Det mest värdefulla med projektet var att gå bortom enskilda tekniker och istället tänka på helheten.</p>
+<p>Istället för att fokusera på en specifik produkt eller funktion behövde jag fundera över hur identiteter, åtkomst, governance och säkerhetskontroller samverkar som ett sammanhängande system.</p>
+<p>Projektet gav mig också en bättre förståelse för avvägningarna mellan användbarhet, administration och säkerhet, särskilt i miljöer som hanterar känslig information.</p>
+
+
+      <nav class="pa-art-nav">
+        
+        <a href="/writeups/conditional-access-identity-protection/">
+          <small>← Previous</small>
+          <strong>Conditional Access &amp; Identity Protection</strong>
+        </a>
+        
+
+        
+        <a class="pa-nav-r is-disabled">
+          <small>Next →</small>
+          <strong>End of archive</strong>
+        </a>
+        
+      </nav>
+    </article>
+
+    <aside class="pa-art-aside">
+      
+      <div class="pa-aside-block">
+        <h5>Tags</h5>
+        <p>Entra ID · Azure · RBAC · Conditional Access · FIDO2 · Healthcare · projekt</p>
+      </div>
+      
+      <div class="pa-aside-block">
+        <h5>Citation</h5>
+        <p class="pa-citation">Krisby, A. (2026). Identitetscentrerad säkerhetsdesign för vårdmiljöer. https://krisby.dev/writeups/healthcare-identity-security/</p>
+      </div>
+      <div class="pa-aside-block">
+        <h5>Subscribe</h5>
+        <p><a href="/index.xml">RSS feed →</a></p>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+    </div>
+  </div>
+  <script src="/js/theme.js"></script>
+</body>
+</html>

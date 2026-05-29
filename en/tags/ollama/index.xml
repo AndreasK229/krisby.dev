@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ollama on krisby.dev</title>
+    <link>https://krisby.dev/en/tags/ollama/</link>
+    <description>Recent content in Ollama on krisby.dev</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 13 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://krisby.dev/en/tags/ollama/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI-Assisted Azure RBAC Analysis</title>
+      <link>https://krisby.dev/en/writeups/ai-rbac-analyzer/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/en/writeups/ai-rbac-analyzer/</guid>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to gain a better understanding of Azure RBAC in practice while also exploring whether AI could be used to help identify excessive permissions and access-related risks.&lt;/p&gt;&#xA;&lt;p&gt;The goal was not to build a production-ready security tool, but to combine hands-on RBAC testing with AI-assisted analysis and see what insights could be generated.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-built&#34;&gt;What I Built&lt;/h2&gt;&#xA;&lt;p&gt;I created a small Azure lab environment consisting of:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Resource Groups&lt;/li&gt;&#xA;&lt;li&gt;Virtual Machines&lt;/li&gt;&#xA;&lt;li&gt;Network resources&lt;/li&gt;&#xA;&lt;li&gt;Users and groups&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I then assigned different RBAC roles to simulate a realistic access model.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

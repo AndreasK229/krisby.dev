@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Entra Connect on krisby.dev</title>
+    <link>https://krisby.dev/en/tags/entra-connect/</link>
+    <description>Recent content in Entra Connect on krisby.dev</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 20 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://krisby.dev/en/tags/entra-connect/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hybrid Identity with Active Directory and Microsoft Entra ID</title>
+      <link>https://krisby.dev/en/writeups/hybrid-identity-labb/</link>
+      <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/en/writeups/hybrid-identity-labb/</guid>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to better understand how identities are managed in a hybrid environment where Active Directory is used on-premises while users and groups are synchronized to Microsoft Entra ID.&lt;/p&gt;&#xA;&lt;p&gt;The goal was to gain hands-on experience with identity synchronization, user lifecycle management, and group-based access control across both environments.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-built&#34;&gt;What I Built&lt;/h2&gt;&#xA;&lt;p&gt;I created a small hybrid identity lab using:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Windows Server 2022&lt;/li&gt;&#xA;&lt;li&gt;Active Directory Domain Services&lt;/li&gt;&#xA;&lt;li&gt;Microsoft Entra ID&lt;/li&gt;&#xA;&lt;li&gt;Microsoft Entra Connect&lt;/li&gt;&#xA;&lt;li&gt;Oracle VirtualBox&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The environment included users, groups, and organizational units (OUs) to simulate a basic organizational structure.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

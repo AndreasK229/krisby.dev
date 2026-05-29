@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Project on krisby.dev</title>
+    <link>https://krisby.dev/en/tags/project/</link>
+    <description>Recent content in Project on krisby.dev</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://krisby.dev/en/tags/project/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Identity-Centric Security Design for Healthcare</title>
+      <link>https://krisby.dev/en/writeups/healthcare-identity-security/</link>
+      <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/en/writeups/healthcare-identity-security/</guid>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I built this project to explore how identity and access management could be designed for a small healthcare environment handling sensitive information.&lt;/p&gt;&#xA;&lt;p&gt;The goal was to better understand how technologies such as Microsoft Entra ID, Conditional Access, FIDO2, RBAC and Managed Identities can work together as part of a modern security design.&lt;/p&gt;&#xA;&lt;p&gt;Rather than focusing primarily on network-based security, I wanted to explore what happens when identity becomes the primary security boundary.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cloudflare Access Federation with Entra ID</title>
+      <link>https://krisby.dev/en/writeups/entra-cloudflare-scim/</link>
+      <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/en/writeups/entra-cloudflare-scim/</guid>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to better understand how federation, provisioning and Zero Trust access work in practice between Microsoft Entra ID and Cloudflare Access.&lt;/p&gt;&#xA;&lt;p&gt;The goal was to explore how identity can be used as the primary security boundary and how access can be managed through groups rather than individual users.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-built&#34;&gt;What I Built&lt;/h2&gt;&#xA;&lt;p&gt;In this lab I integrated Microsoft Entra ID with Cloudflare Access using:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;OpenID Connect (OIDC)&lt;/li&gt;&#xA;&lt;li&gt;SCIM provisioning&lt;/li&gt;&#xA;&lt;li&gt;Group-based access control&lt;/li&gt;&#xA;&lt;li&gt;Automated user and group synchronization&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Architecture:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI-Assisted Azure RBAC Analysis</title>
+      <link>https://krisby.dev/en/writeups/ai-rbac-analyzer/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/en/writeups/ai-rbac-analyzer/</guid>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to gain a better understanding of Azure RBAC in practice while also exploring whether AI could be used to help identify excessive permissions and access-related risks.&lt;/p&gt;&#xA;&lt;p&gt;The goal was not to build a production-ready security tool, but to combine hands-on RBAC testing with AI-assisted analysis and see what insights could be generated.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-built&#34;&gt;What I Built&lt;/h2&gt;&#xA;&lt;p&gt;I created a small Azure lab environment consisting of:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Resource Groups&lt;/li&gt;&#xA;&lt;li&gt;Virtual Machines&lt;/li&gt;&#xA;&lt;li&gt;Network resources&lt;/li&gt;&#xA;&lt;li&gt;Users and groups&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I then assigned different RBAC roles to simulate a realistic access model.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>JML Monitor for Microsoft Entra ID</title>
+      <link>https://krisby.dev/en/writeups/jml-monitor-labb/</link>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/en/writeups/jml-monitor-labb/</guid>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to better understand Joiner, Mover and Leaver (JML) processes in practice, how access changes over time, and how access drift can be detected within Microsoft Entra ID.&lt;/p&gt;&#xA;&lt;p&gt;At the same time, I wanted to gain hands-on experience with Microsoft Graph API and explore how identity data can be analyzed programmatically.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-built&#34;&gt;What I Built&lt;/h2&gt;&#xA;&lt;p&gt;I developed a simple monitoring solution that collects users and group memberships from Microsoft Entra ID and compares the current state against historical snapshots.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

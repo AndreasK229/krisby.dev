@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JML Monitor Lab · krisby.dev</title>
-<meta name="description" content="Built a JML monitor (Joiner-Mover-Leaver) for Microsoft Entra ID with Python and Graph API — to track group changes and detect access drift.">
+<title>JML Monitor för Microsoft Entra ID · krisby.dev</title>
+<meta name="description" content="Byggde en JML-monitor (Joiner-Mover-Leaver) mot Microsoft Entra ID med Python och Graph API — för att övervaka gruppförändringar och upptäcka access drift.">
 <meta name="author" content="Andreas Krisby">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,33 +30,20 @@
   </a>
 
   <ul class="pa-navlinks">
-    <li><a href="/" class="pa-navlink">Home</a></li>
-    <li><a href="/writeups/" class="pa-navlink is-active">Articles</a></li>
-    <li><a href="/about/" class="pa-navlink">About</a></li>
+    <li><a href="/" class="pa-navlink">Hem</a></li>
+    <li><a href="/sv/writeups/" class="pa-navlink is-active">Artiklar</a></li>
+    <li><a href="/sv/about/" class="pa-navlink">Om</a></li>
   </ul>
 
-  <div class="pa-navside">
-    <div class="pa-lang-switch">
-      
-      
-      
-        
-          <span class="pa-lang-current">English</span>
-        
-        <span class="pa-lang-sep">·</span>
-      
-        
-          
-            
-              
-              <a href="/sv/writeups/jml-monitor-labb/" class="pa-lang-link">Svenska</a>
-            
-          
-        
-        
-      
-    </div>
+  <div class="pa-lang-switch">
+    <span class="pa-lang-current">Svenska</span>
+    
+      <span class="pa-lang-sep">·</span>
+      <a href="/en/writeups/jml-monitor-labb/" class="pa-lang-link">English</a>
+    
+  </div>
 
+  <div class="pa-navside">
     
     <a href="https://github.com/AndreasK229" target="_blank" rel="noopener noreferrer">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -64,7 +51,7 @@
     </a>
     
     
-    <a href="https://linkedin.com/in/krisby" target="_blank" rel="noopener noreferrer">
+    <a href="https://linkedin.com/in/andreas-krisby-703978268" target="_blank" rel="noopener noreferrer">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
       LinkedIn
     </a>
@@ -82,186 +69,91 @@
       <h4>Contents</h4>
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#step-1--create-entra-lab">Step 1 – Create Entra lab</a></li>
-    <li><a href="#step-2--register-app-in-entra">Step 2 – Register app in Entra</a></li>
-    <li><a href="#step-3--create-client-secret">Step 3 – Create client secret</a></li>
-    <li><a href="#step-4--api-permissions">Step 4 – API Permissions</a></li>
-    <li><a href="#step-5--install-python">Step 5 – Install Python</a></li>
-    <li><a href="#step-6--create-python-script">Step 6 – Create Python script</a></li>
-    <li><a href="#step-7--auth-to-entra">Step 7 – Auth to Entra</a></li>
-    <li><a href="#step-8--fetch-users">Step 8 – Fetch users</a></li>
-    <li><a href="#step-9--loop-users">Step 9 – Loop users</a></li>
-    <li><a href="#step-10--fetch-groups-per-user">Step 10 – Fetch groups per user</a></li>
-    <li><a href="#step-11--loop-groups">Step 11 – Loop groups</a></li>
-    <li><a href="#step-12--create-detection-logic">Step 12 – Create detection logic</a></li>
-    <li><a href="#step-13--create-snapshot">Step 13 – Create snapshot</a></li>
-    <li><a href="#step-14--compare-state">Step 14 – Compare state</a></li>
-    <li><a href="#step-15--detection-example">Step 15 – Detection example</a></li>
-    <li><a href="#step-16--secure-secret">Step 16 – Secure secret</a></li>
-    <li><a href="#step-17--results">Step 17 – Results</a></li>
-    <li><a href="#lessons">Lessons</a></li>
-    <li><a href="#future-improvements">Future improvements</a></li>
+    <li><a href="#bakgrund">Bakgrund</a></li>
+    <li><a href="#det-jag-byggde">Det jag byggde</a></li>
+    <li><a href="#det-jag-testade">Det jag testade</a></li>
+    <li><a href="#resultat">Resultat</a></li>
+    <li><a href="#utmaningar">Utmaningar</a></li>
+    <li><a href="#reflektion">Reflektion</a></li>
+    <li><a href="#teknisk-notering">Teknisk notering</a></li>
   </ul>
 </nav>
       
     </aside>
 
     <article class="pa-art-body">
-      <div class="pa-art-eyebrow">Lab · Entra ID</div>
-      <h1>JML Monitor Lab</h1>
+      <div class="pa-art-eyebrow">Projekt · Entra ID</div>
+      <h1>JML Monitor för Microsoft Entra ID</h1>
       <div class="pa-art-meta">
         <span>By <b>Andreas Krisby</b></span>
         <span>2026-02-10</span>
-        <span><b>3</b> min read</span>
+        <span><b>2</b> min read</span>
       </div>
 
-      <p>Built a simple JML monitor for Microsoft Entra ID to understand Joiner/Mover/Leaver patterns, group-based RBAC, how access changes over time, and how to detect access drift. Also to understand how Graph API works in practice.</p>
-<h2 id="step-1--create-entra-lab">Step 1 – Create Entra lab</h2>
-<p>Created users in Microsoft Entra ID:</p>
+      <h2 id="bakgrund">Bakgrund</h2>
+<p>Jag ville förstå Joiner, Mover och Leaver-processer (JML) bättre i praktiken, hur access förändras över tid och hur access drift kan upptäckas i Microsoft Entra ID.</p>
+<p>Samtidigt ville jag få mer praktisk erfarenhet av Microsoft Graph API och undersöka hur identitetsdata kan analyseras automatiskt istället för manuellt.</p>
+<h2 id="det-jag-byggde">Det jag byggde</h2>
+<p>Jag utvecklade en enkel monitor som hämtar användare och gruppmedlemskap från Microsoft Entra ID och jämför aktuell data med tidigare snapshots.</p>
+<p>Målet var att kunna upptäcka förändringar i access som annars lätt kan passera obemärkt.</p>
+<p>Lösningen byggdes med:</p>
 <ul>
-<li>HR users</li>
-<li>IT users</li>
-<li>Admin users</li>
-<li>Production users</li>
+<li>Microsoft Entra ID</li>
+<li>Microsoft Graph API</li>
+<li>Python</li>
+<li>JSON-baserad historiklagring</li>
 </ul>
-<p>Created groups: HR, Admin, Production, Technical administrator VM, VNET TECH.</p>
-<p>Added users to different groups to simulate RBAC.</p>
-<h2 id="step-2--register-app-in-entra">Step 2 – Register app in Entra</h2>
-<ol>
-<li>Entra ID → App registrations → New registration</li>
-<li>Give the app a name, e.g. <code>JML-Monitor</code></li>
-<li>Save the Tenant ID and Client ID after creation</li>
-</ol>
-<h2 id="step-3--create-client-secret">Step 3 – Create client secret</h2>
-<ol>
-<li>Certificates &amp; secrets → New client secret</li>
-<li>Save the secret value immediately (only shown once)</li>
-</ol>
-<h2 id="step-4--api-permissions">Step 4 – API Permissions</h2>
-<p>Add Microsoft Graph permissions:</p>
+<h2 id="det-jag-testade">Det jag testade</h2>
+<p>Monitorn byggdes för att upptäcka scenarier som:</p>
 <ul>
-<li><code>User.Read.All</code></li>
-<li><code>Group.Read.All</code></li>
-<li><code>Directory.Read.All</code></li>
-<li><code>AuditLog.Read.All</code></li>
+<li>Ny access</li>
+<li>Borttagen access</li>
+<li>Administrativa behörigheter</li>
+<li>SoD-konflikter (Segregation of Duties)</li>
+<li>Inaktiva konton med kvarvarande access</li>
+<li>Access som blivit kvar efter rollbyte eller offboarding</li>
 </ul>
-<p>Grant admin consent.</p>
-<h2 id="step-5--install-python">Step 5 – Install Python</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install requests
-</span></span></code></pre></div><h2 id="step-6--create-python-script">Step 6 – Create Python script</h2>
-<p>Create a file <code>get_token.py</code> that handles authentication and API calls.</p>
-<p><strong>Note:</strong> The Python script skeleton was written with AI assistance (Claude). The logic and architecture — how Graph API integrates, which permissions are required, how to detect access drift — are based on my understanding of identity systems and Entra ID. AI assistance was a tool to convert the logic into working code.</p>
-<h2 id="step-7--auth-to-entra">Step 7 – Auth to Entra</h2>
-<p>Authentication to Microsoft Identity Platform with client credentials:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>url <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;https://login.microsoftonline.com/</span><span style="color:#f1fa8c">{</span>tenant_id<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">/oauth2/v2.0/token&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>data <span style="color:#ff79c6">=</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;grant_type&#34;</span>: <span style="color:#f1fa8c">&#34;client_credentials&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;client_id&#34;</span>: client_id,
-</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;client_secret&#34;</span>: client_secret,
-</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;scope&#34;</span>: <span style="color:#f1fa8c">&#34;https://graph.microsoft.com/.default&#34;</span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>response <span style="color:#ff79c6">=</span> requests<span style="color:#ff79c6">.</span>post(url, data<span style="color:#ff79c6">=</span>data)
-</span></span><span style="display:flex;"><span>token <span style="color:#ff79c6">=</span> response<span style="color:#ff79c6">.</span>json()[<span style="color:#f1fa8c">&#34;access_token&#34;</span>]
-</span></span></code></pre></div><h2 id="step-8--fetch-users">Step 8 – Fetch users</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>response <span style="color:#ff79c6">=</span> requests<span style="color:#ff79c6">.</span>get(
-</span></span><span style="display:flex;"><span>    <span style="color:#f1fa8c">&#34;https://graph.microsoft.com/v1.0/users&#34;</span>,
-</span></span><span style="display:flex;"><span>    headers<span style="color:#ff79c6">=</span>{<span style="color:#f1fa8c">&#34;Authorization&#34;</span>: <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;Bearer </span><span style="color:#f1fa8c">{</span>token<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span>}
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>users <span style="color:#ff79c6">=</span> response<span style="color:#ff79c6">.</span>json()
-</span></span></code></pre></div><p>Returns: userPrincipalName, id, displayName.</p>
-<h2 id="step-9--loop-users">Step 9 – Loop users</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff79c6">for</span> user <span style="color:#ff79c6">in</span> users[<span style="color:#f1fa8c">&#34;value&#34;</span>]:
-</span></span><span style="display:flex;"><span>    name <span style="color:#ff79c6">=</span> user[<span style="color:#f1fa8c">&#34;displayName&#34;</span>]
-</span></span><span style="display:flex;"><span>    upn  <span style="color:#ff79c6">=</span> user[<span style="color:#f1fa8c">&#34;userPrincipalName&#34;</span>]
-</span></span><span style="display:flex;"><span>    uid  <span style="color:#ff79c6">=</span> user[<span style="color:#f1fa8c">&#34;id&#34;</span>]
-</span></span></code></pre></div><h2 id="step-10--fetch-groups-per-user">Step 10 – Fetch groups per user</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>url <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">f</span><span style="color:#f1fa8c">&#34;https://graph.microsoft.com/v1.0/users/</span><span style="color:#f1fa8c">{</span>user_id<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">/memberOf&#34;</span>
-</span></span><span style="display:flex;"><span>groups <span style="color:#ff79c6">=</span> requests<span style="color:#ff79c6">.</span>get(url, headers<span style="color:#ff79c6">=</span>headers)<span style="color:#ff79c6">.</span>json()
-</span></span></code></pre></div><h2 id="step-11--loop-groups">Step 11 – Loop groups</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>user_groups <span style="color:#ff79c6">=</span> []
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">for</span> g <span style="color:#ff79c6">in</span> groups<span style="color:#ff79c6">.</span>get(<span style="color:#f1fa8c">&#34;value&#34;</span>, []):
-</span></span><span style="display:flex;"><span>    user_groups<span style="color:#ff79c6">.</span>append(g[<span style="color:#f1fa8c">&#34;displayName&#34;</span>])
-</span></span></code></pre></div><h2 id="step-12--create-detection-logic">Step 12 – Create detection logic</h2>
-<p>If-logic to flag risks:</p>
+<p>För att simulera en verklig miljö skapade jag användare, grupper och rolltilldelningar för olika funktioner och ansvarsområden.</p>
+<h2 id="resultat">Resultat</h2>
+<p>Monitorn kunde:</p>
 <ul>
-<li>Admin access</li>
-<li>HR + Admin (SoD conflict)</li>
-<li>Disabled account with active access</li>
-<li>New groups since last scan</li>
-<li>Removed access</li>
-<li>Access remaining after offboarding</li>
+<li>Övervaka förändringar i gruppmedlemskap över tid</li>
+<li>Upptäcka access drift</li>
+<li>Identifiera potentiella governance-problem</li>
+<li>Visa Joiner-, Mover- och Leaver-scenarier</li>
+<li>Ge historisk insyn i hur access förändrats</li>
 </ul>
-<h2 id="step-13--create-snapshot">Step 13 – Create snapshot</h2>
-<p>Save current state to <code>state.json</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">&#34;user-id-123&#34;</span>: {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;name&#34;</span>: <span style="color:#f1fa8c">&#34;Anna HR&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">&#34;groups&#34;</span>: [<span style="color:#f1fa8c">&#34;HR&#34;</span>, <span style="color:#f1fa8c">&#34;GG_HR_Read&#34;</span>]
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="step-14--compare-state">Step 14 – Compare state</h2>
-<p>On next run:</p>
-<ol>
-<li>Read old <code>state.json</code></li>
-<li>Fetch new data from Graph</li>
-<li>Compare: new groups, removed groups, changes</li>
-</ol>
-<h2 id="step-15--detection-example">Step 15 – Detection example</h2>
-<p>The script could show:</p>
-<pre tabindex="0"><code>⚠️  NEW ACCESS       Anna HR      → Admin
-🚨  REMOVED ACCESS   Johan IT     ← Production
-🚨  RISK: Admin access           Sara IT
-🚨  RISK: SoD conflict           Erik HR (HR + Admin)
-</code></pre><h2 id="step-16--secure-secret">Step 16 – Secure secret</h2>
-<p>Realized the secret had been exposed. Actions:</p>
+<p>Projektet visade också hur Microsoft Graph API kan användas för att automatisera delar av identitetsövervakning och accessgranskning.</p>
+<h2 id="utmaningar">Utmaningar</h2>
+<p>Under projektet behövde jag bland annat hantera:</p>
 <ul>
-<li>Created new secret</li>
-<li>Moved secret to <code>.env</code></li>
-<li>Added <code>.env</code> to <code>.gitignore</code></li>
+<li>API-autentisering via Microsoft Graph</li>
+<li>Hantering av klienthemligheter på ett säkert sätt</li>
+<li>Historiklagring och jämförelse mellan olika körningar</li>
+<li>Logik för att identifiera riskfyllda accessförändringar</li>
 </ul>
-<h2 id="step-17--results">Step 17 – Results</h2>
-<p>The monitor could now:</p>
-<ul>
-<li>Track group changes</li>
-<li>Detect access drift</li>
-<li>Show Mover/Leaver scenarios</li>
-<li>Analyze RBAC via groups</li>
-<li>Compare history over time</li>
-</ul>
-<h2 id="lessons">Lessons</h2>
-<ul>
-<li>RBAC becomes clearer via groups</li>
-<li>History is needed to detect changes</li>
-<li>Access drift is only visible when comparing</li>
-<li>JML becomes clear in practice</li>
-<li>Graph API provides valuable data</li>
-<li>Security is much about logic and structure</li>
-</ul>
-<h2 id="future-improvements">Future improvements</h2>
-<ul>
-<li>Teams alerts</li>
-<li>Audit log monitoring</li>
-<li>Sign-in detection</li>
-<li>Risk scoring</li>
-<li>Identity monitoring agent</li>
-<li>Conditional Access integration</li>
-</ul>
+<p>Jag upptäckte också att ett exponerat client secret snabbt kan bli en säkerhetsrisk, vilket ledde till att jag flyttade hemligheter till miljövariabler och separerade dem från källkoden.</p>
+<h2 id="reflektion">Reflektion</h2>
+<p>Det mest intressanta med projektet var insikten att access drift ofta är svårt att upptäcka utan historik.</p>
+<p>Om man bara tittar på dagens behörigheter är det svårt att veta om access nyligen lagts till, tagits bort eller blivit kvar efter att den egentligen borde ha försvunnit.</p>
+<p>Projektet gav mig en bättre förståelse för governance, lifecycle management och varför kontinuerlig övervakning är viktig inom IAM.</p>
+<p>Det gav mig också praktisk erfarenhet av Microsoft Graph API, gruppbaserad RBAC och identitetsrelaterad säkerhetslogik.</p>
+<h2 id="teknisk-notering">Teknisk notering</h2>
+<p>Jag använde AI som stöd för att skriva delar av Python-koden. Projektets fokus låg på IAM-logiken bakom lösningen – hur access drift kan upptäckas, hur gruppbaserad RBAC fungerar och hur Microsoft Graph API kan användas för att analysera identitetsdata över tid.</p>
 
 
       <nav class="pa-art-nav">
         
         <a href="/writeups/hybrid-identity-labb/">
           <small>← Previous</small>
-          <strong>Hybrid identity Lab</strong>
+          <strong>Hybrid Identity med Active Directory och Microsoft Entra ID</strong>
         </a>
         
 
         
         <a href="/writeups/ai-rbac-analyzer/" class="pa-nav-r">
           <small>Next →</small>
-          <strong>AI RBAC Analyzer</strong>
+          <strong>AI-stödd analys av Azure RBAC</strong>
         </a>
         
       </nav>
@@ -271,12 +163,12 @@
       
       <div class="pa-aside-block">
         <h5>Tags</h5>
-        <p>Entra ID · Graph API · Python · JML · Identity Governance</p>
+        <p>Entra ID · Graph API · Python · JML · Identity Governance · projekt</p>
       </div>
       
       <div class="pa-aside-block">
         <h5>Citation</h5>
-        <p class="pa-citation">Krisby, A. (2026). JML Monitor Lab. https://krisby.dev/writeups/jml-monitor-labb/</p>
+        <p class="pa-citation">Krisby, A. (2026). JML Monitor för Microsoft Entra ID. https://krisby.dev/writeups/jml-monitor-labb/</p>
       </div>
       <div class="pa-aside-block">
         <h5>Subscribe</h5>

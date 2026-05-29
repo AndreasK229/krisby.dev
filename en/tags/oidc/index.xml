@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OIDC on krisby.dev</title>
+    <link>https://krisby.dev/en/tags/oidc/</link>
+    <description>Recent content in OIDC on krisby.dev</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 23 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://krisby.dev/en/tags/oidc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cloudflare Access Federation with Entra ID</title>
+      <link>https://krisby.dev/en/writeups/entra-cloudflare-scim/</link>
+      <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/en/writeups/entra-cloudflare-scim/</guid>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to better understand how federation, provisioning and Zero Trust access work in practice between Microsoft Entra ID and Cloudflare Access.&lt;/p&gt;&#xA;&lt;p&gt;The goal was to explore how identity can be used as the primary security boundary and how access can be managed through groups rather than individual users.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-built&#34;&gt;What I Built&lt;/h2&gt;&#xA;&lt;p&gt;In this lab I integrated Microsoft Entra ID with Cloudflare Access using:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;OpenID Connect (OIDC)&lt;/li&gt;&#xA;&lt;li&gt;SCIM provisioning&lt;/li&gt;&#xA;&lt;li&gt;Group-based access control&lt;/li&gt;&#xA;&lt;li&gt;Automated user and group synchronization&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Architecture:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
