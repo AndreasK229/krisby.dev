@@ -854,6 +854,15 @@ html { scroll-behavior: smooth; }
   margin: 0;
 }
 
+/* Images */
+.pa-art-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  margin: 28px 0;
+}
+
 /* Tables */
 .pa-art-body table {
   width: 100%;
