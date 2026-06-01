@@ -6,8 +6,15 @@
     <description>Recent content in Labs on krisby.dev</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 29 May 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://krisby.dev/en/writeups/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenID Connect Authentication with Microsoft Entra ID</title>
+      <link>https://krisby.dev/en/writeups/oidc-entra-id/</link>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/en/writeups/oidc-entra-id/</guid>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;During my SC-300 studies I kept coming across concepts such as OpenID Connect (OIDC), OAuth 2.0, ID Tokens and Access Tokens.&lt;/p&gt;&#xA;&lt;p&gt;I understood the theory at a high level, but I wanted to see how the authentication flow actually works in practice.&lt;/p&gt;&#xA;&lt;p&gt;The goal of this project was to build a simple application that authenticates users through Microsoft Entra ID and uses Microsoft Graph to retrieve user information.&lt;/p&gt;&#xA;&lt;h2 id=&#34;scope-of-the-project&#34;&gt;Scope of the Project&lt;/h2&gt;&#xA;&lt;p&gt;This project was created to learn Identity and Access Management concepts rather than software development.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Identity-Centric Security Design for Healthcare</title>
       <link>https://krisby.dev/en/writeups/healthcare-identity-security/</link>

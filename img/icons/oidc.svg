@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <defs>
+    <linearGradient id="og" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0F6CBD"/>
+      <stop offset="100%" stop-color="#50E6FF"/>
+    </linearGradient>
+    <linearGradient id="kg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#50E6FF"/>
+      <stop offset="100%" stop-color="#0F6CBD"/>
+    </linearGradient>
+  </defs>
+
+  <!-- User circle (authentication subject) -->
+  <circle cx="40" cy="14" r="8" fill="url(#og)"/>
+  <path d="M22,32 Q22,22 40,22 Q58,22 58,32" fill="url(#og)"/>
+
+  <!-- Shield (identity provider / authorization) -->
+  <path d="M40,40 L58,47 L58,60 Q58,72 40,78 Q22,72 22,60 L22,47 Z" fill="url(#og)"/>
+
+  <!-- Lock body inside shield -->
+  <rect x="34" y="57" width="12" height="9" rx="2" fill="white"/>
+  <!-- Lock shackle -->
+  <path d="M36,57 L36,53 Q36,49 40,49 Q44,49 44,53 L44,57" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Key on top-right (access token / authorization) -->
+  <circle cx="63" cy="20" r="6" fill="none" stroke="url(#kg)" stroke-width="2.2"/>
+  <line x1="67.2" y1="24.2" x2="74" y2="31" stroke="url(#kg)" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="72" y1="31" x2="72" y2="34" stroke="url(#kg)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="74" y1="33" x2="71" y2="33" stroke="url(#kg)" stroke-width="2" stroke-linecap="round"/>
+</svg>

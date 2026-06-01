@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenID Connect Authentication with Microsoft Entra ID · krisby.dev</title>
+<meta name="description" content="Building a Flask application that authenticates users through Microsoft Entra ID using OpenID Connect and OAuth 2.0 — to understand how Authorization Code Flow, ID Tokens, and Access Tokens work in practice.">
+<meta name="author" content="Andreas Krisby">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Inter:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/theme.css">
+
+
+
+<meta name="generator" content="Hugo 0.161.1">
+
+</head>
+<body>
+  <div class="pa-root">
+    <nav class="pa-nav">
+  <a href="/" class="pa-brand">
+    <span class="pa-brand-mark">k</span>
+    <div>
+      <div class="pa-brand-name">krisby.dev</div>
+      <div class="pa-brand-sub">Notebook · Identity &amp; Cloud</div>
+    </div>
+  </a>
+
+  <ul class="pa-navlinks">
+    <li><a href="/" class="pa-navlink">Home</a></li>
+    <li><a href="/en/writeups/" class="pa-navlink is-active">Articles</a></li>
+    <li><a href="/en/about/" class="pa-navlink">About</a></li>
+  </ul>
+
+  <div class="pa-lang-switch">
+    <span class="pa-lang-current">English</span>
+    
+      <span class="pa-lang-sep">·</span>
+      <a href="/writeups/oidc-entra-id/" class="pa-lang-link">Svenska</a>
+    
+  </div>
+
+  <div class="pa-navside">
+    
+    <a href="https://github.com/AndreasK229" target="_blank" rel="noopener noreferrer">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      GitHub
+    </a>
+    
+    
+    <a href="https://linkedin.com/in/andreas-krisby-703978268" target="_blank" rel="noopener noreferrer">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+      LinkedIn
+    </a>
+    
+  </div>
+</nav>
+
+    <div class="pa-shell">
+      
+<div class="pa-art-wrap">
+  <div class="pa-art">
+
+    <aside class="pa-art-toc">
+      
+      <h4>Contents</h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#scope-of-the-project">Scope of the Project</a></li>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#technologies-used">Technologies Used</a></li>
+    <li><a href="#implementation">Implementation</a></li>
+    <li><a href="#key-learning-outcomes">Key Learning Outcomes</a>
+      <ul>
+        <li><a href="#openid-connect">OpenID Connect</a></li>
+        <li><a href="#id-token-vs-access-token">ID Token vs Access Token</a></li>
+        <li><a href="#microsoft-graph">Microsoft Graph</a></li>
+        <li><a href="#single-sign-on-sso">Single Sign-On (SSO)</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+      
+    </aside>
+
+    <article class="pa-art-body">
+      <div class="pa-art-eyebrow">Projects · Entra ID</div>
+      <h1>OpenID Connect Authentication with Microsoft Entra ID</h1>
+      <div class="pa-art-meta">
+        <span>By <b>Andreas Krisby</b></span>
+        <span>2026-06-01</span>
+        <span><b>3</b> min read</span>
+      </div>
+
+      <h2 id="background">Background</h2>
+<p>During my SC-300 studies I kept coming across concepts such as OpenID Connect (OIDC), OAuth 2.0, ID Tokens and Access Tokens.</p>
+<p>I understood the theory at a high level, but I wanted to see how the authentication flow actually works in practice.</p>
+<p>The goal of this project was to build a simple application that authenticates users through Microsoft Entra ID and uses Microsoft Graph to retrieve user information.</p>
+<h2 id="scope-of-the-project">Scope of the Project</h2>
+<p>This project was created to learn Identity and Access Management concepts rather than software development.</p>
+<p>I used AI assistance to build parts of the Flask application so I could focus on understanding authentication flows, token handling and Microsoft Entra ID integration instead of spending time learning Python syntax.</p>
+<p>The value of the project was understanding how the different identity components interact, not writing the application from scratch.</p>
+<h2 id="objectives">Objectives</h2>
+<ul>
+<li>Understand OpenID Connect authentication</li>
+<li>Understand OAuth 2.0 authorization</li>
+<li>Configure an application in Microsoft Entra ID</li>
+<li>Implement Authorization Code Flow</li>
+<li>Explore ID Tokens and Access Tokens</li>
+<li>Integrate with Microsoft Graph</li>
+<li>Observe Single Sign-On (SSO) behavior in practice</li>
+</ul>
+<h2 id="architecture">Architecture</h2>
+<pre tabindex="0"><code>User
+  ↓
+Flask Web Application
+  ↓
+Microsoft Entra ID
+  ↓
+Authorization Code Flow
+  ↓
+ID Token + Access Token
+  ↓
+Microsoft Graph API
+</code></pre><h2 id="technologies-used">Technologies Used</h2>
+<ul>
+<li>Microsoft Entra ID</li>
+<li>OpenID Connect (OIDC)</li>
+<li>OAuth 2.0</li>
+<li>Authorization Code Flow</li>
+<li>Microsoft Graph API</li>
+<li>Python Flask</li>
+<li>Microsoft Authentication Library (MSAL)</li>
+</ul>
+<h2 id="implementation">Implementation</h2>
+<p>A new application registration was created in Microsoft Entra ID.</p>
+<p>The application was configured with:</p>
+<ul>
+<li>Redirect URI</li>
+<li>Client ID</li>
+<li>Client Secret</li>
+</ul>
+<p>When a user accesses the application, they are redirected to Microsoft Entra ID for authentication.</p>
+<p>After successful authentication, Microsoft Entra ID returns an authorization code to the application.</p>
+<p>The application then exchanges the authorization code for:</p>
+<ul>
+<li>An ID Token</li>
+<li>An Access Token</li>
+</ul>
+<p>The ID Token is used to identify the user, while the Access Token is used to access protected resources.</p>
+<p>The Access Token was then used to call Microsoft Graph and retrieve information about the signed-in user.</p>
+<h2 id="key-learning-outcomes">Key Learning Outcomes</h2>
+<h3 id="openid-connect">OpenID Connect</h3>
+<p>Before this project I understood OIDC mostly as a concept.</p>
+<p>After implementing the flow, it became much clearer that OpenID Connect is not an application or service itself, but a protocol used between the application and the identity provider.</p>
+<p>The application delegates authentication to Microsoft Entra ID and receives an ID Token containing information about the authenticated user.</p>
+<h3 id="id-token-vs-access-token">ID Token vs Access Token</h3>
+<p>The biggest takeaway from this project was understanding the difference between ID Tokens and Access Tokens.</p>
+<p><strong>ID Token</strong></p>
+<p>Used by the application to identify the user. Answers the question: <em>Who is the user?</em></p>
+<p>Examples of claims:</p>
+<ul>
+<li>Name</li>
+<li>User Principal Name</li>
+<li>Object ID</li>
+<li>Tenant ID</li>
+</ul>
+<p><strong>Access Token</strong></p>
+<p>Used when accessing protected APIs. Answers the question: <em>What is the user allowed to do?</em></p>
+<p>In this project the Access Token was used to access Microsoft Graph using the <code>User.Read</code> permission.</p>
+<h3 id="microsoft-graph">Microsoft Graph</h3>
+<p>Using the Access Token, the application successfully called:</p>
+<pre tabindex="0"><code>GET https://graph.microsoft.com/v1.0/me
+</code></pre><p>This returned information about the signed-in user and demonstrated how OAuth 2.0 is used to securely access APIs without exposing user credentials to the application.</p>
+<h3 id="single-sign-on-sso">Single Sign-On (SSO)</h3>
+<p>The project also helped demonstrate how Single Sign-On works.</p>
+<p>Even after clearing the application&rsquo;s local session, Microsoft Entra ID could still authenticate the user without requiring a new password because the identity provider session remained active.</p>
+<p>This highlighted the difference between:</p>
+<ul>
+<li>Application sessions</li>
+<li>Identity provider sessions</li>
+</ul>
+<p><img src="/img/oidc-demo.jpg" alt="OIDC Demo — App Registration in Microsoft Entra ID and the running Flask application showing a successful login with ID Token, Access Token and Microsoft Graph call"></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This project helped bridge the gap between theory and practice.</p>
+<p>By building a working OpenID Connect integration with Microsoft Entra ID, I gained a much better understanding of Authorization Code Flow, token-based authentication, Microsoft Graph and modern identity architecture.</p>
+<p>The most valuable lesson was seeing the difference between authentication and authorization in a real implementation and understanding the distinct roles of ID Tokens and Access Tokens within the authentication flow.</p>
+
+
+      <nav class="pa-art-nav">
+        
+        <a href="/en/writeups/healthcare-identity-security/">
+          <small>← Previous</small>
+          <strong>Identity-Centric Security Design for Healthcare</strong>
+        </a>
+        
+
+        
+        <a class="pa-nav-r is-disabled">
+          <small>Next →</small>
+          <strong>End of archive</strong>
+        </a>
+        
+      </nav>
+    </article>
+
+    <aside class="pa-art-aside">
+      
+      <div class="pa-aside-block">
+        <h5>Tags</h5>
+        <p>Entra ID · OIDC · OAuth 2.0 · Microsoft Graph</p>
+      </div>
+      
+      <div class="pa-aside-block">
+        <h5>Citation</h5>
+        <p class="pa-citation">Krisby, A. (2026). OpenID Connect Authentication with Microsoft Entra ID. https://krisby.dev/writeups/oidc-entra-id/</p>
+      </div>
+      <div class="pa-aside-block">
+        <h5>Subscribe</h5>
+        <p><a href="/index.xml">RSS feed →</a></p>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+    </div>
+  </div>
+  <script src="/js/theme.js"></script>
+</body>
+</html>

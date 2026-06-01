@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microsoft Graph on krisby.dev</title>
+    <link>https://krisby.dev/tags/microsoft-graph/</link>
+    <description>Recent content in Microsoft Graph on krisby.dev</description>
+    <generator>Hugo</generator>
+    <language>sv</language>
+    <lastBuildDate>Mon, 01 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://krisby.dev/tags/microsoft-graph/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenID Connect-autentisering med Microsoft Entra ID</title>
+      <link>https://krisby.dev/writeups/oidc-entra-id/</link>
+      <pubDate>Mon, 01 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://krisby.dev/writeups/oidc-entra-id/</guid>
+      <description>&lt;h2 id=&#34;bakgrund&#34;&gt;Bakgrund&lt;/h2&gt;&#xA;&lt;p&gt;Under mina studier inför SC-300 har jag stött på begrepp som OpenID Connect (OIDC), OAuth 2.0, ID Tokens och Access Tokens många gånger.&lt;/p&gt;&#xA;&lt;p&gt;Jag förstod teorin på en övergripande nivå, men ville se hur autentiseringsflödet faktiskt fungerar i praktiken.&lt;/p&gt;&#xA;&lt;p&gt;Målet med projektet var att bygga en enkel applikation som autentiserar användare via Microsoft Entra ID och använder Microsoft Graph för att hämta information om den inloggade användaren.&lt;/p&gt;&#xA;&lt;h2 id=&#34;projektets-omfattning&#34;&gt;Projektets omfattning&lt;/h2&gt;&#xA;&lt;p&gt;Syftet med projektet var att lära mig Identity and Access Management (IAM) och moderna autentiseringsflöden – inte att utveckla en produktionsfärdig applikation.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
