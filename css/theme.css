@@ -666,6 +666,7 @@ html { scroll-behavior: smooth; }
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 80px;
+  overflow-x: hidden;
 }
 
 .pa-art {
@@ -716,7 +717,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* Article body */
-.pa-art-body { max-width: 64ch; }
+.pa-art-body { max-width: 64ch; overflow-x: hidden; }
 
 .pa-art-eyebrow {
   font-family: var(--mono);
