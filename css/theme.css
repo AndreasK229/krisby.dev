@@ -666,7 +666,6 @@ html { scroll-behavior: smooth; }
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 80px;
-  overflow-x: hidden;
 }
 
 .pa-art {
@@ -717,7 +716,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* Article body */
-.pa-art-body { max-width: 64ch; overflow-x: hidden; }
+.pa-art-body { max-width: 64ch; min-width: 0; }
 
 .pa-art-eyebrow {
   font-family: var(--mono);
@@ -838,6 +837,12 @@ html { scroll-behavior: smooth; }
 }
 
 .pa-art-body .highlight code { background: none; border: none; padding: 0; font-size: 13px; }
+
+/* Plain fenced code blocks (no language / no highlight wrapper) */
+.pa-art-body pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
 
 /* Blockquote as callout */
 .pa-art-body blockquote {
