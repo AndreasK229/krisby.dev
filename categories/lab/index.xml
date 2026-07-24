@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lab on krisby.dev</title>
-    <link>https://krisby.dev/categories/lab/</link>
+    <link>http://localhost:1313/categories/lab/</link>
     <description>Recent content in Lab on krisby.dev</description>
     <generator>Hugo</generator>
     <language>sv</language>
     <lastBuildDate>Mon, 25 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://krisby.dev/categories/lab/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/lab/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Conditional Access &amp; Identity Protection</title>
-      <link>https://krisby.dev/writeups/conditional-access-identity-protection/</link>
+      <link>http://localhost:1313/writeups/conditional-access-identity-protection/</link>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/writeups/conditional-access-identity-protection/</guid>
+      <guid>http://localhost:1313/writeups/conditional-access-identity-protection/</guid>
       <description>&lt;h2 id=&#34;bakgrund&#34;&gt;Bakgrund&lt;/h2&gt;&#xA;&lt;p&gt;Jag ville förstå hur Microsoft Entra Identity Protection fungerar i praktiken och hur riskbaserad Conditional Access kan användas för att skydda användarkonton.&lt;/p&gt;&#xA;&lt;p&gt;Istället för att kräva MFA vid varje inloggning ville jag se hur Entra kan reagera när en användare eller en inloggning bedöms som riskfylld.&lt;/p&gt;&#xA;&lt;h2 id=&#34;det-jag-byggde&#34;&gt;Det jag byggde&lt;/h2&gt;&#xA;&lt;p&gt;I labbet konfigurerade jag:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Identity Protection&lt;/li&gt;&#xA;&lt;li&gt;Riskbaserad Conditional Access&lt;/li&gt;&#xA;&lt;li&gt;MFA via Microsoft Authenticator&lt;/li&gt;&#xA;&lt;li&gt;Testkonto för simulering av olika inloggningsscenarier&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;det-jag-testade&#34;&gt;Det jag testade&lt;/h2&gt;&#xA;&lt;p&gt;Jag testade bland annat:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Hybrid Identity med Active Directory och Microsoft Entra ID</title>
-      <link>https://krisby.dev/writeups/hybrid-identity-labb/</link>
+      <link>http://localhost:1313/writeups/hybrid-identity-labb/</link>
       <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/writeups/hybrid-identity-labb/</guid>
+      <guid>http://localhost:1313/writeups/hybrid-identity-labb/</guid>
       <description>&lt;h2 id=&#34;bakgrund&#34;&gt;Bakgrund&lt;/h2&gt;&#xA;&lt;p&gt;Jag ville förstå hur identiteter hanteras i en hybrid miljö där Active Directory används lokalt samtidigt som användare och grupper synkroniseras till Microsoft Entra ID.&lt;/p&gt;&#xA;&lt;p&gt;Målet var att få en bättre förståelse för hur identitetslivscykeln fungerar mellan on-prem och molnet, hur synkronisering påverkar användare och grupper, samt hur gruppbaserad access kan användas för att förenkla behörighetshantering.&lt;/p&gt;&#xA;&lt;h2 id=&#34;det-jag-byggde&#34;&gt;Det jag byggde&lt;/h2&gt;&#xA;&lt;p&gt;Jag byggde en mindre hybrid identity-miljö med:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Windows Server 2022&lt;/li&gt;&#xA;&lt;li&gt;Active Directory Domain Services&lt;/li&gt;&#xA;&lt;li&gt;Microsoft Entra ID&lt;/li&gt;&#xA;&lt;li&gt;Microsoft Entra Connect&lt;/li&gt;&#xA;&lt;li&gt;Oracle VirtualBox&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Miljön innehöll användare, grupper och en OU-struktur för att simulera en enklare organisationsmodell.&lt;/p&gt;</description>
     </item>
   </channel>

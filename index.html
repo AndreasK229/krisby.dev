@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>krisby.dev</title>
@@ -13,12 +13,15 @@
 
 
 
-
-<link rel="stylesheet" href="/css/theme.min.88a30251179da968bc5b9b4870e6373ca6974769d1387e22ca1027d8a1b38eb5.css" integrity="sha256-iKMCURedqWi8W5tIcOY3PKaXR2nROH4iyhAn2KGzjrU=" crossorigin="anonymous">
-
+<link rel="stylesheet" href="/css/theme.css">
 
 
-<link rel="alternate" type="application/rss&#43;xml" href="https://krisby.dev/index.xml" title="krisby.dev">
+
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.12/dist/lottie-player.js" defer></script>
+
+
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/index.xml" title="krisby.dev">
 
 <meta name="generator" content="Hugo 0.161.1">
 
@@ -78,6 +81,10 @@
       <div class="pa-hero-role">IAM · Cloud · Security</div>
       <p class="pa-hero-intro">Jag arbetar inom healthcare IT och har på senare år blivit allt mer intresserad av IAM och molnsäkerhet.<br><br>Det mesta jag lär mig kommer från att bygga labbar, testa idéer, felsöka problem och försöka förstå hur identitetssystem fungerar i praktiken.<br><br>Den här portfolion innehåller några av de projekt och labbar jag byggt medan jag lärt mig mer om Microsoft Entra ID, hybrid identitet, identitetsstyrning, autentisering och åtkomsthantering.<br><br>Just nu ligger mitt fokus främst på Microsofts ekosystem, men jag är intresserad av identitets- och säkerhetsprinciper som fungerar oavsett plattform.</p>
     </div>
+    <div class="pa-hero-side">
+    <div class="pa-hero-lottie" aria-hidden="true">
+      <lottie-player src="/img/cyber-security.json" background="transparent" speed="1" autoplay></lottie-player>
+    </div>
     <dl class="pa-hero-meta">
       
       <dt>Arbetar för närvarande</dt>
@@ -91,6 +98,7 @@
         <a href="mailto:hello@krisby.dev">hello@krisby.dev</a>
       </dd>
     </dl>
+    </div>
   </header>
 
   
@@ -101,6 +109,15 @@
       <a href="/writeups/" class="pa-more">Alla artiklar →</a>
     </div>
     <div class="pa-recent">
+      
+      <a href="/writeups/end-to-end-iam/" class="pa-recent-item">
+        <div class="pa-recent-date">2026 · 07 · 24</div>
+        <div>
+          <div class="pa-recent-title">End-to-End IAM: Från HR till Entra ID med Elytra och Ascendra</div>
+          <div class="pa-recent-sub">Ett fiktivt HR- och IGA-system som provisionerar riktiga konton i Entra ID via Microsoft Graph — JML-flöden, reconciliation och en bugg som återaktiverade en uppsagd användare.</div>
+        </div>
+        <div class="pa-recent-cat">Projekt</div>
+      </a>
       
       <a href="/writeups/oidc-entra-id/" class="pa-recent-item">
         <div class="pa-recent-date">2026 · 06 · 01</div>
@@ -134,15 +151,6 @@
         <div>
           <div class="pa-recent-title">Federation mellan Entra ID och Cloudflare Access</div>
           <div class="pa-recent-sub">Federation, OIDC-authentication och automatisk SCIM-provisioning mellan Entra ID och Cloudflare Access — steg för steg med vanliga fällor dokumenterade.</div>
-        </div>
-        <div class="pa-recent-cat">Projekt</div>
-      </a>
-      
-      <a href="/writeups/ai-rbac-analyzer/" class="pa-recent-item">
-        <div class="pa-recent-date">2026 · 03 · 13</div>
-        <div>
-          <div class="pa-recent-title">AI-stödd analys av Azure RBAC</div>
-          <div class="pa-recent-sub">Kombinera Azure RBAC-data med en lokal AI-modell (Ollama/llama3) och PowerShell för att automatiskt identifiera överbehörighet och least privilege-avvikelser.</div>
         </div>
         <div class="pa-recent-cat">Projekt</div>
       </a>
@@ -201,6 +209,10 @@
 
     </div>
   </div>
-  <script src="/js/theme.js"></script>
+  
+  
+  <script src="/js/theme.js?t=1784935014"></script>
+  
+  
 </body>
 </html>

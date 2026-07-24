@@ -61,4 +61,48 @@
       }
     });
   }
+
+  // ── Lightbox for content images ──
+  var lightboxOverlay;
+
+  function ensureLightboxOverlay() {
+    if (lightboxOverlay) return lightboxOverlay;
+
+    lightboxOverlay = document.createElement('div');
+    lightboxOverlay.className = 'pa-lightbox-overlay';
+    lightboxOverlay.innerHTML =
+      '<button type="button" class="pa-lightbox-close" aria-label="Close">&times;</button>' +
+      '<img class="pa-lightbox-img" alt="">';
+    document.body.appendChild(lightboxOverlay);
+
+    lightboxOverlay.addEventListener('click', function (e) {
+      if (e.target === lightboxOverlay || e.target.classList.contains('pa-lightbox-close')) {
+        closeLightbox();
+      }
+    });
+
+    return lightboxOverlay;
+  }
+
+  function closeLightbox() {
+    if (lightboxOverlay) lightboxOverlay.classList.remove('is-open');
+    document.body.classList.remove('pa-lightbox-lock');
+  }
+
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('.pa-lightbox');
+    if (!trigger) return;
+
+    e.preventDefault();
+    var overlay = ensureLightboxOverlay();
+    var img = overlay.querySelector('.pa-lightbox-img');
+    img.src = trigger.getAttribute('href');
+    img.alt = trigger.getAttribute('data-caption') || '';
+    overlay.classList.add('is-open');
+    document.body.classList.add('pa-lightbox-lock');
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
 })();

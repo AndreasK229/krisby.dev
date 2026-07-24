@@ -2,17 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JML on krisby.dev</title>
-    <link>https://krisby.dev/en/tags/jml/</link>
+    <link>http://localhost:1313/en/tags/jml/</link>
     <description>Recent content in JML on krisby.dev</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Feb 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://krisby.dev/en/tags/jml/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/tags/jml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>End-to-End IAM: From HR to Entra ID with Elytra and Ascendra</title>
+      <link>http://localhost:1313/en/writeups/end-to-end-iam/</link>
+      <pubDate>Fri, 24 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/writeups/end-to-end-iam/</guid>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;end-to-end-iam&lt;/code&gt; is a side project where I explore how a modern IAM landscape can be built. The project revolves around a fictional company, Legatus Corp, and consists of two separate systems.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Elytra&lt;/strong&gt;: an HR system that acts as the source of truth for employment data.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Ascendra&lt;/strong&gt;: an IGA platform (Identity Governance &amp;amp; Administration) that handles identities, roles, provisioning, SSO connections, and audit.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I set the direction for the project: that the systems should be fully separate, that Convex would be the platform, and that the IGA system should connect to a real Entra ID tenant. I set up the app registration, permissions, and client secret in Entra ID myself. The code implementation was built with AI-assisted development.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>JML Monitor for Microsoft Entra ID</title>
-      <link>https://krisby.dev/en/writeups/jml-monitor-labb/</link>
+      <link>http://localhost:1313/en/writeups/jml-monitor-labb/</link>
       <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://krisby.dev/en/writeups/jml-monitor-labb/</guid>
+      <guid>http://localhost:1313/en/writeups/jml-monitor-labb/</guid>
       <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to better understand Joiner, Mover and Leaver (JML) processes in practice, how access changes over time, and how access drift can be detected within Microsoft Entra ID.&lt;/p&gt;&#xA;&lt;p&gt;At the same time, I wanted to gain hands-on experience with Microsoft Graph API and explore how identity data can be analyzed programmatically.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-built&#34;&gt;What I Built&lt;/h2&gt;&#xA;&lt;p&gt;I developed a simple monitoring solution that collects users and group memberships from Microsoft Entra ID and compares the current state against historical snapshots.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,492 +2,544 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://krisby.dev/categories/</loc>
-    <lastmod>2026-06-01T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2026-07-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/categories/"
+                href="http://localhost:1313/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/categories/"
+                href="http://localhost:1313/categories/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/entra-id/</loc>
-    <lastmod>2026-06-01T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/convex/</loc>
+    <lastmod>2026-07-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/entra-id/"
+                href="http://localhost:1313/en/tags/convex/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/entra-id/"
+                href="http://localhost:1313/tags/convex/"
                 />
   </url><url>
-    <loc>https://krisby.dev/</loc>
-    <lastmod>2026-06-01T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/writeups/end-to-end-iam/</loc>
+    <lastmod>2026-07-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/"
+                href="http://localhost:1313/en/writeups/end-to-end-iam/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/"
+                href="http://localhost:1313/writeups/end-to-end-iam/"
                 />
   </url><url>
-    <loc>https://krisby.dev/writeups/</loc>
-    <lastmod>2026-06-01T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/entra-id/</loc>
+    <lastmod>2026-07-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/writeups/"
+                href="http://localhost:1313/en/tags/entra-id/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/writeups/"
+                href="http://localhost:1313/tags/entra-id/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/microsoft-graph/</loc>
-    <lastmod>2026-06-01T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/iga/</loc>
+    <lastmod>2026-07-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/microsoft-graph/"
+                href="http://localhost:1313/en/tags/iga/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/microsoft-graph/"
+                href="http://localhost:1313/tags/iga/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/oauth-2.0/</loc>
-    <lastmod>2026-06-01T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/jml/</loc>
+    <lastmod>2026-07-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/oauth-2.0/"
+                href="http://localhost:1313/en/tags/jml/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/oauth-2.0/"
+                href="http://localhost:1313/tags/jml/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/oidc/</loc>
-    <lastmod>2026-06-01T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2026-07-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/oidc/"
+                href="http://localhost:1313/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/oidc/"
+                href="http://localhost:1313/"
                 />
   </url><url>
-    <loc>https://krisby.dev/writeups/oidc-entra-id/</loc>
-    <lastmod>2026-06-01T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/writeups/</loc>
+    <lastmod>2026-07-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/writeups/oidc-entra-id/"
+                href="http://localhost:1313/en/writeups/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/writeups/oidc-entra-id/"
+                href="http://localhost:1313/writeups/"
                 />
   </url><url>
-    <loc>https://krisby.dev/categories/projekt/</loc>
-    <lastmod>2026-06-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://krisby.dev/tags/</loc>
-    <lastmod>2026-06-01T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/microsoft-graph/</loc>
+    <lastmod>2026-07-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/"
+                href="http://localhost:1313/en/tags/microsoft-graph/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/"
+                href="http://localhost:1313/tags/microsoft-graph/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/azure/</loc>
+    <loc>http://localhost:1313/categories/projekt/</loc>
+    <lastmod>2026-07-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/projekt/</loc>
+    <lastmod>2026-07-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/provisioning/</loc>
+    <lastmod>2026-07-24T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/tags/provisioning/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="sv"
+                href="http://localhost:1313/tags/provisioning/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-07-24T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="sv"
+                href="http://localhost:1313/tags/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/tags/oauth-2.0/</loc>
+    <lastmod>2026-06-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/tags/oauth-2.0/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="sv"
+                href="http://localhost:1313/tags/oauth-2.0/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/tags/oidc/</loc>
+    <lastmod>2026-06-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/tags/oidc/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="sv"
+                href="http://localhost:1313/tags/oidc/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/writeups/oidc-entra-id/</loc>
+    <lastmod>2026-06-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/writeups/oidc-entra-id/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="sv"
+                href="http://localhost:1313/writeups/oidc-entra-id/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/tags/azure/</loc>
     <lastmod>2026-05-29T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/azure/"
+                href="http://localhost:1313/en/tags/azure/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/azure/"
+                href="http://localhost:1313/tags/azure/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/conditional-access/</loc>
+    <loc>http://localhost:1313/tags/conditional-access/</loc>
     <lastmod>2026-05-29T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/conditional-access/"
+                href="http://localhost:1313/en/tags/conditional-access/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/conditional-access/"
+                href="http://localhost:1313/tags/conditional-access/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/fido2/</loc>
+    <loc>http://localhost:1313/tags/fido2/</loc>
     <lastmod>2026-05-29T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/fido2/"
+                href="http://localhost:1313/en/tags/fido2/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/fido2/"
+                href="http://localhost:1313/tags/fido2/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/healthcare/</loc>
+    <loc>http://localhost:1313/tags/healthcare/</loc>
     <lastmod>2026-05-29T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/healthcare/"
+                href="http://localhost:1313/en/tags/healthcare/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/healthcare/"
+                href="http://localhost:1313/tags/healthcare/"
                 />
   </url><url>
-    <loc>https://krisby.dev/writeups/healthcare-identity-security/</loc>
+    <loc>http://localhost:1313/writeups/healthcare-identity-security/</loc>
     <lastmod>2026-05-29T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/writeups/healthcare-identity-security/"
+                href="http://localhost:1313/en/writeups/healthcare-identity-security/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/writeups/healthcare-identity-security/"
+                href="http://localhost:1313/writeups/healthcare-identity-security/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/projekt/</loc>
-    <lastmod>2026-05-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://krisby.dev/tags/rbac/</loc>
+    <loc>http://localhost:1313/tags/rbac/</loc>
     <lastmod>2026-05-29T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/rbac/"
+                href="http://localhost:1313/en/tags/rbac/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/rbac/"
+                href="http://localhost:1313/tags/rbac/"
                 />
   </url><url>
-    <loc>https://krisby.dev/writeups/conditional-access-identity-protection/</loc>
+    <loc>http://localhost:1313/writeups/conditional-access-identity-protection/</loc>
     <lastmod>2026-05-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/writeups/conditional-access-identity-protection/"
+                href="http://localhost:1313/en/writeups/conditional-access-identity-protection/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/writeups/conditional-access-identity-protection/"
+                href="http://localhost:1313/writeups/conditional-access-identity-protection/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/identity-protection/</loc>
+    <loc>http://localhost:1313/tags/identity-protection/</loc>
     <lastmod>2026-05-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/identity-protection/"
+                href="http://localhost:1313/en/tags/identity-protection/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/identity-protection/"
+                href="http://localhost:1313/tags/identity-protection/"
                 />
   </url><url>
-    <loc>https://krisby.dev/categories/lab/</loc>
+    <loc>http://localhost:1313/categories/lab/</loc>
     <lastmod>2026-05-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/categories/lab/"
+                href="http://localhost:1313/en/categories/lab/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/categories/lab/"
+                href="http://localhost:1313/categories/lab/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/mfa/</loc>
+    <loc>http://localhost:1313/tags/mfa/</loc>
     <lastmod>2026-05-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/mfa/"
+                href="http://localhost:1313/en/tags/mfa/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/mfa/"
+                href="http://localhost:1313/tags/mfa/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/zero-trust/</loc>
+    <loc>http://localhost:1313/tags/zero-trust/</loc>
     <lastmod>2026-05-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/zero-trust/"
+                href="http://localhost:1313/en/tags/zero-trust/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/zero-trust/"
+                href="http://localhost:1313/tags/zero-trust/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/cloudflare/</loc>
+    <loc>http://localhost:1313/tags/cloudflare/</loc>
     <lastmod>2026-05-23T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/cloudflare/"
+                href="http://localhost:1313/en/tags/cloudflare/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/cloudflare/"
+                href="http://localhost:1313/tags/cloudflare/"
                 />
   </url><url>
-    <loc>https://krisby.dev/writeups/entra-cloudflare-scim/</loc>
+    <loc>http://localhost:1313/writeups/entra-cloudflare-scim/</loc>
     <lastmod>2026-05-23T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/writeups/entra-cloudflare-scim/"
+                href="http://localhost:1313/en/writeups/entra-cloudflare-scim/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/writeups/entra-cloudflare-scim/"
+                href="http://localhost:1313/writeups/entra-cloudflare-scim/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/scim/</loc>
+    <loc>http://localhost:1313/tags/scim/</loc>
     <lastmod>2026-05-23T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/scim/"
+                href="http://localhost:1313/en/tags/scim/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/scim/"
+                href="http://localhost:1313/tags/scim/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/ai/</loc>
+    <loc>http://localhost:1313/tags/ai/</loc>
     <lastmod>2026-03-13T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/ai/"
+                href="http://localhost:1313/en/tags/ai/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/ai/"
+                href="http://localhost:1313/tags/ai/"
                 />
   </url><url>
-    <loc>https://krisby.dev/writeups/ai-rbac-analyzer/</loc>
+    <loc>http://localhost:1313/writeups/ai-rbac-analyzer/</loc>
     <lastmod>2026-03-13T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/writeups/ai-rbac-analyzer/"
+                href="http://localhost:1313/en/writeups/ai-rbac-analyzer/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/writeups/ai-rbac-analyzer/"
+                href="http://localhost:1313/writeups/ai-rbac-analyzer/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/ollama/</loc>
+    <loc>http://localhost:1313/tags/ollama/</loc>
     <lastmod>2026-03-13T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/ollama/"
+                href="http://localhost:1313/en/tags/ollama/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/ollama/"
+                href="http://localhost:1313/tags/ollama/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/powershell/</loc>
+    <loc>http://localhost:1313/tags/powershell/</loc>
     <lastmod>2026-03-13T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/powershell/"
+                href="http://localhost:1313/en/tags/powershell/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/powershell/"
+                href="http://localhost:1313/tags/powershell/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/graph-api/</loc>
+    <loc>http://localhost:1313/tags/graph-api/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/graph-api/"
+                href="http://localhost:1313/en/tags/graph-api/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/graph-api/"
+                href="http://localhost:1313/tags/graph-api/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/identity-governance/</loc>
+    <loc>http://localhost:1313/tags/identity-governance/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/identity-governance/"
+                href="http://localhost:1313/en/tags/identity-governance/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/identity-governance/"
+                href="http://localhost:1313/tags/identity-governance/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/jml/</loc>
+    <loc>http://localhost:1313/writeups/jml-monitor-labb/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/jml/"
+                href="http://localhost:1313/en/writeups/jml-monitor-labb/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/jml/"
+                href="http://localhost:1313/writeups/jml-monitor-labb/"
                 />
   </url><url>
-    <loc>https://krisby.dev/writeups/jml-monitor-labb/</loc>
+    <loc>http://localhost:1313/tags/python/</loc>
     <lastmod>2026-02-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/writeups/jml-monitor-labb/"
+                href="http://localhost:1313/en/tags/python/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/writeups/jml-monitor-labb/"
+                href="http://localhost:1313/tags/python/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/python/</loc>
-    <lastmod>2026-02-10T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://krisby.dev/en/tags/python/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="sv"
-                href="https://krisby.dev/tags/python/"
-                />
-  </url><url>
-    <loc>https://krisby.dev/tags/active-directory/</loc>
+    <loc>http://localhost:1313/tags/active-directory/</loc>
     <lastmod>2026-01-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/active-directory/"
+                href="http://localhost:1313/en/tags/active-directory/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/active-directory/"
+                href="http://localhost:1313/tags/active-directory/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/entra-connect/</loc>
+    <loc>http://localhost:1313/tags/entra-connect/</loc>
     <lastmod>2026-01-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/entra-connect/"
+                href="http://localhost:1313/en/tags/entra-connect/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/entra-connect/"
+                href="http://localhost:1313/tags/entra-connect/"
                 />
   </url><url>
-    <loc>https://krisby.dev/tags/hybrid-identity/</loc>
+    <loc>http://localhost:1313/tags/hybrid-identity/</loc>
     <lastmod>2026-01-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/tags/hybrid-identity/"
+                href="http://localhost:1313/en/tags/hybrid-identity/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/tags/hybrid-identity/"
+                href="http://localhost:1313/tags/hybrid-identity/"
                 />
   </url><url>
-    <loc>https://krisby.dev/writeups/hybrid-identity-labb/</loc>
+    <loc>http://localhost:1313/writeups/hybrid-identity-labb/</loc>
     <lastmod>2026-01-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/writeups/hybrid-identity-labb/"
+                href="http://localhost:1313/en/writeups/hybrid-identity-labb/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/writeups/hybrid-identity-labb/"
+                href="http://localhost:1313/writeups/hybrid-identity-labb/"
                 />
   </url><url>
-    <loc>https://krisby.dev/writeups/lab/</loc>
+    <loc>http://localhost:1313/writeups/lab/</loc>
   </url><url>
-    <loc>https://krisby.dev/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://krisby.dev/en/about/"
+                href="http://localhost:1313/en/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="sv"
-                href="https://krisby.dev/about/"
+                href="http://localhost:1313/about/"
                 />
   </url>
 </urlset>

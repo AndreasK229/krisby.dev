@@ -272,6 +272,17 @@ html { scroll-behavior: smooth; }
   filter: grayscale(5%) contrast(1.05);
 }
 
+.pa-hero-lottie {
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto 28px;
+}
+
+.pa-hero-lottie lottie-player {
+  width: 100%;
+  height: auto;
+}
+
 .pa-hero-meta {
   border-left: 1px solid var(--rule);
   padding-left: 32px;
@@ -1151,4 +1162,53 @@ html { scroll-behavior: smooth; }
   .pa-about-content h1 { font-size: 32px; }
   .pa-art-nav { grid-template-columns: 1fr; }
   .pa-footer { flex-direction: column; gap: 8px; }
+}
+
+/* ── Lightbox for content images ── */
+.pa-art-body img {
+  cursor: zoom-in;
+  transition: opacity .15s ease;
+}
+.pa-art-body img:hover {
+  opacity: .9;
+}
+
+.pa-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: rgba(0, 0, 0, .88);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .2s ease;
+}
+.pa-lightbox-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+.pa-lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 6px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+  cursor: zoom-out;
+}
+.pa-lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 8px;
+}
+body.pa-lightbox-lock {
+  overflow: hidden;
 }

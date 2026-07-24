@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Provisioning on krisby.dev</title>
+    <link>http://localhost:1313/tags/provisioning/</link>
+    <description>Recent content in Provisioning on krisby.dev</description>
+    <generator>Hugo</generator>
+    <language>sv</language>
+    <lastBuildDate>Fri, 24 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/provisioning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>End-to-End IAM: Från HR till Entra ID med Elytra och Ascendra</title>
+      <link>http://localhost:1313/writeups/end-to-end-iam/</link>
+      <pubDate>Fri, 24 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/writeups/end-to-end-iam/</guid>
+      <description>&lt;h2 id=&#34;bakgrund&#34;&gt;Bakgrund&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;end-to-end-iam&lt;/code&gt; är ett sidoprojekt där jag utforskar hur ett modernt IAM-landskap kan byggas. Projektet kretsar kring ett fiktivt företag, Legatus Corp, och består av två separata system.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Elytra&lt;/strong&gt;: ett HR-system som är source of truth för anställningsdata.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Ascendra&lt;/strong&gt;: en IGA-plattform (Identity Governance &amp;amp; Administration) som hanterar identiteter, roller, provisionering, SSO-anslutningar och audit.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Jag satte riktningen för projektet: att systemen skulle vara helt separata, att Convex skulle användas som plattform, och att IGA-systemet skulle kopplas mot en riktig Entra ID-tenant. Själva app-registreringen, permissions och client secret i Entra ID satte jag upp själv. Implementationen i kod byggdes med AI-assisterad utveckling.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
