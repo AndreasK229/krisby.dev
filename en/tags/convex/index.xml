@@ -1,19 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Convex on krisby.dev</title>
-    <link>http://localhost:1313/en/tags/convex/</link>
-    <description>Recent content in Convex on krisby.dev</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 24 Jul 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/convex/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>End-to-End IAM: From HR to Entra ID with Elytra and Ascendra</title>
-      <link>http://localhost:1313/en/writeups/end-to-end-iam/</link>
-      <pubDate>Fri, 24 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/writeups/end-to-end-iam/</guid>
-      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;end-to-end-iam&lt;/code&gt; is a side project where I explore how a modern IAM landscape can be built. The project revolves around a fictional company, Legatus Corp, and consists of two separate systems.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Elytra&lt;/strong&gt;: an HR system that acts as the source of truth for employment data.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Ascendra&lt;/strong&gt;: an IGA platform (Identity Governance &amp;amp; Administration) that handles identities, roles, provisioning, SSO connections, and audit.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I set the direction for the project: that the systems should be fully separate, that Convex would be the platform, and that the IGA system should connect to a real Entra ID tenant. I set up the app registration, permissions, and client secret in Entra ID myself. The code implementation was built with AI-assisted development.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Convex on krisby.dev</title><link>https://krisby.dev/en/tags/convex/</link><description>Recent content in Convex on krisby.dev</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 26 Jul 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://krisby.dev/en/tags/convex/index.xml" rel="self" type="application/rss+xml"/><item><title>End-to-End IAM, Part 1: The Architecture Behind Elytra and Ascendra</title><link>https://krisby.dev/en/writeups/end-to-end-iam-arkitektur/</link><pubDate>Sun, 26 Jul 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/en/writeups/end-to-end-iam-arkitektur/</guid><description>&lt;p&gt;This is part 1 of a series that goes deeper into &lt;a href="https://krisby.dev/en/writeups/end-to-end-iam/"&gt;end-to-end-iam&lt;/a&gt;, a side project where I built a fictional HR and IGA landscape connected to a real Entra ID tenant. The original writeup covered the big picture. This part zooms in on a single decision: why Elytra and Ascendra are fully separate systems, and what that actually costs and buys in practice.&lt;/p&gt;
+&lt;h2 id="two-systems-one-boundary"&gt;Two systems, one boundary&lt;/h2&gt;
+&lt;p&gt;Elytra is the HR system. It&amp;rsquo;s the source of truth for employment data: when someone is hired, changes role, or leaves, Elytra is the one that decides what&amp;rsquo;s true. Ascendra is the IGA platform (Identity Governance &amp;amp; Administration). It owns identities, roles, provisioning, SSO connections, and audit logs.&lt;/p&gt;</description></item><item><title>End-to-End IAM: From HR to Entra ID with Elytra and Ascendra</title><link>https://krisby.dev/en/writeups/end-to-end-iam/</link><pubDate>Fri, 24 Jul 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/en/writeups/end-to-end-iam/</guid><description>&lt;h2 id="background"&gt;Background&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;end-to-end-iam&lt;/code&gt; is a side project where I explore how a modern IAM landscape can be built. The project revolves around a fictional company, Legatus Corp, and consists of two separate systems.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Elytra&lt;/strong&gt;: an HR system that acts as the source of truth for employment data — meaning if any other part of the system disagrees with it, Elytra is the one that&amp;rsquo;s right.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ascendra&lt;/strong&gt;: an IGA platform (Identity Governance &amp;amp; Administration) that handles identities, roles, provisioning, SSO connections, and audit.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I set the direction for the project: that the systems should be fully separate, that &lt;a href="https://www.convex.dev/"&gt;Convex&lt;/a&gt; would be the platform, and that the IGA system should connect to a real Entra ID tenant. Convex is a backend platform that bundles a database, server functions, and real-time updates into one thing, which made it a good fit for two standalone systems that still need to react quickly to each other&amp;rsquo;s events. I set up the app registration, the permissions, and the client secret (a secret key the app uses to authenticate itself) in Entra ID myself. The code implementation was built with AI-assisted development.&lt;/p&gt;</description></item></channel></rss>

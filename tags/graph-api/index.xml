@@ -1,19 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Graph API on krisby.dev</title>
-    <link>http://localhost:1313/tags/graph-api/</link>
-    <description>Recent content in Graph API on krisby.dev</description>
-    <generator>Hugo</generator>
-    <language>sv</language>
-    <lastBuildDate>Tue, 10 Feb 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/graph-api/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>JML Monitor för Microsoft Entra ID</title>
-      <link>http://localhost:1313/writeups/jml-monitor-labb/</link>
-      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/writeups/jml-monitor-labb/</guid>
-      <description>&lt;h2 id=&#34;bakgrund&#34;&gt;Bakgrund&lt;/h2&gt;&#xA;&lt;p&gt;Jag ville förstå Joiner, Mover och Leaver-processer (JML) bättre i praktiken, hur access förändras över tid och hur access drift kan upptäckas i Microsoft Entra ID.&lt;/p&gt;&#xA;&lt;p&gt;Samtidigt ville jag få mer praktisk erfarenhet av Microsoft Graph API och undersöka hur identitetsdata kan analyseras automatiskt istället för manuellt.&lt;/p&gt;&#xA;&lt;h2 id=&#34;det-jag-byggde&#34;&gt;Det jag byggde&lt;/h2&gt;&#xA;&lt;p&gt;Jag utvecklade en enkel monitor som hämtar användare och gruppmedlemskap från Microsoft Entra ID och jämför aktuell data med tidigare snapshots.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Graph API on krisby.dev</title><link>https://krisby.dev/tags/graph-api/</link><description>Recent content in Graph API on krisby.dev</description><generator>Hugo</generator><language>sv</language><lastBuildDate>Tue, 10 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://krisby.dev/tags/graph-api/index.xml" rel="self" type="application/rss+xml"/><item><title>JML Monitor för Microsoft Entra ID</title><link>https://krisby.dev/writeups/jml-monitor-labb/</link><pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/writeups/jml-monitor-labb/</guid><description>&lt;h2 id="bakgrund"&gt;Bakgrund&lt;/h2&gt;
+&lt;p&gt;Jag ville förstå Joiner, Mover och Leaver-processer (JML) bättre i praktiken, hur access förändras över tid och hur access drift kan upptäckas i Microsoft Entra ID.&lt;/p&gt;
+&lt;p&gt;Samtidigt ville jag få mer praktisk erfarenhet av Microsoft Graph API och undersöka hur identitetsdata kan analyseras automatiskt istället för manuellt.&lt;/p&gt;
+&lt;h2 id="det-jag-byggde"&gt;Det jag byggde&lt;/h2&gt;
+&lt;p&gt;Jag utvecklade en enkel monitor som hämtar användare och gruppmedlemskap från Microsoft Entra ID och jämför aktuell data med tidigare snapshots.&lt;/p&gt;</description></item></channel></rss>

@@ -1,19 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Cloudflare on krisby.dev</title>
-    <link>http://localhost:1313/tags/cloudflare/</link>
-    <description>Recent content in Cloudflare on krisby.dev</description>
-    <generator>Hugo</generator>
-    <language>sv</language>
-    <lastBuildDate>Sat, 23 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/cloudflare/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Federation mellan Entra ID och Cloudflare Access</title>
-      <link>http://localhost:1313/writeups/entra-cloudflare-scim/</link>
-      <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/writeups/entra-cloudflare-scim/</guid>
-      <description>&lt;h2 id=&#34;bakgrund&#34;&gt;Bakgrund&lt;/h2&gt;&#xA;&lt;p&gt;Jag ville förstå hur federation, provisioning och Zero Trust fungerar i praktiken mellan Microsoft Entra ID och Cloudflare Access.&lt;/p&gt;&#xA;&lt;p&gt;Målet var att undersöka hur identitet kan användas som den primära säkerhetsgränsen och hur åtkomst kan hanteras centralt via Entra ID istället för lokalt i varje system.&lt;/p&gt;&#xA;&lt;h2 id=&#34;det-jag-byggde&#34;&gt;Det jag byggde&lt;/h2&gt;&#xA;&lt;p&gt;I labbet integrerade jag Microsoft Entra ID med Cloudflare Access genom att använda:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;OpenID Connect (OIDC)&lt;/li&gt;&#xA;&lt;li&gt;SCIM Provisioning&lt;/li&gt;&#xA;&lt;li&gt;Gruppbaserad accesskontroll&lt;/li&gt;&#xA;&lt;li&gt;Automatisk synkronisering av användare och grupper&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Arkitektur:&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cloudflare on krisby.dev</title><link>https://krisby.dev/tags/cloudflare/</link><description>Recent content in Cloudflare on krisby.dev</description><generator>Hugo</generator><language>sv</language><lastBuildDate>Sat, 23 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://krisby.dev/tags/cloudflare/index.xml" rel="self" type="application/rss+xml"/><item><title>Federation mellan Entra ID och Cloudflare Access</title><link>https://krisby.dev/writeups/entra-cloudflare-scim/</link><pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/writeups/entra-cloudflare-scim/</guid><description>&lt;h2 id="bakgrund"&gt;Bakgrund&lt;/h2&gt;
+&lt;p&gt;Jag ville förstå hur federation, provisioning och Zero Trust fungerar i praktiken mellan Microsoft Entra ID och Cloudflare Access.&lt;/p&gt;
+&lt;p&gt;Målet var att undersöka hur identitet kan användas som den primära säkerhetsgränsen och hur åtkomst kan hanteras centralt via Entra ID istället för lokalt i varje system.&lt;/p&gt;
+&lt;h2 id="det-jag-byggde"&gt;Det jag byggde&lt;/h2&gt;
+&lt;p&gt;I labbet integrerade jag Microsoft Entra ID med Cloudflare Access genom att använda:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenID Connect (OIDC)&lt;/li&gt;
+&lt;li&gt;SCIM Provisioning&lt;/li&gt;
+&lt;li&gt;Gruppbaserad accesskontroll&lt;/li&gt;
+&lt;li&gt;Automatisk synkronisering av användare och grupper&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Arkitektur:&lt;/p&gt;</description></item></channel></rss>

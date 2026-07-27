@@ -1,19 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Active Directory on krisby.dev</title>
-    <link>http://localhost:1313/tags/active-directory/</link>
-    <description>Recent content in Active Directory on krisby.dev</description>
-    <generator>Hugo</generator>
-    <language>sv</language>
-    <lastBuildDate>Tue, 20 Jan 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/active-directory/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hybrid Identity med Active Directory och Microsoft Entra ID</title>
-      <link>http://localhost:1313/writeups/hybrid-identity-labb/</link>
-      <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/writeups/hybrid-identity-labb/</guid>
-      <description>&lt;h2 id=&#34;bakgrund&#34;&gt;Bakgrund&lt;/h2&gt;&#xA;&lt;p&gt;Jag ville förstå hur identiteter hanteras i en hybrid miljö där Active Directory används lokalt samtidigt som användare och grupper synkroniseras till Microsoft Entra ID.&lt;/p&gt;&#xA;&lt;p&gt;Målet var att få en bättre förståelse för hur identitetslivscykeln fungerar mellan on-prem och molnet, hur synkronisering påverkar användare och grupper, samt hur gruppbaserad access kan användas för att förenkla behörighetshantering.&lt;/p&gt;&#xA;&lt;h2 id=&#34;det-jag-byggde&#34;&gt;Det jag byggde&lt;/h2&gt;&#xA;&lt;p&gt;Jag byggde en mindre hybrid identity-miljö med:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Windows Server 2022&lt;/li&gt;&#xA;&lt;li&gt;Active Directory Domain Services&lt;/li&gt;&#xA;&lt;li&gt;Microsoft Entra ID&lt;/li&gt;&#xA;&lt;li&gt;Microsoft Entra Connect&lt;/li&gt;&#xA;&lt;li&gt;Oracle VirtualBox&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Miljön innehöll användare, grupper och en OU-struktur för att simulera en enklare organisationsmodell.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Active Directory on krisby.dev</title><link>https://krisby.dev/tags/active-directory/</link><description>Recent content in Active Directory on krisby.dev</description><generator>Hugo</generator><language>sv</language><lastBuildDate>Tue, 20 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://krisby.dev/tags/active-directory/index.xml" rel="self" type="application/rss+xml"/><item><title>Hybrid Identity med Active Directory och Microsoft Entra ID</title><link>https://krisby.dev/writeups/hybrid-identity-labb/</link><pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/writeups/hybrid-identity-labb/</guid><description>&lt;h2 id="bakgrund"&gt;Bakgrund&lt;/h2&gt;
+&lt;p&gt;Jag ville förstå hur identiteter hanteras i en hybrid miljö där Active Directory används lokalt samtidigt som användare och grupper synkroniseras till Microsoft Entra ID.&lt;/p&gt;
+&lt;p&gt;Målet var att få en bättre förståelse för hur identitetslivscykeln fungerar mellan on-prem och molnet, hur synkronisering påverkar användare och grupper, samt hur gruppbaserad access kan användas för att förenkla behörighetshantering.&lt;/p&gt;
+&lt;h2 id="det-jag-byggde"&gt;Det jag byggde&lt;/h2&gt;
+&lt;p&gt;Jag byggde en mindre hybrid identity-miljö med:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows Server 2022&lt;/li&gt;
+&lt;li&gt;Active Directory Domain Services&lt;/li&gt;
+&lt;li&gt;Microsoft Entra ID&lt;/li&gt;
+&lt;li&gt;Microsoft Entra Connect&lt;/li&gt;
+&lt;li&gt;Oracle VirtualBox&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Miljön innehöll användare, grupper och en OU-struktur för att simulera en enklare organisationsmodell.&lt;/p&gt;</description></item></channel></rss>

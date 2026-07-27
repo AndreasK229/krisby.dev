@@ -1,26 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>OIDC on krisby.dev</title>
-    <link>http://localhost:1313/en/tags/oidc/</link>
-    <description>Recent content in OIDC on krisby.dev</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Mon, 01 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/oidc/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>OpenID Connect Authentication with Microsoft Entra ID</title>
-      <link>http://localhost:1313/en/writeups/oidc-entra-id/</link>
-      <pubDate>Mon, 01 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/writeups/oidc-entra-id/</guid>
-      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;During my SC-300 studies I kept coming across concepts such as OpenID Connect (OIDC), OAuth 2.0, ID Tokens and Access Tokens.&lt;/p&gt;&#xA;&lt;p&gt;I understood the theory at a high level, but I wanted to see how the authentication flow actually works in practice.&lt;/p&gt;&#xA;&lt;p&gt;The goal of this project was to build a simple application that authenticates users through Microsoft Entra ID and uses Microsoft Graph to retrieve user information.&lt;/p&gt;&#xA;&lt;h2 id=&#34;scope-of-the-project&#34;&gt;Scope of the Project&lt;/h2&gt;&#xA;&lt;p&gt;This project was created to learn Identity and Access Management concepts rather than software development.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Cloudflare Access Federation with Entra ID</title>
-      <link>http://localhost:1313/en/writeups/entra-cloudflare-scim/</link>
-      <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/writeups/entra-cloudflare-scim/</guid>
-      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to better understand how federation, provisioning and Zero Trust access work in practice between Microsoft Entra ID and Cloudflare Access.&lt;/p&gt;&#xA;&lt;p&gt;The goal was to explore how identity can be used as the primary security boundary and how access can be managed through groups rather than individual users.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-built&#34;&gt;What I Built&lt;/h2&gt;&#xA;&lt;p&gt;In this lab I integrated Microsoft Entra ID with Cloudflare Access using:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;OpenID Connect (OIDC)&lt;/li&gt;&#xA;&lt;li&gt;SCIM provisioning&lt;/li&gt;&#xA;&lt;li&gt;Group-based access control&lt;/li&gt;&#xA;&lt;li&gt;Automated user and group synchronization&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Architecture:&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OIDC on krisby.dev</title><link>https://krisby.dev/en/tags/oidc/</link><description>Recent content in OIDC on krisby.dev</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 01 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://krisby.dev/en/tags/oidc/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenID Connect Authentication with Microsoft Entra ID</title><link>https://krisby.dev/en/writeups/oidc-entra-id/</link><pubDate>Mon, 01 Jun 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/en/writeups/oidc-entra-id/</guid><description>&lt;h2 id="background"&gt;Background&lt;/h2&gt;
+&lt;p&gt;During my SC-300 studies I kept coming across concepts such as OpenID Connect (OIDC), OAuth 2.0, ID Tokens and Access Tokens.&lt;/p&gt;
+&lt;p&gt;I understood the theory at a high level, but I wanted to see how the authentication flow actually works in practice.&lt;/p&gt;
+&lt;p&gt;The goal of this project was to build a simple application that authenticates users through Microsoft Entra ID and uses Microsoft Graph to retrieve user information.&lt;/p&gt;
+&lt;h2 id="scope-of-the-project"&gt;Scope of the Project&lt;/h2&gt;
+&lt;p&gt;This project was created to learn Identity and Access Management concepts rather than software development.&lt;/p&gt;</description></item><item><title>Cloudflare Access Federation with Entra ID</title><link>https://krisby.dev/en/writeups/entra-cloudflare-scim/</link><pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/en/writeups/entra-cloudflare-scim/</guid><description>&lt;h2 id="background"&gt;Background&lt;/h2&gt;
+&lt;p&gt;I wanted to better understand how federation, provisioning and Zero Trust access work in practice between Microsoft Entra ID and Cloudflare Access.&lt;/p&gt;
+&lt;p&gt;The goal was to explore how identity can be used as the primary security boundary and how access can be managed through groups rather than individual users.&lt;/p&gt;
+&lt;h2 id="what-i-built"&gt;What I Built&lt;/h2&gt;
+&lt;p&gt;In this lab I integrated Microsoft Entra ID with Cloudflare Access using:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenID Connect (OIDC)&lt;/li&gt;
+&lt;li&gt;SCIM provisioning&lt;/li&gt;
+&lt;li&gt;Group-based access control&lt;/li&gt;
+&lt;li&gt;Automated user and group synchronization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Architecture:&lt;/p&gt;</description></item></channel></rss>

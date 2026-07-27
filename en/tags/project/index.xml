@@ -1,47 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Project on krisby.dev</title>
-    <link>http://localhost:1313/en/tags/project/</link>
-    <description>Recent content in Project on krisby.dev</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Fri, 24 Jul 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/project/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>End-to-End IAM: From HR to Entra ID with Elytra and Ascendra</title>
-      <link>http://localhost:1313/en/writeups/end-to-end-iam/</link>
-      <pubDate>Fri, 24 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/writeups/end-to-end-iam/</guid>
-      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;end-to-end-iam&lt;/code&gt; is a side project where I explore how a modern IAM landscape can be built. The project revolves around a fictional company, Legatus Corp, and consists of two separate systems.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Elytra&lt;/strong&gt;: an HR system that acts as the source of truth for employment data.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Ascendra&lt;/strong&gt;: an IGA platform (Identity Governance &amp;amp; Administration) that handles identities, roles, provisioning, SSO connections, and audit.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I set the direction for the project: that the systems should be fully separate, that Convex would be the platform, and that the IGA system should connect to a real Entra ID tenant. I set up the app registration, permissions, and client secret in Entra ID myself. The code implementation was built with AI-assisted development.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Identity-Centric Security Design for Healthcare</title>
-      <link>http://localhost:1313/en/writeups/healthcare-identity-security/</link>
-      <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/writeups/healthcare-identity-security/</guid>
-      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I built this project to explore how identity and access management could be designed for a small healthcare environment handling sensitive information.&lt;/p&gt;&#xA;&lt;p&gt;The goal was to better understand how technologies such as Microsoft Entra ID, Conditional Access, FIDO2, RBAC and Managed Identities can work together as part of a modern security design.&lt;/p&gt;&#xA;&lt;p&gt;Rather than focusing primarily on network-based security, I wanted to explore what happens when identity becomes the primary security boundary.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Cloudflare Access Federation with Entra ID</title>
-      <link>http://localhost:1313/en/writeups/entra-cloudflare-scim/</link>
-      <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/writeups/entra-cloudflare-scim/</guid>
-      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to better understand how federation, provisioning and Zero Trust access work in practice between Microsoft Entra ID and Cloudflare Access.&lt;/p&gt;&#xA;&lt;p&gt;The goal was to explore how identity can be used as the primary security boundary and how access can be managed through groups rather than individual users.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-built&#34;&gt;What I Built&lt;/h2&gt;&#xA;&lt;p&gt;In this lab I integrated Microsoft Entra ID with Cloudflare Access using:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;OpenID Connect (OIDC)&lt;/li&gt;&#xA;&lt;li&gt;SCIM provisioning&lt;/li&gt;&#xA;&lt;li&gt;Group-based access control&lt;/li&gt;&#xA;&lt;li&gt;Automated user and group synchronization&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Architecture:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI-Assisted Azure RBAC Analysis</title>
-      <link>http://localhost:1313/en/writeups/ai-rbac-analyzer/</link>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/writeups/ai-rbac-analyzer/</guid>
-      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to gain a better understanding of Azure RBAC in practice while also exploring whether AI could be used to help identify excessive permissions and access-related risks.&lt;/p&gt;&#xA;&lt;p&gt;The goal was not to build a production-ready security tool, but to combine hands-on RBAC testing with AI-assisted analysis and see what insights could be generated.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-built&#34;&gt;What I Built&lt;/h2&gt;&#xA;&lt;p&gt;I created a small Azure lab environment consisting of:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Resource Groups&lt;/li&gt;&#xA;&lt;li&gt;Virtual Machines&lt;/li&gt;&#xA;&lt;li&gt;Network resources&lt;/li&gt;&#xA;&lt;li&gt;Users and groups&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I then assigned different RBAC roles to simulate a realistic access model.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>JML Monitor for Microsoft Entra ID</title>
-      <link>http://localhost:1313/en/writeups/jml-monitor-labb/</link>
-      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/writeups/jml-monitor-labb/</guid>
-      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to better understand Joiner, Mover and Leaver (JML) processes in practice, how access changes over time, and how access drift can be detected within Microsoft Entra ID.&lt;/p&gt;&#xA;&lt;p&gt;At the same time, I wanted to gain hands-on experience with Microsoft Graph API and explore how identity data can be analyzed programmatically.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-built&#34;&gt;What I Built&lt;/h2&gt;&#xA;&lt;p&gt;I developed a simple monitoring solution that collects users and group memberships from Microsoft Entra ID and compares the current state against historical snapshots.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Project on krisby.dev</title><link>https://krisby.dev/en/tags/project/</link><description>Recent content in Project on krisby.dev</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 26 Jul 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://krisby.dev/en/tags/project/index.xml" rel="self" type="application/rss+xml"/><item><title>End-to-End IAM, Part 1: The Architecture Behind Elytra and Ascendra</title><link>https://krisby.dev/en/writeups/end-to-end-iam-arkitektur/</link><pubDate>Sun, 26 Jul 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/en/writeups/end-to-end-iam-arkitektur/</guid><description>&lt;p&gt;This is part 1 of a series that goes deeper into &lt;a href="https://krisby.dev/en/writeups/end-to-end-iam/"&gt;end-to-end-iam&lt;/a&gt;, a side project where I built a fictional HR and IGA landscape connected to a real Entra ID tenant. The original writeup covered the big picture. This part zooms in on a single decision: why Elytra and Ascendra are fully separate systems, and what that actually costs and buys in practice.&lt;/p&gt;
+&lt;h2 id="two-systems-one-boundary"&gt;Two systems, one boundary&lt;/h2&gt;
+&lt;p&gt;Elytra is the HR system. It&amp;rsquo;s the source of truth for employment data: when someone is hired, changes role, or leaves, Elytra is the one that decides what&amp;rsquo;s true. Ascendra is the IGA platform (Identity Governance &amp;amp; Administration). It owns identities, roles, provisioning, SSO connections, and audit logs.&lt;/p&gt;</description></item><item><title>End-to-End IAM, Part 2: Provisioning to Entra ID with Microsoft Graph</title><link>https://krisby.dev/en/writeups/end-to-end-iam-graph-provisionering/</link><pubDate>Sun, 26 Jul 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/en/writeups/end-to-end-iam-graph-provisionering/</guid><description>&lt;p&gt;This is part 2 of the series on &lt;a href="https://krisby.dev/en/writeups/end-to-end-iam/"&gt;end-to-end-iam&lt;/a&gt;. &lt;a href="https://krisby.dev/en/writeups/end-to-end-iam-arkitektur/"&gt;Part 1&lt;/a&gt; covered why Elytra and Ascendra are fully separate systems, and how an event log (an outbox) keeps them in sync. This part covers what happens once Ascendra knows an employment record has changed: how it actually creates, updates, and disables real user accounts in Entra ID.&lt;/p&gt;
+&lt;h2 id="first-attempt-scim-was-the-wrong-path"&gt;First attempt: SCIM was the wrong path&lt;/h2&gt;
+&lt;p&gt;SCIM (System for Cross-domain Identity Management) is a well-established standard for provisioning users between systems, and my first instinct was to use it. That turned out to be the wrong path for this scenario.&lt;/p&gt;</description></item><item><title>End-to-End IAM, Part 3: How Reconciliation and JML Work</title><link>https://krisby.dev/en/writeups/end-to-end-iam-reconciliation-jml/</link><pubDate>Sun, 26 Jul 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/en/writeups/end-to-end-iam-reconciliation-jml/</guid><description>&lt;p&gt;This is part 3, and the last part, of the series on &lt;a href="https://krisby.dev/en/writeups/end-to-end-iam/"&gt;end-to-end-iam&lt;/a&gt;. &lt;a href="https://krisby.dev/en/writeups/end-to-end-iam-arkitektur/"&gt;Part 1&lt;/a&gt; covered why Elytra and Ascendra are kept fully separate. &lt;a href="https://krisby.dev/en/writeups/end-to-end-iam-graph-provisionering/"&gt;Part 2&lt;/a&gt; covered how Ascendra actually provisions accounts in Entra ID via Microsoft Graph. This part is about what happens when something goes wrong along the way, and why a single mechanism isn&amp;rsquo;t enough to keep HR and Entra ID in sync over time.&lt;/p&gt;
+&lt;h2 id="jml-in-practice-more-than-a-nice-to-have"&gt;JML in practice: more than a nice-to-have&lt;/h2&gt;
+&lt;p&gt;Joiner-Mover-Leaver (JML) describes the three lifecycle events every employment goes through: someone joins (Joiner), changes role (Mover), or leaves (Leaver). It sounds simple in theory, but in practice it&amp;rsquo;s exactly the problem every organization with more than a handful of employees has to solve safely:&lt;/p&gt;</description></item><item><title>End-to-End IAM: From HR to Entra ID with Elytra and Ascendra</title><link>https://krisby.dev/en/writeups/end-to-end-iam/</link><pubDate>Fri, 24 Jul 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/en/writeups/end-to-end-iam/</guid><description>&lt;h2 id="background"&gt;Background&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;end-to-end-iam&lt;/code&gt; is a side project where I explore how a modern IAM landscape can be built. The project revolves around a fictional company, Legatus Corp, and consists of two separate systems.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Elytra&lt;/strong&gt;: an HR system that acts as the source of truth for employment data — meaning if any other part of the system disagrees with it, Elytra is the one that&amp;rsquo;s right.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ascendra&lt;/strong&gt;: an IGA platform (Identity Governance &amp;amp; Administration) that handles identities, roles, provisioning, SSO connections, and audit.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I set the direction for the project: that the systems should be fully separate, that &lt;a href="https://www.convex.dev/"&gt;Convex&lt;/a&gt; would be the platform, and that the IGA system should connect to a real Entra ID tenant. Convex is a backend platform that bundles a database, server functions, and real-time updates into one thing, which made it a good fit for two standalone systems that still need to react quickly to each other&amp;rsquo;s events. I set up the app registration, the permissions, and the client secret (a secret key the app uses to authenticate itself) in Entra ID myself. The code implementation was built with AI-assisted development.&lt;/p&gt;</description></item><item><title>Identity-Centric Security Design for Healthcare</title><link>https://krisby.dev/en/writeups/healthcare-identity-security/</link><pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/en/writeups/healthcare-identity-security/</guid><description>&lt;h2 id="background"&gt;Background&lt;/h2&gt;
+&lt;p&gt;I built this project to explore how identity and access management could be designed for a small healthcare environment handling sensitive information.&lt;/p&gt;
+&lt;p&gt;The goal was to better understand how technologies such as Microsoft Entra ID, Conditional Access, FIDO2, RBAC and Managed Identities can work together as part of a modern security design.&lt;/p&gt;
+&lt;p&gt;Rather than focusing primarily on network-based security, I wanted to explore what happens when identity becomes the primary security boundary.&lt;/p&gt;</description></item><item><title>Cloudflare Access Federation with Entra ID</title><link>https://krisby.dev/en/writeups/entra-cloudflare-scim/</link><pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/en/writeups/entra-cloudflare-scim/</guid><description>&lt;h2 id="background"&gt;Background&lt;/h2&gt;
+&lt;p&gt;I wanted to better understand how federation, provisioning and Zero Trust access work in practice between Microsoft Entra ID and Cloudflare Access.&lt;/p&gt;
+&lt;p&gt;The goal was to explore how identity can be used as the primary security boundary and how access can be managed through groups rather than individual users.&lt;/p&gt;
+&lt;h2 id="what-i-built"&gt;What I Built&lt;/h2&gt;
+&lt;p&gt;In this lab I integrated Microsoft Entra ID with Cloudflare Access using:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenID Connect (OIDC)&lt;/li&gt;
+&lt;li&gt;SCIM provisioning&lt;/li&gt;
+&lt;li&gt;Group-based access control&lt;/li&gt;
+&lt;li&gt;Automated user and group synchronization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Architecture:&lt;/p&gt;</description></item><item><title>AI-Assisted Azure RBAC Analysis</title><link>https://krisby.dev/en/writeups/ai-rbac-analyzer/</link><pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/en/writeups/ai-rbac-analyzer/</guid><description>&lt;h2 id="background"&gt;Background&lt;/h2&gt;
+&lt;p&gt;I wanted to gain a better understanding of Azure RBAC in practice while also exploring whether AI could be used to help identify excessive permissions and access-related risks.&lt;/p&gt;
+&lt;p&gt;The goal was not to build a production-ready security tool, but to combine hands-on RBAC testing with AI-assisted analysis and see what insights could be generated.&lt;/p&gt;
+&lt;h2 id="what-i-built"&gt;What I Built&lt;/h2&gt;
+&lt;p&gt;I created a small Azure lab environment consisting of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Resource Groups&lt;/li&gt;
+&lt;li&gt;Virtual Machines&lt;/li&gt;
+&lt;li&gt;Network resources&lt;/li&gt;
+&lt;li&gt;Users and groups&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I then assigned different RBAC roles to simulate a realistic access model.&lt;/p&gt;</description></item><item><title>JML Monitor for Microsoft Entra ID</title><link>https://krisby.dev/en/writeups/jml-monitor-labb/</link><pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate><guid>https://krisby.dev/en/writeups/jml-monitor-labb/</guid><description>&lt;h2 id="background"&gt;Background&lt;/h2&gt;
+&lt;p&gt;I wanted to better understand Joiner, Mover and Leaver (JML) processes in practice, how access changes over time, and how access drift can be detected within Microsoft Entra ID.&lt;/p&gt;
+&lt;p&gt;At the same time, I wanted to gain hands-on experience with Microsoft Graph API and explore how identity data can be analyzed programmatically.&lt;/p&gt;
+&lt;h2 id="what-i-built"&gt;What I Built&lt;/h2&gt;
+&lt;p&gt;I developed a simple monitoring solution that collects users and group memberships from Microsoft Entra ID and compares the current state against historical snapshots.&lt;/p&gt;</description></item></channel></rss>
