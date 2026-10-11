@@ -5,179 +5,293 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Identity Ops Lab is a scenario-based IAM Operations portfolio project connected to a real Microsoft Entra lab tenant through Microsoft Graph in read-only mode."
+      content="An IAM simulator connected to Microsoft Entra. Investigate access problems in a simulated company, with read-only Microsoft Graph checks of your own lab tenant. Built by Andreas Krisby."
     />
+    <meta property="og:title" content="Identity Ops Lab | Andreas Krisby" />
+    <meta
+      property="og:description"
+      content="An IAM simulator connected to Microsoft Entra. Explore evidence-led access investigations, governance and lifecycle failures."
+    />
+    <meta property="og:type" content="website" />
     <title>Identity Ops Lab | Andreas Krisby</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="Identity Ops Lab home">
-        <span class="brand-mark">IO</span>
-        <span>Identity Ops Lab</span>
-      </a>
-      <nav aria-label="Page navigation">
-        <a href="#demo">Demo</a>
-        <a href="#workflow">Workflow</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="https://github.com/AndreasK229/identity-ops-lab">GitHub</a>
-      </nav>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="topbar">
+      <div class="wrap topbar-inner">
+        <a class="brand" href="#main"><span class="brand-mark" aria-hidden="true">IO</span>Identity Ops Lab</a>
+        <nav aria-label="Page navigation">
+          <a href="#how-it-works">How it works</a><a href="#demo">Demo</a><a href="#about">About Andreas</a>
+        </nav>
+      </div>
     </header>
-
-    <main id="top">
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">Portfolio project · IAM Operations · Microsoft Entra</p>
-          <h1>Scenario-based IAM Operations training connected to a real Entra lab tenant.</h1>
-          <p class="lead">
-            Identity Ops Lab simulates access tickets, users, applications, sign-in evidence, HR context, access owners,
-            audit trails, and root-cause review. The lab reads my Microsoft Entra lab tenant through Microsoft Graph in
-            read-only mode. Real tenant changes are made manually in Entra.
-          </p>
-          <div class="actions">
-            <a class="button primary" href="#demo">Watch demo</a>
-            <a class="button secondary" href="https://github.com/AndreasK229/identity-ops-lab">View GitHub</a>
-          </div>
-        </div>
-        <aside class="signal-card" aria-label="Project highlights">
-          <div>
-            <span class="metric">Graph</span>
-            <strong>Read-only Entra connector</strong>
-            <p>The lab can reflect real lab-tenant identity state without silently modifying live data.</p>
-          </div>
-          <div>
-            <span class="metric">IAM</span>
-            <strong>Evidence-led troubleshooting</strong>
-            <p>Scenarios separate authentication, authorization, device, MFA, and lifecycle issues.</p>
-          </div>
-          <div>
-            <span class="metric">IGA</span>
-            <strong>Root cause before closure</strong>
-            <p>Tickets are not complete until access is verified and the lifecycle cause is documented.</p>
-          </div>
-        </aside>
-      </section>
-
-      <section id="demo" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Demo</p>
-          <h2>Emma cannot access FinanceApp</h2>
-          <p>
-            The walkthrough shows one IAM case from symptom to verified resolution: sign-in evidence, identity state,
-            business context, access owner confirmation, least-privilege assignment in Entra, user verification, and
-            root-cause documentation.
-          </p>
-        </div>
-        <div class="video-frame">
-          <iframe
-            src="https://www.youtube.com/embed/8vfOF626-_8"
-            title="Identity Ops Lab demo"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <p class="note">
-          Full walkthrough: 11 minutes. For a quick review, focus on the first 5–6 minutes where the core IAM workflow
-          is shown.
-        </p>
-      </section>
-
-      <section id="workflow" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">What the lab demonstrates</p>
-          <h2>Not just fixing access — understanding why it failed.</h2>
-        </div>
-        <div class="workflow-grid">
-          <article>
-            <span>01</span>
-            <h3>Read the evidence</h3>
-            <p>Start with sign-in logs and failure reasons before changing passwords, MFA, groups, or assignments.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Check identity state</h3>
-            <p>Review account status, MFA registration, device compliance, groups, and assigned applications.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Validate business context</h3>
-            <p>Compare the request with role, department, HR context, and expected access for the user.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>Confirm with the owner</h3>
-            <p>Do not grant access only because someone asks. Confirm the approved access boundary.</p>
-          </article>
-          <article>
-            <span>05</span>
-            <h3>Restore the right access</h3>
-            <p>Make the smallest correct change in Entra, aligned with least privilege and the owner’s approval.</p>
-          </article>
-          <article>
-            <span>06</span>
-            <h3>Verify and document</h3>
-            <p>Ask the user to test again, then document the root cause and prevention step before closing.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section split">
+    <main id="main" class="wrap">
+      <section class="hero" aria-labelledby="hero-title">
         <div>
-          <p class="eyebrow">Scenario shown</p>
-          <h2>FinanceApp access failure</h2>
-          <p>
-            Emma Andersson cannot access FinanceApp. The sign-in evidence points to authorization rather than password
-            or MFA. The lab guides the operator through identity state, business context, owner approval, Entra
-            assignment, user verification, and lifecycle root cause.
+          <p class="eyebrow">IAM operations · Working portfolio project</p>
+          <h1 id="hero-title">
+            <span>An IAM simulator</span> <span class="accent">connected to Microsoft Entra.</span>
+          </h1>
+          <p class="lead">
+            Investigate access problems in a simulated company. Check users and groups in your own Entra lab tenant
+            through read-only Microsoft Graph calls.
           </p>
+          <p class="byline">Built by <strong>Andreas Krisby</strong></p>
+          <div class="actions">
+            <a class="button" href="#demo"><span aria-hidden="true">▶</span> Watch the demo</a
+            ><a class="text-link" href="#how-it-works">Explore how it works <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
-        <div class="case-card">
+        <figure class="product">
+          <div class="product-top"><span>Inside Identity Ops Lab</span><span>Simulated company</span></div>
+          <a
+            class="image-link"
+            href="./assets/app-operations-desktop.jpg"
+            target="_blank"
+            rel="noopener"
+            aria-label="Open the operations overview screenshot at full size in a new tab"
+            ><img
+              src="./assets/app-operations-desktop.jpg"
+              width="1280"
+              height="720"
+              alt="The running lab shows an incident queue with onboarding, leaver and temporary privileged-access cases, alongside sign-in risk."
+          /></a>
+          <figcaption>
+            <span>Joiner, mover, leaver &amp; access investigations</span
+            ><a href="./assets/app-operations-desktop.jpg" target="_blank" rel="noopener">View full image ↗</a>
+          </figcaption>
+        </figure>
+      </section>
+      <section id="workflow" class="workflow" aria-labelledby="workflow-title">
+        <div class="workflow-intro">
+          <h2 id="workflow-title">What you do in the lab</h2>
+          <p>Investigate the cause, not just the symptom.</p>
+        </div>
+        <ol class="flow">
+          <li>
+            <span class="step-number">01</span>
+            <h3>Receive a ticket</h3>
+            <p>Read the problem and ask the persona what happened.</p>
+          </li>
+          <li>
+            <span class="step-number">02</span>
+            <h3>Investigate the cause</h3>
+            <p>Check account state, access and the events behind the issue.</p>
+          </li>
+          <li>
+            <span class="step-number">03</span>
+            <h3>Confirm the access need</h3>
+            <p>Compare the employee’s role with the access owner’s approval.</p>
+          </li>
+          <li>
+            <span class="step-number">04</span>
+            <h3>Fix &amp; verify</h3>
+            <p>Make the appropriate change. Verify and document before closing.</p>
+          </li>
+        </ol>
+        <div class="case-examples">
+          <h3>Cases you can investigate</h3>
           <ul>
-            <li><strong>Symptom:</strong> FinanceApp access denied</li>
-            <li><strong>Evidence:</strong> Authorization requirement not satisfied</li>
-            <li><strong>Decision:</strong> Normal FinanceApp access approved by owner</li>
-            <li><strong>Action:</strong> Restore exact Entra app assignment</li>
-            <li><strong>Closure:</strong> User verified and root cause documented</li>
+            <li><strong>Missing app access</strong>Find why an employee can no longer open a required app.</li>
+            <li>
+              <strong>Access left after a role change</strong>Check whether old permissions still match the new role.
+            </li>
+            <li>
+              <strong>An account still active after leaving</strong>Trace why the offboarding workflow did not disable
+              it.
+            </li>
           </ul>
         </div>
       </section>
-
-      <section id="roadmap" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Next direction</p>
-          <h2>From portfolio lab to practical IAM training path.</h2>
+      <section id="how-it-works" class="section" aria-labelledby="system-title">
+        <div class="section-head">
+          <p class="eyebrow">Simulation + real identity data</p>
+          <h2 id="system-title">Simulated cases. Real Entra checks.</h2>
           <p>
-            The next iteration is focused on making the scenarios more realistic and useful for IAM teams, without
-            turning the project into a full ticketing or IGA platform.
+            The lab creates the scenario. Microsoft Graph reads selected identity data from your Entra lab tenant. You
+            make tenant changes yourself in the Entra portal.
           </p>
         </div>
-        <div class="roadmap">
-          <div>Difficulty levels and locked scenario progression</div>
-          <div>Completion scorecards for evidence, least privilege, verification, and root cause</div>
-          <div>More joiner, mover, leaver, privileged access, and lifecycle cases</div>
-          <div>Entra, SailPoint-style, and Okta-style terminology lenses</div>
-          <div>Noisy evidence so cases feel closer to real customer environments</div>
+        <figure class="system-map" aria-labelledby="system-title" aria-describedby="system-description">
+          <div class="map-lanes">
+            <div class="map-node">
+              <span class="node-symbol" aria-hidden="true"
+                ><svg viewBox="0 0 24 24">
+                  <path d="M3 21V7l9-4 9 4v14M7 21v-5h4v5M7 8v3m5-5v5m5-3v3m0 5v5M1 21h22" /></svg></span
+              ><span class="node-label">Simulated</span>
+              <h3>A company with access problems</h3>
+              <p>Personas, tickets, HR context and scenario sign-in and audit logs.</p>
+            </div>
+            <div class="connector">
+              <span>Cases &amp; context</span><span class="arrow" aria-hidden="true"></span><small>Into the lab</small>
+            </div>
+            <div class="map-node console">
+              <span class="node-symbol" aria-hidden="true"
+                ><svg viewBox="0 0 24 24">
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <path d="M8 21h8m-4-4v4M6 8h4m-4 4h12" /></svg></span
+              ><span class="node-label">Your investigation</span>
+              <h3>Identity Ops Lab</h3>
+              <p>Read evidence. Validate access. Verify and document.</p>
+            </div>
+            <div class="connector read">
+              <span>Microsoft Graph</span><span class="arrow" aria-hidden="true"></span><small>Read-only checks</small>
+            </div>
+            <div class="map-node">
+              <span class="node-symbol" aria-hidden="true"
+                ><svg viewBox="0 0 24 24"><path d="m12 2 9 6-9 6-9-6 9-6Zm-9 6v8l9 6 9-6V8M12 14v8" /></svg></span
+              ><span class="node-label">Real lab tenant</span>
+              <h3>Microsoft Entra ID</h3>
+              <p>Real lab users, groups, group membership and account status.</p>
+            </div>
+          </div>
+          <div class="operator-route">
+            <span class="route-label">You make the changes</span><span>You</span
+            ><span class="route-arrow" aria-hidden="true">→</span><span>Entra portal</span
+            ><span class="route-arrow" aria-hidden="true">→</span><span>Manual change in your lab tenant</span>
+          </div>
+          <figcaption id="system-description">
+            Cases and context flow into the lab from the simulation. Selected tenant data flows from Entra into the lab
+            through Graph. The operator makes real tenant changes separately in the Entra portal.
+          </figcaption>
+        </figure>
+        <div class="technical">
+          <h3>A persona reply is not a real sign-in test.</h3>
+          <p>
+            Persona conversations, scenario logs and remote support are simulated. To prove that real app access works,
+            test the application separately with the lab account.
+          </p>
         </div>
       </section>
-
-      <section class="section contact">
-        <p class="eyebrow">About</p>
-        <h2>Built by Andreas Krisby</h2>
-        <p>
-          I am looking for IAM, Identity Security, and IAM Operations opportunities. I built this lab to show practical
-          reasoning around identity evidence, access governance, least privilege, and lifecycle root cause.
-        </p>
-        <div class="actions">
-          <a class="button primary" href="https://github.com/AndreasK229/identity-ops-lab">GitHub repository</a>
-          <a class="button secondary" href="https://www.linkedin.com/in/andreas-krisby/">LinkedIn</a>
+      <section id="proof" class="section proof-section" aria-labelledby="proof-title">
+        <div class="section-head">
+          <p class="eyebrow">Inside the running app</p>
+          <h2 id="proof-title">See the identity, the risk and the history.</h2>
+          <p>These screenshots come from the running simulator. Open any image to inspect the details.</p>
         </div>
+        <div class="proof-grid">
+          <figure class="proof-item">
+            <a
+              class="image-link"
+              href="./assets/app-identity-desktop.jpg"
+              target="_blank"
+              rel="noopener"
+              aria-label="Open the identity profile screenshot at full size in a new tab"
+              ><img
+                src="./assets/app-identity-desktop.jpg"
+                loading="lazy"
+                width="1280"
+                height="720"
+                alt="An employee identity profile showing account and MFA status, manager, group memberships and application assignments."
+            /></a>
+            <figcaption>
+              <p class="eyebrow">Identity context</p>
+              <h3>Who should have access?</h3>
+              <p>Compare account state and current access with the employee’s role and business context.</p>
+              <p class="image-caption">Employee profile · Simulated data</p>
+            </figcaption>
+          </figure>
+          <figure class="proof-item">
+            <a
+              class="image-link"
+              href="./assets/app-governance-desktop.jpg"
+              target="_blank"
+              rel="noopener"
+              aria-label="Open the governance screenshot at full size in a new tab"
+              ><img
+                src="./assets/app-governance-desktop.jpg"
+                loading="lazy"
+                width="1280"
+                height="720"
+                alt="Governance findings identify a terminated employee with an enabled account and privileged access outside an approved admin role."
+            /></a>
+            <figcaption>
+              <p class="eyebrow">Governance</p>
+              <h3>Where do controls fail?</h3>
+              <p>Investigate leaver accounts, stale privileges and access left behind after role changes.</p>
+              <p class="image-caption">Governance findings · Simulated data</p>
+            </figcaption>
+          </figure>
+          <figure class="proof-item">
+            <a
+              class="image-link"
+              href="./assets/app-audit-desktop.jpg"
+              target="_blank"
+              rel="noopener"
+              aria-label="Open the audit log screenshot at full size in a new tab"
+              ><img
+                src="./assets/app-audit-desktop.jpg"
+                loading="lazy"
+                width="1280"
+                height="720"
+                alt="Audit events record a failed account-disable workflow, an HR termination event and an expired temporary-access window."
+            /></a>
+            <figcaption>
+              <p class="eyebrow">Lifecycle history</p>
+              <h3>Why did it happen?</h3>
+              <p>Trace the events behind the issue and document what needs to change to prevent a repeat.</p>
+              <p class="image-caption">Audit trail · Simulated events</p>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+      <section id="demo" class="section demo-layout" aria-labelledby="demo-title">
+        <div class="section-head">
+          <p class="eyebrow">Watch the investigation</p>
+          <h2 id="demo-title">From a blocked app to a verified outcome.</h2>
+          <p>
+            Follow Emma’s FinanceApp case: inspect the evidence, confirm the business need, make a manual Entra
+            assignment and review the lifecycle cause.
+          </p>
+          <p class="demo-note">Full walkthrough · Microsoft Entra lab tenant + simulated case context</p>
+          <a class="text-link" href="https://www.youtube.com/watch?v=8vfOF626-_8" target="_blank" rel="noopener"
+            >Watch on YouTube <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="video">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/8vfOF626-_8"
+            title="Andreas Krisby demonstrates the FinanceApp IAM investigation in Identity Ops Lab"
+            loading="lazy"
+            allow="encrypted-media; picture-in-picture; fullscreen"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+      <section id="about" class="about" aria-labelledby="about-title">
+        <div>
+          <p class="eyebrow">The person behind the lab</p>
+          <h2 id="about-title">Built by Andreas Krisby.</h2>
+          <p>
+            I designed and built this lab to demonstrate how I investigate identity issues and reason about access. I’m
+            looking for opportunities in IAM operations and identity security.
+          </p>
+          <div class="actions">
+            <a class="text-link" href="https://www.linkedin.com/in/andreas-krisby/"
+              >Connect on LinkedIn <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <ul class="decisions" aria-label="Engineering decisions demonstrated by the project">
+          <li>
+            <strong>Keep evidence separate from scenario truth.</strong>Investigations use the information available to
+            the operator.
+          </li>
+          <li>
+            <strong>Use read-only checks for the tenant connection.</strong>Real Entra changes stay under the operator’s
+            control.
+          </li>
+          <li>
+            <strong>Check the outcome before closing.</strong>Scenario requirements include access verification and
+            governance review where needed.
+          </li>
+        </ul>
       </section>
     </main>
-
-    <footer>
-      <span>Identity Ops Lab</span>
-      <span>Portfolio project for IAM Operations and Identity Security.</span>
+    <footer class="wrap">
+      <span>Identity Ops Lab · Andreas Krisby</span
+      ><span>Portfolio project · Screenshots use simulated identities</span>
     </footer>
   </body>
 </html>
