@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Identity Ops Lab is a scenario-based IAM Operations portfolio project connected to a real Microsoft Entra lab tenant through Microsoft Graph in read-only mode."
+    />
+    <title>Identity Ops Lab | Andreas Krisby</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Identity Ops Lab home">
+        <span class="brand-mark">IO</span>
+        <span>Identity Ops Lab</span>
+      </a>
+      <nav aria-label="Page navigation">
+        <a href="#demo">Demo</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="https://github.com/AndreasK229/identity-ops-lab">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Portfolio project · IAM Operations · Microsoft Entra</p>
+          <h1>Scenario-based IAM Operations training connected to a real Entra lab tenant.</h1>
+          <p class="lead">
+            Identity Ops Lab simulates access tickets, users, applications, sign-in evidence, HR context, access owners,
+            audit trails, and root-cause review. The lab reads my Microsoft Entra lab tenant through Microsoft Graph in
+            read-only mode. Real tenant changes are made manually in Entra.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#demo">Watch demo</a>
+            <a class="button secondary" href="https://github.com/AndreasK229/identity-ops-lab">View GitHub</a>
+          </div>
+        </div>
+        <aside class="signal-card" aria-label="Project highlights">
+          <div>
+            <span class="metric">Graph</span>
+            <strong>Read-only Entra connector</strong>
+            <p>The lab can reflect real lab-tenant identity state without silently modifying live data.</p>
+          </div>
+          <div>
+            <span class="metric">IAM</span>
+            <strong>Evidence-led troubleshooting</strong>
+            <p>Scenarios separate authentication, authorization, device, MFA, and lifecycle issues.</p>
+          </div>
+          <div>
+            <span class="metric">IGA</span>
+            <strong>Root cause before closure</strong>
+            <p>Tickets are not complete until access is verified and the lifecycle cause is documented.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section id="demo" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Demo</p>
+          <h2>Emma cannot access FinanceApp</h2>
+          <p>
+            The walkthrough shows one IAM case from symptom to verified resolution: sign-in evidence, identity state,
+            business context, access owner confirmation, least-privilege assignment in Entra, user verification, and
+            root-cause documentation.
+          </p>
+        </div>
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/8vfOF626-_8"
+            title="Identity Ops Lab demo"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p class="note">
+          Full walkthrough: 11 minutes. For a quick review, focus on the first 5–6 minutes where the core IAM workflow
+          is shown.
+        </p>
+      </section>
+
+      <section id="workflow" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">What the lab demonstrates</p>
+          <h2>Not just fixing access — understanding why it failed.</h2>
+        </div>
+        <div class="workflow-grid">
+          <article>
+            <span>01</span>
+            <h3>Read the evidence</h3>
+            <p>Start with sign-in logs and failure reasons before changing passwords, MFA, groups, or assignments.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Check identity state</h3>
+            <p>Review account status, MFA registration, device compliance, groups, and assigned applications.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Validate business context</h3>
+            <p>Compare the request with role, department, HR context, and expected access for the user.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Confirm with the owner</h3>
+            <p>Do not grant access only because someone asks. Confirm the approved access boundary.</p>
+          </article>
+          <article>
+            <span>05</span>
+            <h3>Restore the right access</h3>
+            <p>Make the smallest correct change in Entra, aligned with least privilege and the owner’s approval.</p>
+          </article>
+          <article>
+            <span>06</span>
+            <h3>Verify and document</h3>
+            <p>Ask the user to test again, then document the root cause and prevention step before closing.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split">
+        <div>
+          <p class="eyebrow">Scenario shown</p>
+          <h2>FinanceApp access failure</h2>
+          <p>
+            Emma Andersson cannot access FinanceApp. The sign-in evidence points to authorization rather than password
+            or MFA. The lab guides the operator through identity state, business context, owner approval, Entra
+            assignment, user verification, and lifecycle root cause.
+          </p>
+        </div>
+        <div class="case-card">
+          <ul>
+            <li><strong>Symptom:</strong> FinanceApp access denied</li>
+            <li><strong>Evidence:</strong> Authorization requirement not satisfied</li>
+            <li><strong>Decision:</strong> Normal FinanceApp access approved by owner</li>
+            <li><strong>Action:</strong> Restore exact Entra app assignment</li>
+            <li><strong>Closure:</strong> User verified and root cause documented</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="roadmap" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Next direction</p>
+          <h2>From portfolio lab to practical IAM training path.</h2>
+          <p>
+            The next iteration is focused on making the scenarios more realistic and useful for IAM teams, without
+            turning the project into a full ticketing or IGA platform.
+          </p>
+        </div>
+        <div class="roadmap">
+          <div>Difficulty levels and locked scenario progression</div>
+          <div>Completion scorecards for evidence, least privilege, verification, and root cause</div>
+          <div>More joiner, mover, leaver, privileged access, and lifecycle cases</div>
+          <div>Entra, SailPoint-style, and Okta-style terminology lenses</div>
+          <div>Noisy evidence so cases feel closer to real customer environments</div>
+        </div>
+      </section>
+
+      <section class="section contact">
+        <p class="eyebrow">About</p>
+        <h2>Built by Andreas Krisby</h2>
+        <p>
+          I am looking for IAM, Identity Security, and IAM Operations opportunities. I built this lab to show practical
+          reasoning around identity evidence, access governance, least privilege, and lifecycle root cause.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/AndreasK229/identity-ops-lab">GitHub repository</a>
+          <a class="button secondary" href="https://www.linkedin.com/in/andreas-krisby/">LinkedIn</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Identity Ops Lab</span>
+      <span>Portfolio project for IAM Operations and Identity Security.</span>
+    </footer>
+  </body>
+</html>
