@@ -564,7 +564,7 @@ footer {
   }
 }
 :root {
-  --anatomy-frame-height: 900px;
+  --anatomy-frame-height: 340px;
 }
 .anatomy-frame {
   display: block;
@@ -572,28 +572,63 @@ footer {
   height: var(--anatomy-frame-height);
   border: 0;
 }
-.system-boundary {
+.anatomy-connection {
+  height: 880px;
+}
+.connection-boundaries {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+@media (max-width: 600px) {
+  .anatomy-connection {
+    height: 1450px;
+  }
+  .connection-boundaries {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+.system-figures {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin: 8px 0 28px;
+  margin: 24px 0 32px;
+  padding: 0;
+  list-style: none;
 }
-.system-boundary p {
+.system-figures li {
+  min-width: 0;
+}
+.system-figures h3 {
+  font-size: 18px;
+  line-height: 1.4;
+  min-height: 2.8em;
+  margin: 0 0 16px;
+}
+.system-figures h3 span {
+  color: var(--muted);
+}
+.system-figures p {
   font-size: 14px;
   line-height: 1.6;
-  margin: 0;
+  margin: 14px 0 0;
 }
 @media (max-width: 800px) {
   :root {
-    --anatomy-frame-height: 790px;
+    --anatomy-frame-height: 470px;
   }
-  .system-boundary {
+  .system-figures {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 32px;
+  }
+  .system-figures h3 {
+    min-height: 0;
   }
 }
 @media (max-width: 480px) {
   :root {
-    --anatomy-frame-height: 740px;
+    --anatomy-frame-height: 340px;
   }
 }

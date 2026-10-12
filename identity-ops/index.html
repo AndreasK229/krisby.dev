@@ -108,23 +108,20 @@
       <section id="how-it-works" class="section" aria-labelledby="system-title">
         <div class="section-head">
           <p class="eyebrow">Simulation + real identity data</p>
-          <h2 id="system-title">Simulated cases. Real Entra checks.</h2>
-          <p>
-            The lab creates the scenario. Microsoft Graph reads selected identity data from your Entra lab tenant. You
-            make tenant changes yourself in the Entra portal.
-          </p>
+          <h2 id="system-title">Investigate a case. Check Entra. Make the change.</h2>
+          <p>Investigate simulated cases using real Entra data. Make approved changes yourself in the Entra portal.</p>
         </div>
         <iframe
-          class="anatomy-frame"
-          src="./anatomy-lab.html"
-          title="Animated explanation of simulated tickets, read-only Graph checks and manual Entra changes"
-          loading="lazy"
+          class="anatomy-frame anatomy-connection"
+          src="./anatomy-connection.html"
+          title="Ticket to Identity Ops, read-only Entra query, manual portal change, and refreshed assignment"
+          loading="eager"
           sandbox="allow-scripts"
         ></iframe>
-        <div class="system-boundary">
-          <p><strong>Simulated:</strong> Personas, tickets, HR context and scenario sign-in and audit logs.</p>
-          <p><strong>Read-only Graph:</strong> Real lab users, groups, group membership and account status.</p>
-          <p><strong>You make the changes:</strong> Tenant changes happen separately in the Entra portal.</p>
+        <div class="connection-boundaries">
+          <p>Personas, tickets, HR context and scenario sign-in and audit logs. <strong>Simulated.</strong></p>
+          <p>Real lab users, groups, group membership and account status. <strong>Read-only Graph.</strong></p>
+          <p><strong>You make the changes.</strong> Read Entra again to see the updated assignment in the lab.</p>
         </div>
         <div class="technical">
           <h3>A persona reply is not a real sign-in test.</h3>
