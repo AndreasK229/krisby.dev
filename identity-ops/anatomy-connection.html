@@ -108,6 +108,13 @@
 * {
   box-sizing: border-box;
 }
+/* The parent fits this document to its content; keep native iframe scrollbars out of the figure. */
+html {
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
 body {
   margin: 0;
   padding: 1px;
