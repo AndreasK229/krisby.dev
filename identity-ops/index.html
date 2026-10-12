@@ -15,6 +15,7 @@
     <meta property="og:type" content="website" />
     <title>Identity Ops Lab | Andreas Krisby</title>
     <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./anatomy-frame.js"></script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -113,49 +114,18 @@
             make tenant changes yourself in the Entra portal.
           </p>
         </div>
-        <figure class="system-map" aria-labelledby="system-title" aria-describedby="system-description">
-          <div class="map-lanes">
-            <div class="map-node">
-              <span class="node-symbol" aria-hidden="true"
-                ><svg viewBox="0 0 24 24">
-                  <path d="M3 21V7l9-4 9 4v14M7 21v-5h4v5M7 8v3m5-5v5m5-3v3m0 5v5M1 21h22" /></svg></span
-              ><span class="node-label">Simulated</span>
-              <h3>A company with access problems</h3>
-              <p>Personas, tickets, HR context and scenario sign-in and audit logs.</p>
-            </div>
-            <div class="connector">
-              <span>Cases &amp; context</span><span class="arrow" aria-hidden="true"></span><small>Into the lab</small>
-            </div>
-            <div class="map-node console">
-              <span class="node-symbol" aria-hidden="true"
-                ><svg viewBox="0 0 24 24">
-                  <rect x="2" y="3" width="20" height="14" rx="2" />
-                  <path d="M8 21h8m-4-4v4M6 8h4m-4 4h12" /></svg></span
-              ><span class="node-label">Your investigation</span>
-              <h3>Identity Ops Lab</h3>
-              <p>Read evidence. Validate access. Verify and document.</p>
-            </div>
-            <div class="connector read">
-              <span>Microsoft Graph</span><span class="arrow" aria-hidden="true"></span><small>Read-only checks</small>
-            </div>
-            <div class="map-node">
-              <span class="node-symbol" aria-hidden="true"
-                ><svg viewBox="0 0 24 24"><path d="m12 2 9 6-9 6-9-6 9-6Zm-9 6v8l9 6 9-6V8M12 14v8" /></svg></span
-              ><span class="node-label">Real lab tenant</span>
-              <h3>Microsoft Entra ID</h3>
-              <p>Real lab users, groups, group membership and account status.</p>
-            </div>
-          </div>
-          <div class="operator-route">
-            <span class="route-label">You make the changes</span><span>You</span
-            ><span class="route-arrow" aria-hidden="true">→</span><span>Entra portal</span
-            ><span class="route-arrow" aria-hidden="true">→</span><span>Manual change in your lab tenant</span>
-          </div>
-          <figcaption id="system-description">
-            Cases and context flow into the lab from the simulation. Selected tenant data flows from Entra into the lab
-            through Graph. The operator makes real tenant changes separately in the Entra portal.
-          </figcaption>
-        </figure>
+        <iframe
+          class="anatomy-frame"
+          src="./anatomy-lab.html"
+          title="Animated explanation of simulated tickets, read-only Graph checks and manual Entra changes"
+          loading="lazy"
+          sandbox="allow-scripts"
+        ></iframe>
+        <div class="system-boundary">
+          <p><strong>Simulated:</strong> Personas, tickets, HR context and scenario sign-in and audit logs.</p>
+          <p><strong>Read-only Graph:</strong> Real lab users, groups, group membership and account status.</p>
+          <p><strong>You make the changes:</strong> Tenant changes happen separately in the Entra portal.</p>
+        </div>
         <div class="technical">
           <h3>A persona reply is not a real sign-in test.</h3>
           <p>

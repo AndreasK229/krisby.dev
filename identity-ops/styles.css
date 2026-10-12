@@ -46,6 +46,10 @@ a:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 5px;
 }
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 5px;
+}
 img {
   display: block;
   width: 100%;
@@ -316,123 +320,6 @@ h2 {
 .section-head > p:last-child {
   color: var(--soft);
 }
-.system-map {
-  margin: 0;
-}
-.map-lanes {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 128px minmax(0, 1.1fr) 128px minmax(0, 1fr);
-  align-items: center;
-}
-.map-node {
-  min-width: 0;
-}
-.node-symbol {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  margin-block-end: 0.8rem;
-  color: var(--blue);
-}
-.node-symbol svg {
-  width: 24px;
-  height: 24px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 1.6;
-}
-.map-node h3 {
-  font-size: 1.08rem;
-  line-height: 1.4;
-}
-.map-node p {
-  margin-block-start: 0.35rem;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-.node-label {
-  display: block;
-  margin-block-end: 0.3rem;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--muted);
-}
-.map-node.console {
-  padding: 1.25rem;
-  border: 1px solid var(--accent);
-  border-radius: 10px;
-  background: var(--surface);
-}
-.console .node-symbol {
-  color: var(--accent);
-}
-.connector {
-  padding-inline: 0.6rem;
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.75rem;
-  line-height: 1.5;
-}
-.connector .arrow {
-  display: block;
-  position: relative;
-  height: 1px;
-  background: var(--soft);
-  margin-block: 0.75rem;
-}
-.connector .arrow::after {
-  content: '';
-  position: absolute;
-  inset-inline-end: 0;
-  top: -4px;
-  width: 8px;
-  height: 8px;
-  border-block-start: 1px solid var(--soft);
-  border-inline-end: 1px solid var(--soft);
-  transform: rotate(45deg);
-}
-.connector.read {
-  color: var(--accent);
-}
-.connector.read .arrow {
-  background: var(--accent);
-}
-.connector.read .arrow::after {
-  inset-inline-start: 0;
-  inset-inline-end: auto;
-  border-color: var(--accent);
-  transform: rotate(-135deg);
-}
-.operator-route {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-block-start: 1.5rem;
-  padding-block: 1rem;
-  border-block-start: 1px dashed var(--line);
-  font-size: 0.85rem;
-  color: var(--soft);
-}
-.operator-route .route-label {
-  color: var(--amber);
-}
-.operator-route .route-arrow {
-  color: var(--amber);
-  font-size: 1.2rem;
-}
-.system-map figcaption {
-  max-width: 75ch;
-  color: var(--muted);
-  font-size: 0.85rem;
-  margin-block-start: 0.6rem;
-}
 .technical {
   margin-block-start: 1.5rem;
   font-size: 0.9rem;
@@ -570,12 +457,6 @@ footer {
   h1 {
     font-size: clamp(1.8rem, 3.7vw, 2.4rem);
   }
-  .map-lanes {
-    grid-template-columns: minmax(0, 1fr) 86px minmax(0, 1.1fr) 86px minmax(0, 1fr);
-  }
-  .map-node.console {
-    padding: 1rem;
-  }
   .demo-layout {
     gap: 1.75rem;
   }
@@ -630,48 +511,6 @@ footer {
   .section {
     padding-block: 3rem;
   }
-  .map-lanes {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .map-node {
-    text-align: start;
-  }
-  .connector {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.7rem;
-    padding-inline: 1rem;
-  }
-  .connector .arrow {
-    height: 36px;
-    width: 1px;
-    margin: 0 0.4rem;
-  }
-  .connector .arrow::after {
-    inset-inline-end: -4px;
-    top: auto;
-    bottom: 0;
-    transform: rotate(135deg);
-  }
-  .connector.read .arrow::after {
-    inset-inline-start: -4px;
-    top: 0;
-    bottom: auto;
-    transform: rotate(-45deg);
-  }
-  .connector small {
-    font-size: inherit;
-  }
-  .operator-route {
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .operator-route .route-arrow {
-    transform: rotate(90deg);
-  }
   .proof-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -722,5 +561,39 @@ footer {
   }
   .product-top {
     font-size: 0.7rem;
+  }
+}
+:root {
+  --anatomy-frame-height: 900px;
+}
+.anatomy-frame {
+  display: block;
+  width: 100%;
+  height: var(--anatomy-frame-height);
+  border: 0;
+}
+.system-boundary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 8px 0 28px;
+}
+.system-boundary p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+@media (max-width: 800px) {
+  :root {
+    --anatomy-frame-height: 790px;
+  }
+  .system-boundary {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+@media (max-width: 480px) {
+  :root {
+    --anatomy-frame-height: 740px;
   }
 }
