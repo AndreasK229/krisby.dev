@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="An IAM simulator connected to Microsoft Entra. Investigate access problems in a simulated company, with read-only Microsoft Graph checks of your own lab tenant. Built by Andreas Krisby."
+      content="Andreas Krisby’s IAM portfolio lab: access investigations, business context and read-only Microsoft Graph checks of his own Entra lab tenant."
     />
     <meta property="og:title" content="Identity Ops Lab | Andreas Krisby" />
     <meta
@@ -35,14 +35,27 @@
             <span>An IAM simulator</span> <span class="accent">connected to Microsoft Entra.</span>
           </h1>
           <p class="lead">
-            Investigate access problems in a simulated company. Check users and groups in your own Entra lab tenant
-            through read-only Microsoft Graph calls.
+            I built this lab to show how I investigate access problems: check the evidence, confirm the business need,
+            and verify the outcome. It reads identity data from my own Microsoft Entra lab tenant.
           </p>
           <p class="byline">Built by <strong>Andreas Krisby</strong></p>
           <div class="actions">
             <a class="button" href="#demo"><span aria-hidden="true">▶</span> Watch the demo</a
             ><a class="text-link" href="#how-it-works">Explore how it works <span aria-hidden="true">↗</span></a>
           </div>
+          <section class="project-choices" aria-labelledby="choices-title">
+            <h2 id="choices-title">Two decisions behind the lab</h2>
+            <ul>
+              <li>
+                <strong>Read data. Keep changes manual.</strong>Graph is read-only. I make tenant changes in the Entra
+                portal.
+              </li>
+              <li>
+                <strong>Check the need before granting access.</strong>HR context informs the investigation; the access
+                owner confirms the need.
+              </li>
+            </ul>
+          </section>
         </div>
         <figure class="product">
           <div class="product-top"><span>Inside Identity Ops Lab</span><span>Simulated company</span></div>
@@ -66,7 +79,7 @@
       </section>
       <section id="workflow" class="workflow" aria-labelledby="workflow-title">
         <div class="workflow-intro">
-          <h2 id="workflow-title">What you do in the lab</h2>
+          <h2 id="workflow-title">The investigation I demonstrate</h2>
           <p>Investigate the cause, not just the symptom.</p>
         </div>
         <ol class="flow">
@@ -109,7 +122,10 @@
         <div class="section-head">
           <p class="eyebrow">Simulation + real identity data</p>
           <h2 id="system-title">Investigate a case. Check Entra. Make the change.</h2>
-          <p>Investigate simulated cases using real Entra data. Make approved changes yourself in the Entra portal.</p>
+          <p>
+            The lab reads Entra. I make the approved change in the portal. The lab reads again to show the updated
+            state.
+          </p>
         </div>
         <iframe
           class="anatomy-frame anatomy-connection"
@@ -231,8 +247,8 @@
           <p class="eyebrow">The person behind the lab</p>
           <h2 id="about-title">Built by Andreas Krisby.</h2>
           <p>
-            I designed and built this lab to demonstrate how I investigate identity issues and reason about access. I’m
-            looking for opportunities in IAM operations and identity security.
+            I’m working toward my first IAM role. This project shows how I approach access investigations, connect
+            business context to permissions, and trace the lifecycle events behind a problem.
           </p>
           <div class="actions">
             <a class="text-link" href="https://www.linkedin.com/in/andreas-krisby-703978268/"
@@ -246,8 +262,8 @@
             the operator.
           </li>
           <li>
-            <strong>Use read-only checks for the tenant connection.</strong>Real Entra changes stay under the operator’s
-            control.
+            <strong>Make the boundaries clear.</strong>Scenario logs are simulated. Tenant data comes from Graph. A real
+            app sign-in must be tested separately.
           </li>
           <li>
             <strong>Check the outcome before closing.</strong>Scenario requirements include access verification and
