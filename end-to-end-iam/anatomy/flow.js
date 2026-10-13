@@ -110,7 +110,7 @@ function f(e, t, a, o, f = {}) {
 			]), !0));
 		}
 	}
-	let ee;
+	let O;
 	if (f.bevel && f.bevel > 0) {
 		let n = f.bevel, i = e.map(([e, t], r) => {
 			let [i, a] = b[(r + m - 1) % m], [o, s] = b[r], c = i + o, l = a + s, u = Math.hypot(c, l) || 1;
@@ -120,7 +120,7 @@ function f(e, t, a, o, f = {}) {
 			n,
 			t + a
 		], o));
-		ee = d(x, !0).map((e) => s([
+		O = d(x, !0).map((e) => s([
 			S[e[0]],
 			...e.slice(1, -1).map((e) => i[e]),
 			S[e[e.length - 1]]
@@ -132,7 +132,7 @@ function f(e, t, a, o, f = {}) {
 		crease: T.join(""),
 		top: s(l(S), !0),
 		shades: D.map((e) => e.join("")),
-		bevel: ee
+		bevel: O
 	};
 }
 function p(e, t, n, i = !1) {
@@ -409,84 +409,84 @@ C({}, {
 	render: () => $n,
 	tag: () => Zn
 });
-var E = .22, D = 26, ee = 40, O = 5, k = 1.4, A = 4, j = 2, M = 18, N = (e) => ee + (D - e) * E, P = 1 / Math.sqrt(1 + E * E), te = (e) => {
-	let t = M - e * P;
+var E = .22, D = 26, O = 40, k = 5, A = 1.4, j = 4, M = 2, N = 18, P = (e) => O + (D - e) * E, F = 1 / Math.sqrt(1 + E * E), ee = (e) => {
+	let t = N - e * F;
 	return [
 		t,
 		0,
-		N(t) + 4.5
+		P(t) + 4.5
 	];
-}, F = M + 4.5 * P + .3, ne = M - 9 / 2 * P, re = 1.2;
-N(F + re) + .6, N(ne) + 4.5 + 2.3;
-var ie = 9.5, I = 6, L = [-88.5, 0], ae = 8.5;
-ae - 1.3;
-var oe = L[0] + Math.sqrt(ae ** 2 - O ** 2), se = N(L[0] + Math.sqrt(ae ** 2 - (O + k) ** 2)), ce = se + A, R = [[-131.4, -9.9], [-78.6, -42.9]], le = 12.5, ue = 82, de = 4, fe = 11, pe = 10, z = 4, me = ue + 4.5, he = ce + j, ge = 35 * Math.PI / 180, B = [29, 0], V = -2, H = 16.5, _e = .12, ve = (e) => 39.3 - (e - V) * _e, ye = 22, be = 16, xe = 38, Se = 34.6, Ce = (e) => Se - (e - be) * (Se - ye - j) / (xe - be), we = 47, Te = [
+}, I = N + 4.5 * F + .3, te = N - 9 / 2 * F, ne = 1.2;
+P(I + ne) + .6, P(te) + 4.5 + 2.3;
+var re = 9.5, L = 6, R = [-88.5, 0], ie = 8.5;
+ie - 1.3;
+var ae = R[0] + Math.sqrt(ie ** 2 - k ** 2), oe = P(R[0] + Math.sqrt(ie ** 2 - (k + A) ** 2)), se = oe + j, z = [[-131.4, -9.9], [-78.6, -42.9]], ce = 12.5, le = 82, ue = 4, de = 11, fe = 10, B = 4, pe = le + 4.5, me = se + M, he = 35 * Math.PI / 180, V = [29, 0], H = -2, U = 16.5, ge = .12, _e = (e) => 39.3 - (e - H) * ge, ve = 22, ye = 16, be = 38, xe = 34.6, Se = (e) => xe - (e - ye) * (xe - ve - M) / (be - ye), Ce = 47, we = [
 	92,
 	46,
 	0
-].map((e) => e * Math.PI / 180), Ee = 25.7, De = 9, Oe = [-90, 43], ke = 5.5, Ae = De, je = 4, Me = 135 * Math.PI / 180, Ne = (e, t) => [B[0] + Math.cos(e) * t, B[1] + Math.sin(e) * t], Pe = Te.map((e) => Ne(e, we)), Fe = 58 * Math.PI / 180, Ie = [Math.cos(Fe), Math.sin(Fe)], Le = 2;
-function Re(e) {
-	let t = L[0] - e[0], n = L[1] - e[1], r = Math.hypot(t, n);
+].map((e) => e * Math.PI / 180), Te = 25.7, Ee = 9, De = [-90, 43], Oe = 5.5, ke = Ee, Ae = 4, je = 135 * Math.PI / 180, Me = (e, t) => [V[0] + Math.cos(e) * t, V[1] + Math.sin(e) * t], Ne = we.map((e) => Me(e, Ce)), Pe = 58 * Math.PI / 180, Fe = [Math.cos(Pe), Math.sin(Pe)], Ie = 2;
+function Le(e) {
+	let t = R[0] - e[0], n = R[1] - e[1], r = Math.hypot(t, n);
 	return [t / r, n / r];
 }
-var ze = R.map(Re), Be = ze.map(([e, t]) => Math.atan2(t, e)), Ve = (e) => Math.cos(e) * Ie[0] + Math.sin(e) * Ie[1], He = Be.map((e) => Ve(e + Math.PI / 2) > Ve(e - Math.PI / 2) ? -1 : 1), Ue = (e, t) => Be[e] + He[e] * t * (Math.PI / 2), We = (e, t) => {
-	let [n, r] = R[e];
+var Re = z.map(Le), ze = Re.map(([e, t]) => Math.atan2(t, e)), Be = (e) => Math.cos(e) * Fe[0] + Math.sin(e) * Fe[1], Ve = ze.map((e) => Be(e + Math.PI / 2) > Be(e - Math.PI / 2) ? -1 : 1), He = (e, t) => ze[e] + Ve[e] * t * (Math.PI / 2), Ue = (e, t) => {
+	let [n, r] = z[e];
 	return [
-		n + Math.cos(t) * pe,
-		r + Math.sin(t) * pe,
-		me
+		n + Math.cos(t) * fe,
+		r + Math.sin(t) * fe,
+		pe
 	];
-}, Ge = (e, t) => {
-	let [n, r] = R[e], [i, a] = ze[e];
+}, We = (e, t) => {
+	let [n, r] = z[e], [i, a] = Re[e];
 	return [n + i * t, r + a * t];
 };
-le - 1.5;
-var Ke = Math.hypot(L[0] - R[0][0], L[1] - R[0][1]) - ae + 1.2, U = ([e, t], n) => [
+ce - 1.5;
+var Ge = Math.hypot(R[0] - z[0][0], R[1] - z[0][1]) - ie + 1.2, W = ([e, t], n) => [
 	e,
 	t,
 	n
-], qe = te(0);
-function Je(e) {
+], Ke = ee(0);
+function qe(e) {
 	return [
-		qe,
+		Ke,
 		[
-			oe,
+			ae,
 			0,
-			N(oe) + 4.5
+			P(ae) + 4.5
 		],
-		U(L, se + 4.5),
-		U(Ge(e, Ke), he + 4.5),
-		U(Ge(e, pe), me)
+		W(R, oe + 4.5),
+		W(We(e, Ge), me + 4.5),
+		W(We(e, fe), pe)
 	];
 }
-function Ye(e) {
-	let t = Te[e];
+function Je(e) {
+	let t = we[e];
 	return [
-		qe,
+		Ke,
 		[
 			D,
 			0,
-			N(D) + 4.5
+			P(D) + 4.5
 		],
-		U(B, ve(0) + 4.5),
-		U(Ne(t, H), ve(H) + 4.5),
-		U(Ne(t, H + .6), Ce(H + .6) + 4.5),
-		U(Ne(t, xe), Ce(xe) + 4.5),
-		U(Pe[e], Ee)
+		W(V, _e(0) + 4.5),
+		W(Me(t, U), _e(U) + 4.5),
+		W(Me(t, U + .6), Se(U + .6) + 4.5),
+		W(Me(t, be), Se(be) + 4.5),
+		W(Ne[e], Te)
 	];
 }
-var Xe = (e) => {
+var Ye = (e) => {
 	let t = 0;
 	for (let n = 1; n < e.length; n++) {
 		let [r, i, a] = e[n - 1], [o, s, c] = e[n];
 		t += Math.hypot(o - r, s - i, c - a);
 	}
 	return t;
-}, Ze = (e) => {
+}, Xe = (e) => {
 	let t = [0];
-	for (let n = 1; n < e.length; n++) t.push(Xe(e.slice(0, n + 1)));
+	for (let n = 1; n < e.length; n++) t.push(Ye(e.slice(0, n + 1)));
 	return t;
-}, Qe = Xe(Je(0)), $e = Xe(Ye(1)), et = 5, tt = Ze(Ye(1))[3] + et, nt = F + re + 4.5 + .5, rt = Ze(Ye(1)), it = rt[1] + (nt - D) / (B[0] - D) * (rt[2] - rt[1]), at = 10, ot = 2, W = 3, st = 2, ct = .5, lt = 2, ut = .1, dt = 1.4, ft = .1, pt = .45, mt = .22, ht = .35, gt = .3, _t = .3, G = 200, vt = 90, yt = 6;
+}, Ze = Ye(qe(0)), Qe = Ye(Je(1)), $e = 5, et = Xe(Je(1))[3] + $e, tt = I + ne + 4.5 + .5, nt = Xe(Je(1)), rt = nt[1] + (tt - D) / (V[0] - D) * (nt[2] - nt[1]), it = 10, at = 2, ot = 3, st = 2, ct = .5, lt = 2, ut = .1, dt = 1.4, ft = .1, pt = .45, mt = .22, ht = .35, gt = .3, _t = .3, G = 200, vt = 90, yt = 6;
 function bt(e, t) {
 	if (t <= 0) return 0;
 	let n = Math.max(0, (vt - e) / G);
@@ -498,7 +498,7 @@ function St(e, t) {
 	let n = Math.max(0, (vt - e) / G), r = e * n + .5 * G * n * n;
 	return t <= r ? (-e + Math.sqrt(e * e + 2 * G * t)) / G : n + (t - r) / vt;
 }
-var Ct = ft + St(0, $e), wt = ft + St(0, tt), Tt = ft + St(0, it), Et = Ct + st;
+var Ct = ft + St(0, Qe), wt = ft + St(0, et), Tt = ft + St(0, rt), Et = Ct + st;
 function Dt(e, t) {
 	let n = bt(e.v0, t - e.at), r = Math.max(e.to, e.from - n);
 	return {
@@ -526,12 +526,12 @@ function Mt(e = dt) {
 			turn: 0,
 			last: -jt(e)
 		},
-		producers: Array.from({ length: ot }, () => ({
+		producers: Array.from({ length: at }, () => ({
 			turns: 0,
 			turnedAt: -Infinity,
 			waiting: null
 		})),
-		consumers: Array.from({ length: W }, () => ({
+		consumers: Array.from({ length: ot }, () => ({
 			active: !0,
 			job: null
 		})),
@@ -565,7 +565,7 @@ function Ft(e, t, n, r) {
 	let i = e.queue.length;
 	t.enqueuedAt = n, t.shifts = [{
 		at: r,
-		from: Qe,
+		from: Ze,
 		to: i * 9,
 		v0: 0
 	}], e.queue.push(t);
@@ -582,19 +582,19 @@ function It(e, t, n) {
 		landedAt: NaN,
 		ackAt: NaN
 	};
-	r.turns += 1, r.turnedAt = n, e.queue.length < at ? Ft(e, i, n, n + _t) : r.waiting = i;
+	r.turns += 1, r.turnedAt = n, e.queue.length < it ? Ft(e, i, n, n + _t) : r.waiting = i;
 }
 function Lt(e, t) {
 	let n = e.drop.turn;
 	e.drop = {
 		next: t + jt(e.rate),
-		turn: (n + 1) % ot,
+		turn: (n + 1) % at,
 		last: t
 	}, e.producers[n].waiting || It(e, n, t);
 }
 function Rt(e) {
-	for (let t = 0; t < W; t++) {
-		let n = (e.rr + t) % W, r = e.consumers[n];
+	for (let t = 0; t < ot; t++) {
+		let n = (e.rr + t) % ot, r = e.consumers[n];
 		if (r.active && !r.job) return n;
 	}
 	return -1;
@@ -608,7 +608,7 @@ function zt(e) {
 var Bt = (e) => Math.max(e.lastRelease + wt, e.spout.at + mt);
 function Vt(e, t, n) {
 	let r = e.queue.shift();
-	r.releasedAt = n, r.consumer = t, r.landedAt = n + Ct, r.ackAt = r.landedAt + st, e.consumers[t].job = r, e.rr = (t + 1) % W, e.lastRelease = n, e.lastWait = n - r.enqueuedAt, e.flight.push(r), Nt(e.outs, n);
+	r.releasedAt = n, r.consumer = t, r.landedAt = n + Ct, r.ackAt = r.landedAt + st, e.consumers[t].job = r, e.rr = (t + 1) % ot, e.lastRelease = n, e.lastWait = n - r.enqueuedAt, e.flight.push(r), Nt(e.outs, n);
 	let i = n + ht;
 	e.queue.forEach((e, t) => {
 		let n = e.shifts[e.shifts.length - 1], r = Math.max(i, n.at), { w: a, v: o } = Dt(n, r);
@@ -624,11 +624,11 @@ function Vt(e, t, n) {
 		index: t
 	})).filter(({ producer: e }) => e.waiting).sort((e, t) => e.producer.waiting.triedAt - t.producer.waiting.triedAt);
 	for (let { producer: t, index: r } of a) {
-		if (e.queue.length >= at) break;
+		if (e.queue.length >= it) break;
 		let i = t.waiting;
 		t.waiting = null, Ft(e, i, n, Math.max(n, i.triedAt + _t)), e.drop = {
 			next: n + jt(e.rate),
-			turn: (r + 1) % ot,
+			turn: (r + 1) % at,
 			last: n
 		};
 	}
@@ -681,16 +681,16 @@ function Gt(e, t, n) {
 	let r = e.consumers[t];
 	return !r || r.active === n ? !1 : (r.active = n, !0);
 }
-var Kt = (e) => e.consumers.filter((e) => e.active).length, qt = (e) => e.consumers.filter((e) => e.job).length, Jt = (e) => e.consumers.filter((e) => e.active && !e.job).length, Yt = (e) => Kt(e) / Et, Xt = (e) => e.producers.some((e) => e.waiting), Zt = (e) => e.queue.length >= at, Qt = (e) => Pt(e.outs, e.t), $t = (e) => Zt(e) ? Math.min(e.rate, Qt(e)) : e.rate, K = (e) => e.toFixed(1);
+var Kt = (e) => e.consumers.filter((e) => e.active).length, qt = (e) => e.consumers.filter((e) => e.job).length, Jt = (e) => e.consumers.filter((e) => e.active && !e.job).length, Yt = (e) => Kt(e) / Et, Xt = (e) => e.producers.some((e) => e.waiting), Zt = (e) => e.queue.length >= it, Qt = (e) => Pt(e.outs, e.t), $t = (e) => Zt(e) ? Math.min(e.rate, Qt(e)) : e.rate, K = (e) => e.toFixed(1);
 function en(e) {
 	let t = K($t(e)), n = K(e.rate);
 	return `${e.queue.length} queued${Zt(e) ? ", full" : ""} \xB7 in ${t}${t === n ? "" : ` of ${n}`}/s \xB7 out ${K(Qt(e))}/s`;
 }
 function tn(e) {
 	let t = Kt(e), n = [
-		`${e.queue.length} of ${at} marbles queued${Xt(e) ? ", the lane is full and a hopper is holding one until there is room" : Zt(e) ? ", the lane is full" : ""}.`,
+		`${e.queue.length} of ${it} marbles queued${Xt(e) ? ", the lane is full and a hopper is holding one until there is room" : Zt(e) ? ", the lane is full" : ""}.`,
 		`Producers set to ${K(e.rate)} a second; ${K($t(e))} a second getting in now; ${K(Qt(e))} a second left the lane over the last ${yt} seconds.`,
-		`${t} of ${W} consumers on, ${qt(e)} busy; each takes ${K(Ct)} seconds to receive a marble and ${st} seconds to work on it: up to ${K(Yt(e))} a second.`,
+		`${t} of ${ot} consumers on, ${qt(e)} busy; each takes ${K(Ct)} seconds to receive a marble and ${st} seconds to work on it: up to ${K(Yt(e))} a second.`,
 		`${e.acked} acknowledged.`
 	];
 	return Number.isFinite(e.lastWait) && n.push(`The last one waited ${K(e.lastWait)} seconds.`), n.join(" ");
@@ -852,7 +852,7 @@ function mn(e, t = "", n = e) {
 		].map((t) => e.map((e) => e.shades[t] ?? "").join(""))
 	};
 }
-function hn(e, t, n, r = A, i = 0) {
+function hn(e, t, n, r = j, i = 0) {
 	let o = rn(t, e), s = Math.hypot(o[0], o[1]) || 1, c = [
 		-o[1] / s,
 		o[0] / s,
@@ -860,16 +860,16 @@ function hn(e, t, n, r = A, i = 0) {
 	], l = [
 		0,
 		0,
-		-j
+		-M
 	], u = [
 		0,
 		0,
-		j + r
-	], d = Math.min(.9, i / s), f = q(e, J(o, d)), p = J(o, 1 - d), m = ln(q(q(e, J(c, -O)), l), o, J(c, O * 2), [
+		M + r
+	], d = Math.min(.9, i / s), f = q(e, J(o, d)), p = J(o, 1 - d), m = ln(q(q(e, J(c, -k)), l), o, J(c, k * 2), [
 		0,
 		0,
-		j
-	], n), g = ln(q(q(f, J(c, -O - k)), l), p, J(c, k), u, n), _ = ln(q(q(f, J(c, O)), l), p, J(c, k), u, n), v = a(c, n) > 0, y = J(c, v ? -O : O), b = h(q(d > 0 ? f : e, y), q(t, y), n);
+		M
+	], n), g = ln(q(q(f, J(c, -k - A)), l), p, J(c, A), u, n), _ = ln(q(q(f, J(c, k)), l), p, J(c, A), u, n), v = a(c, n) > 0, y = J(c, v ? -k : k), b = h(q(d > 0 ? f : e, y), q(t, y), n);
 	return {
 		bed: mn([m, v ? g : _], b),
 		front: v ? _ : g
@@ -883,11 +883,11 @@ var gn = (e) => [
 	e.outline
 ];
 function _n(e, t) {
-	let [n, r] = R[e], i = 4.8, a = pe, o = [];
+	let [n, r] = z[e], i = 4.8, a = fe, o = [];
 	for (let e = 0; e < 72; e++) {
-		let s = e / 72 * Math.PI * 2, c = fe;
-		for (let e = 0; e < z; e++) {
-			let n = s - (t + e / z * Math.PI * 2);
+		let s = e / 72 * Math.PI * 2, c = de;
+		for (let e = 0; e < B; e++) {
+			let n = s - (t + e / B * Math.PI * 2);
 			n = Math.atan2(Math.sin(n), Math.cos(n));
 			let r = a * Math.sin(n);
 			Math.abs(r) < i && Math.cos(n) > 0 && (c = Math.min(c, a * Math.cos(n) - Math.sqrt(i * i - r * r)));
@@ -899,55 +899,55 @@ function _n(e, t) {
 var vn = (e, t, n, r) => {
 	let i = e.producers[t];
 	return i.turns - 1 + (r ? 1 : Y((n - i.turnedAt) / _t));
-}, yn = (e, t, n, r = !1) => Ue(t, vn(e, t, n, r)), bn = (e, t, n, r, i = !1) => f(_n(t, yn(e, t, n, i)), ue, de, r, { convex: !1 });
+}, yn = (e, t, n, r = !1) => He(t, vn(e, t, n, r)), bn = (e, t, n, r, i = !1) => f(_n(t, yn(e, t, n, i)), le, ue, r, { convex: !1 });
 function xn(e, t, n = !1) {
-	let { from: r, to: i, at: a } = e.spout, o = Te[r], s = Te[i];
+	let { from: r, to: i, at: a } = e.spout, o = we[r], s = we[i];
 	return n ? s : o + (s - o) * Y((t - a) / mt);
 }
 function Sn(e, t) {
-	let [n, r] = Ne(e, V), [i, a] = Ne(e, H);
+	let [n, r] = Me(e, H), [i, a] = Me(e, U);
 	return hn([
 		n,
 		r,
-		ve(V)
+		_e(H)
 	], [
 		i,
 		a,
-		ve(H)
+		_e(U)
 	], t, 3.4);
 }
 function Cn(e, t, n) {
-	let [r, i] = Pe[e], a = Te[e] + t * Math.PI * 2, o = Math.cos(a), s = Math.sin(a);
-	return m([r + o * 6.4, i + s * 6.4], [r + o * 9.1, i + s * 9.1], ye, n);
+	let [r, i] = Ne[e], a = we[e] + t * Math.PI * 2, o = Math.cos(a), s = Math.sin(a);
+	return m([r + o * 6.4, i + s * 6.4], [r + o * 9.1, i + s * 9.1], ve, n);
 }
 function wn(e, t, n) {
 	let r = e.consumers[t].job;
 	return r ? Math.min(1, Math.max(0, (n - r.landedAt) / st)) : 0;
 }
-var Tn = (e) => -Me + (e - ct) / (lt - ct) * Me * 2;
+var Tn = (e) => -je + (e - ct) / (lt - ct) * je * 2;
 function En(e, t) {
-	let n = Tn(e), [r, i] = Oe, a = Math.sin(n), o = -Math.cos(n);
-	return m([r - a * 1.6, i - o * 1.6], [r + a * (ke - .9), i + o * (ke - .9)], Ae + je, t);
+	let n = Tn(e), [r, i] = De, a = Math.sin(n), o = -Math.cos(n);
+	return m([r - a * 1.6, i - o * 1.6], [r + a * (Oe - .9), i + o * (Oe - .9)], ke + Ae, t);
 }
 var Dn = .1;
 function On(e, t, n = !1) {
 	if (n) return {
 		h: 0,
-		s: I
+		s: L
 	};
 	let r = t - e.lastRelease, i = r < 0 ? 0 : r < ft ? Y(r / ft) : r < Tt ? 1 : 1 - Y((r - Tt) / Dn), a = r < 0 ? 0 : r < .08 ? Y(r / .08) : r < ht - .08 ? 1 : 1 - Y((r - ht + .08) / .08);
 	return {
-		h: i * ie,
-		s: (1 - a) * I
+		h: i * re,
+		s: (1 - a) * L
 	};
 }
 function kn() {
 	return {
 		produce: [0, 1].map((e) => {
-			let t = Je(e);
+			let t = qe(e);
 			return {
 				points: t,
-				marks: Ze(t)
+				marks: Xe(t)
 			};
 		}),
 		deliver: [
@@ -955,10 +955,10 @@ function kn() {
 			1,
 			2
 		].map((e) => {
-			let t = Ye(e);
+			let t = Je(e);
 			return {
 				points: t,
-				marks: Ze(t)
+				marks: Xe(t)
 			};
 		})
 	};
@@ -983,16 +983,16 @@ var jn = ["feed-0", "feed-1"], Mn = ["front-0", "front-1"], Nn = [
 	"cup-0",
 	"cup-1",
 	"cup-2"
-], Fn = .16, In = 6, Ln = (e, t, n) => t <= 9 / 2 ? "gate" : t <= n[3] ? "lane" : jn[e], Rn = (e, t, n) => t <= n[1] ? "gate" : t <= n[3] + et ? "spout" : t <= n[5] ? Nn[e] : Pn[e];
+], Fn = .16, In = 6, Ln = (e, t, n) => t <= 9 / 2 ? "gate" : t <= n[3] ? "lane" : jn[e], Rn = (e, t, n) => t <= n[1] ? "gate" : t <= n[3] + $e ? "spout" : t <= n[5] ? Nn[e] : Pn[e];
 function zn(e, t) {
-	let n = t - Be[e];
-	return Math.abs(Math.atan2(Math.sin(n), Math.cos(n))) < ge ? jn[e] : Mn[e];
+	let n = t - ze[e];
+	return Math.abs(Math.atan2(Math.sin(n), Math.cos(n))) < he ? jn[e] : Mn[e];
 }
 function Bn(e, t, n, r) {
-	let i = n ? 1 : Y((t - e.triedAt) / _t), a = Ue(e.producer, i - 1);
+	let i = n ? 1 : Y((t - e.triedAt) / _t), a = He(e.producer, i - 1);
 	return {
 		id: e.id,
-		at: We(e.producer, a),
+		at: Ue(e.producer, a),
 		layer: zn(e.producer, a),
 		lit: r
 	};
@@ -1002,9 +1002,9 @@ function Vn(e, t, n, r = !1) {
 	e.producers.forEach((n, a) => {
 		let o = vn(e, a, t, r), s = t - n.turnedAt - _t;
 		if (r || s >= 0) {
-			let e = ((3 - n.turns) % z + z) % z, t = Ue(a, o + e), [c, l, u] = We(a, t), d = r ? 0 : (1 - Y(s / Fn)) * In;
+			let e = ((3 - n.turns) % B + B) % B, t = He(a, o + e), [c, l, u] = Ue(a, t), d = r ? 0 : (1 - Y(s / Fn)) * In;
 			i.push({
-				id: -1 - (a * z + e),
+				id: -1 - (a * B + e),
 				at: [
 					c,
 					l,
@@ -1112,36 +1112,36 @@ var Xn = x({
 	mount: (e, t) => {
 		let n = Yn(e);
 		if (!n) return () => {};
-		let { stage: i, svg: o, readout: s, status: c, layers: l, balls: u, pool: d, wheels: f, spout: p, hands: m, switches: h, blades: g, knob: _ } = n, { P: y } = t, [b] = t.viewBox, x = matchMedia("(prefers-reduced-motion: reduce)"), S = kn(), C = nn(t.preroll), w = t.preroll, T = x.matches, E = C.rate, D = C.consumers.map((e) => e.active ? Le : -Le), ee = /* @__PURE__ */ new Map(), O = u.map((e, t) => t), k = /* @__PURE__ */ new Map(), A = {
+		let { stage: i, svg: o, readout: s, status: c, layers: l, balls: u, pool: d, wheels: f, spout: p, hands: m, switches: h, blades: g, knob: _ } = n, { P: y } = t, [b] = t.viewBox, x = matchMedia("(prefers-reduced-motion: reduce)"), S = kn(), C = nn(t.preroll), w = t.preroll, T = x.matches, E = C.rate, D = C.consumers.map((e) => e.active ? Ie : -Ie), O = /* @__PURE__ */ new Map(), k = u.map((e, t) => t), A = /* @__PURE__ */ new Map(), j = {
 			active: !1,
 			phase: 0,
 			time: 0,
 			shown: 0
-		}, j = null, M = !1, N = !1, P = !1, te = !1, F = 0, ne = 0, re = -Infinity, ie, I;
-		function L(e, t, n, r) {
-			k.get(t) !== r && (k.set(t, r), e.setAttribute(n, r));
+		}, M = null, N = !1, P = !1, F = !1, ee = !1, I = 0, te = 0, ne = -Infinity, re, L;
+		function R(e, t, n, r) {
+			A.get(t) !== r && (A.set(t, r), e.setAttribute(n, r));
 		}
-		function ae(e, t, n) {
-			gn(n).forEach((n, r) => L(e[r], `${t}-${r}`, "d", n));
+		function ie(e, t, n) {
+			gn(n).forEach((n, r) => R(e[r], `${t}-${r}`, "d", n));
 		}
-		function oe() {
+		function ae() {
 			let e = Vn(C, w, S, T).sort((e, t) => a(e.at, y) - a(t.at, y)), t = new Set(e.map((e) => e.id));
-			for (let [e, n] of ee) {
+			for (let [e, n] of O) {
 				if (t.has(e)) continue;
-				ee.delete(e), O.push(n);
+				O.delete(e), k.push(n);
 				let r = u[n];
-				L(r, `ball-${n}-display`, "display", "none"), r.parentNode !== d && d.appendChild(r);
+				R(r, `ball-${n}-display`, "display", "none"), r.parentNode !== d && d.appendChild(r);
 			}
-			O.sort((e, t) => e - t);
+			k.sort((e, t) => e - t);
 			let n = /* @__PURE__ */ new Map();
 			for (let t of e) {
-				let e = ee.get(t.id);
+				let e = O.get(t.id);
 				if (e === void 0) {
-					if (e = O.shift(), e === void 0) continue;
-					ee.set(t.id, e);
+					if (e = k.shift(), e === void 0) continue;
+					O.set(t.id, e);
 				}
 				let i = u[e], [a, o] = r(t.at, y);
-				L(i, `ball-${e}-display`, "display", "inline"), L(i, `ball-${e}-at`, "transform", `translate(${a.toFixed(2)} ${o.toFixed(2)})`), t.lit ? L(i, `ball-${e}-lit`, "data-lit", "") : k.get(`ball-${e}-lit`) !== "off" && (k.set(`ball-${e}-lit`, "off"), i.removeAttribute("data-lit"));
+				R(i, `ball-${e}-display`, "display", "inline"), R(i, `ball-${e}-at`, "transform", `translate(${a.toFixed(2)} ${o.toFixed(2)})`), t.lit ? R(i, `ball-${e}-lit`, "data-lit", "") : A.get(`ball-${e}-lit`) !== "off" && (A.set(`ball-${e}-lit`, "off"), i.removeAttribute("data-lit"));
 				let s = n.get(t.layer) ?? [];
 				s.push(i), n.set(t.layer, s);
 			}
@@ -1151,92 +1151,92 @@ var Xn = x({
 					n.children[t] !== e && n.insertBefore(e, n.children[t] ?? null);
 				});
 			}
-			for (let e of O) {
+			for (let e of k) {
 				let t = u[e];
-				L(t, `ball-${e}-display`, "display", "none");
+				R(t, `ball-${e}-display`, "display", "none");
 			}
 		}
-		function se(e) {
-			oe(), f.forEach((e, t) => {
+		function oe(e) {
+			ae(), f.forEach((e, t) => {
 				let n = yn(C, t, w, T).toFixed(4);
-				k.get(`wheel-${t}`) !== n && (k.set(`wheel-${t}`, n), ae(e, `wheel-${t}`, bn(C, t, w, y, T)));
+				A.get(`wheel-${t}`) !== n && (A.set(`wheel-${t}`, n), ie(e, `wheel-${t}`, bn(C, t, w, y, T)));
 			});
 			let t = xn(C, w, T).toFixed(4);
-			if (k.get("spout") !== t) {
-				k.set("spout", t);
+			if (A.get("spout") !== t) {
+				A.set("spout", t);
 				let e = Sn(Number(t), y);
-				ae(p[0], "spout-bed", e.bed), ae(p[1], "spout-front", e.front);
+				ie(p[0], "spout-bed", e.bed), ie(p[1], "spout-front", e.front);
 			}
 			let n = On(C, w, T);
-			L(g.s, "blade-s", "transform", v(y, [
+			R(g.s, "blade-s", "transform", v(y, [
 				0,
 				0,
 				n.s
-			])), L(g.h, "blade-h", "transform", v(y, [
+			])), R(g.h, "blade-h", "transform", v(y, [
 				0,
 				0,
 				n.h
-			])), m.forEach((e, t) => L(e, `hand-${t}`, "d", Cn(t, wn(C, t, w), y))), h.forEach((e, t) => L(e, `switch-${t}`, "transform", v(y, [
+			])), m.forEach((e, t) => R(e, `hand-${t}`, "d", Cn(t, wn(C, t, w), y))), h.forEach((e, t) => R(e, `switch-${t}`, "transform", v(y, [
 				0,
 				0,
 				D[t]
-			]))), L(_, "knob", "d", En(E, y));
+			]))), R(_, "knob", "d", En(E, y));
 			let r = en(C);
-			s.textContent !== r && (s.textContent = r), (T || e - re >= Hn) && ce(e);
+			s.textContent !== r && (s.textContent = r), (T || e - ne >= Hn) && se(e);
 		}
-		function ce(e) {
-			re = e, L(i, "aria-valuenow", "aria-valuenow", K(C.rate)), L(i, "aria-valuetext", "aria-valuetext", tn(C));
+		function se(e) {
+			ne = e, R(i, "aria-valuenow", "aria-valuenow", K(C.rate)), R(i, "aria-valuetext", "aria-valuetext", tn(C));
 		}
-		function R(e) {
+		function z(e) {
 			E = T ? C.rate : qn(E, C.rate, e, Wn), Math.abs(E - C.rate) < .001 && (E = C.rate), C.consumers.forEach((t, n) => {
-				let r = t.active ? Le : -Le, i = D[n];
+				let r = t.active ? Ie : -Ie, i = D[n];
 				D[n] = T || Math.abs(i - r) < .01 ? r : qn(i, r, e, Gn);
 			});
 		}
+		function ce(e) {
+			j.phase = e, j.time = 0, j.shown = 0, Wt(C, e ? t.tour.high : t.tour.low);
+		}
 		function le(e) {
-			A.phase = e, A.time = 0, A.shown = 0, Wt(C, e ? t.tour.high : t.tour.low);
+			j.active && (j.time += e, (j.phase ? Zt(C) : C.queue.length <= 1 && Jt(C) > 0) && (j.shown += e), (j.shown >= t.tour.hold[j.phase] || j.time >= t.tour.longest[j.phase]) && ce(1 - j.phase));
 		}
-		function ue(e) {
-			A.active && (A.time += e, (A.phase ? Zt(C) : C.queue.length <= 1 && Jt(C) > 0) && (A.shown += e), (A.shown >= t.tour.hold[A.phase] || A.time >= t.tour.longest[A.phase]) && le(1 - A.phase));
+		function ue(e, t) {
+			le(e), w += e, Ut(C, w), z(e), oe(t);
 		}
-		function de(e, t) {
-			ue(e), w += e, Ut(C, w), R(e), se(t);
+		function de(e) {
+			let t = te ? Math.min((e - te) / 1e3, .03333333333333333) : .016666666666666666;
+			te = e, I = 0, ue(t, e), F && !T && (I = requestAnimationFrame(de));
 		}
-		function fe(e) {
-			let t = ne ? Math.min((e - ne) / 1e3, .03333333333333333) : .016666666666666666;
-			ne = e, F = 0, de(t, e), P && !T && (F = requestAnimationFrame(fe));
-		}
-		function pe() {
-			w += t.settle, Ut(C, w), R(0), se(performance.now());
-		}
-		function z() {
-			!P || T || F || (ne = 0, F = requestAnimationFrame(fe));
-		}
-		function me() {
-			cancelAnimationFrame(F), F = 0;
-		}
-		function he() {
-			T || A.active || (A.active = !0, le(0), z());
-		}
-		function ge() {
-			clearTimeout(ie), ie = void 0, clearTimeout(I), I = void 0, A.active = !1;
+		function fe() {
+			w += t.settle, Ut(C, w), z(0), oe(performance.now());
 		}
 		function B() {
-			clearTimeout(I), I = void 0, !(T || A.active) && (I = setTimeout(() => {
-				I = void 0, !(M || N || j) && he();
+			!F || T || I || (te = 0, I = requestAnimationFrame(de));
+		}
+		function pe() {
+			cancelAnimationFrame(I), I = 0;
+		}
+		function me() {
+			T || j.active || (j.active = !0, ce(0), B());
+		}
+		function he() {
+			clearTimeout(re), re = void 0, clearTimeout(L), L = void 0, j.active = !1;
+		}
+		function V() {
+			clearTimeout(L), L = void 0, !(T || j.active) && (L = setTimeout(() => {
+				L = void 0, !(N || P || M) && me();
 			}, t.tour.resume * 1e3));
 		}
-		function V(e) {
-			Wt(C, Jn(e)) && (T ? pe() : z());
-		}
 		function H(e) {
+			Wt(C, Jn(e)) && (T ? fe() : B());
+		}
+		function U(e) {
 			let t = C.consumers[e];
 			if (!t) return;
 			Gt(C, e, !t.active), Ut(C, w);
-			let n = Kt(C), r = e === 0 ? "left" : e === W - 1 ? "right" : "middle";
-			c.textContent = `Consumer ${e + 1}, the ${r} drum, ${t.active ? "on" : "off"}. ${n} of ${W} on, up to ${K(Yt(C))} a second.`, T ? pe() : z();
+			let n = Kt(C), r = e === 0 ? "left" : e === ot - 1 ? "right" : "middle";
+			c.textContent = `Consumer ${e + 1}, the ${r} drum, ${t.active ? "on" : "off"}. ${n} of ${ot} on, up to ${K(Yt(C))} a second.`, T ? fe() : B();
 		}
-		function _e(e) {
+		function ge(e) {
 			let t = o.getBoundingClientRect(), n = b / t.width;
 			return {
 				x: (e.clientX - t.left) * n,
@@ -1244,25 +1244,25 @@ var Xn = x({
 				share: (e.clientX - t.left) / t.width
 			};
 		}
-		function ve(e) {
-			let { x: n, y: r } = _e(e), i = -1, a = t.drumHit;
+		function _e(e) {
+			let { x: n, y: r } = ge(e), i = -1, a = t.drumHit;
 			return t.drums.forEach(([e, t], o) => {
 				let s = Math.hypot(n - e, (r - t) * 1.6);
 				s < a && (a = s, i = o);
 			}), i;
 		}
-		let ye = (e) => ct + Kn((_e(e).share - .12) / .76, 0, 1) * (lt - ct);
+		let ve = (e) => ct + Kn((ge(e).share - .12) / .76, 0, 1) * (lt - ct);
+		function ye(e) {
+			e.pointerType === "mouse" && (N = !0, he());
+		}
 		function be(e) {
-			e.pointerType === "mouse" && (M = !0, ge());
+			e.pointerType === "mouse" && (N = !1, M || V());
 		}
 		function xe(e) {
-			e.pointerType === "mouse" && (M = !1, j || B());
-		}
-		function Se(e) {
-			if (j || e.pointerType === "mouse" && e.button !== 0) return;
-			ge();
-			let t = ve(e), n = e.pointerType !== "mouse";
-			j = {
+			if (M || e.pointerType === "mouse" && e.button !== 0) return;
+			he();
+			let t = _e(e), n = e.pointerType !== "mouse";
+			M = {
 				id: e.pointerId,
 				x0: e.clientX,
 				y0: e.clientY,
@@ -1273,76 +1273,76 @@ var Xn = x({
 			try {
 				i.setPointerCapture(e.pointerId);
 			} catch {}
-			j.dragging && V(ye(e));
+			M.dragging && H(ve(e));
+		}
+		function Se(e) {
+			if (!M || e.pointerId !== M.id) return;
+			let t = e.clientX - M.x0, n = e.clientY - M.y0;
+			!M.dragging && Math.abs(t) > Un && Math.abs(t) > Math.abs(n) && (M.dragging = !0), M.dragging && H(ve(e));
 		}
 		function Ce(e) {
-			if (!j || e.pointerId !== j.id) return;
-			let t = e.clientX - j.x0, n = e.clientY - j.y0;
-			!j.dragging && Math.abs(t) > Un && Math.abs(t) > Math.abs(n) && (j.dragging = !0), j.dragging && V(ye(e));
+			if (!M || e.pointerId !== M.id) return;
+			let t = M;
+			if (M = null, i.hasPointerCapture(e.pointerId) && i.releasePointerCapture(e.pointerId), e.type === "pointerup" && !t.dragging) {
+				let n = Math.hypot(e.clientX - t.x0, e.clientY - t.y0);
+				t.drum >= 0 && n < Un * 2 && U(t.drum);
+			}
+			N || V();
 		}
 		function we(e) {
-			if (!j || e.pointerId !== j.id) return;
-			let t = j;
-			if (j = null, i.hasPointerCapture(e.pointerId) && i.releasePointerCapture(e.pointerId), e.type === "pointerup" && !t.dragging) {
-				let n = Math.hypot(e.clientX - t.x0, e.clientY - t.y0);
-				t.drum >= 0 && n < Un * 2 && H(t.drum);
-			}
-			M || B();
-		}
-		function Te(e) {
 			if (e.metaKey || e.ctrlKey || e.altKey) return;
 			let t = e.key, n = e.shiftKey ? .5 : ut;
-			if (t === "ArrowRight" || t === "ArrowUp") V(C.rate + n);
-			else if (t === "ArrowLeft" || t === "ArrowDown") V(C.rate - n);
-			else if (t === "Home") V(ct);
-			else if (t === "End") V(lt);
-			else if (t === "1" || t === "2" || t === "3") H(Number(t) - 1);
+			if (t === "ArrowRight" || t === "ArrowUp") H(C.rate + n);
+			else if (t === "ArrowLeft" || t === "ArrowDown") H(C.rate - n);
+			else if (t === "Home") H(ct);
+			else if (t === "End") H(lt);
+			else if (t === "1" || t === "2" || t === "3") U(Number(t) - 1);
 			else return;
-			e.preventDefault(), ge(), ce(performance.now());
+			e.preventDefault(), he(), se(performance.now());
+		}
+		function Te() {
+			P || V();
 		}
 		function Ee() {
-			N || B();
+			i.matches(":focus-visible") && (P = !0, he());
 		}
 		function De() {
-			i.matches(":focus-visible") && (N = !0, ge());
+			P = !1, V();
 		}
 		function Oe() {
-			N = !1, B();
-		}
-		function ke() {
-			if (T = x.matches, me(), T) {
-				ge(), R(0), se(performance.now()), ce(performance.now());
+			if (T = x.matches, pe(), T) {
+				he(), z(0), oe(performance.now()), se(performance.now());
 				return;
 			}
-			te && B(), z();
+			ee && V(), B();
 		}
-		let Ae = new IntersectionObserver(([e]) => {
-			if (P = !!e?.isIntersecting, !P) {
-				me();
+		let ke = new IntersectionObserver(([e]) => {
+			if (F = !!e?.isIntersecting, !F) {
+				pe();
 				return;
 			}
-			te || (te = !0, T || (ie = setTimeout(() => {
-				ie = void 0, !M && !N && !j && he();
-			}, t.tour.delay * 1e3))), z();
-		}, { rootMargin: "120px 0px" }), je = [
-			["pointerenter", be],
-			["pointerleave", xe],
-			["pointerdown", Se],
-			["pointermove", Ce],
-			["pointerup", we],
-			["pointercancel", we],
-			["lostpointercapture", we],
-			["keydown", Te],
-			["keyup", Ee],
-			["focus", De],
-			["blur", Oe]
+			ee || (ee = !0, T || (re = setTimeout(() => {
+				re = void 0, !N && !P && !M && me();
+			}, t.tour.delay * 1e3))), B();
+		}, { rootMargin: "120px 0px" }), Ae = [
+			["pointerenter", ye],
+			["pointerleave", be],
+			["pointerdown", xe],
+			["pointermove", Se],
+			["pointerup", Ce],
+			["pointercancel", Ce],
+			["lostpointercapture", Ce],
+			["keydown", we],
+			["keyup", Te],
+			["focus", Ee],
+			["blur", De]
 		];
-		c.textContent = "", se(0), T && ce(0);
-		for (let [e, t] of je) i.addEventListener(e, t);
-		return x.addEventListener("change", ke), Ae.observe(i), () => {
-			me(), P = !1, clearTimeout(ie), clearTimeout(I), Ae.disconnect();
-			for (let [e, t] of je) i.removeEventListener(e, t);
-			x.removeEventListener("change", ke), j && i.hasPointerCapture(j.id) && i.releasePointerCapture(j.id), j = null;
+		c.textContent = "", oe(0), T && se(0);
+		for (let [e, t] of Ae) i.addEventListener(e, t);
+		return x.addEventListener("change", Oe), ke.observe(i), () => {
+			pe(), F = !1, clearTimeout(re), clearTimeout(L), ke.disconnect();
+			for (let [e, t] of Ae) i.removeEventListener(e, t);
+			x.removeEventListener("change", Oe), M && i.hasPointerCapture(M.id) && i.releasePointerCapture(M.id), M = null;
 		};
 	}
 }), Zn = "anatomy-message-queue", Qn = "600 / 400";
@@ -1413,34 +1413,21 @@ var X = [
 		"Successful disable and session-revocation results are logged separately. Already-issued access tokens may remain valid; this is not an immediate logout guarantee for every app. Account reconciliation runs every 15 minutes; HR snapshot reconciliation every six hours. Neither writes into HR.",
 		"Account disabled · session revocation succeeded · results recorded"
 	]
-], Z = 0, tr = [...document.querySelectorAll("[data-step]")], nr = [...document.querySelectorAll(".flow-stop")], rr = document.querySelector(".flow-rail"), ir = document.getElementById("event-token"), ar = document.getElementById("event-route"), or = document.getElementById("machine-packet"), sr = Array.from({ length: 5 }, (e, t) => document.getElementById(`machine-route-${t}`)), cr = document.getElementById("play-flow"), lr = document.getElementById("flow-speed"), Q = document.getElementById("flow-scenario"), ur = document.getElementById("recover-flow"), dr = window.matchMedia("(prefers-reduced-motion: reduce)"), fr = !1, pr = 0, mr = null, hr = null, gr = [];
-function _r() {
+], Z = 0, tr = [...document.querySelectorAll("[data-step]")], nr = document.getElementById("machine-packet"), rr = Array.from({ length: 5 }, (e, t) => document.getElementById(`machine-route-${t}`)), ir = document.getElementById("play-flow"), ar = document.getElementById("flow-speed"), Q = document.getElementById("flow-scenario"), or = document.getElementById("recover-flow"), sr = window.matchMedia("(prefers-reduced-motion: reduce)"), cr = !1, lr = 0, ur = null, dr = null;
+function fr() {
 	return Q.value === "poll-error" && Z === 2 || ["graph-error", "sessions-error"].includes(Q.value) && Z === 4;
 }
-function vr() {
-	let e = rr.getBoundingClientRect();
-	gr = nr.map((t) => {
-		let n = t.querySelector(".stop-dot").getBoundingClientRect();
-		return {
-			x: n.left + n.width / 2 - e.left,
-			y: n.top + n.height / 2 - e.top
-		};
-	}), ar.setAttribute("d", gr.map((e, t) => `${t ? "L" : "M"} ${e.x} ${e.y}`).join(" ")), yr();
-}
-function yr() {
-	if (!gr[Z]) return;
-	let e = gr[Z], t = gr[Math.min(Z + 1, gr.length - 1)], n = 4500 / Number(lr.value), r = dr.matches || _r() ? 0 : Math.max(0, Math.min(1, (pr / n - .65) / .35));
-	ir.setAttribute("cx", e.x + (t.x - e.x) * r), ir.setAttribute("cy", e.y + (t.y - e.y) * r);
-	let i = sr[Math.min(Z, 4)], a = i.getPointAtLength(i.getTotalLength() * (Z === 5 ? 1 : r));
-	or.setAttribute("transform", `translate(${a.x} ${a.y})`);
+function pr() {
+	let e = 4500 / Number(ar.value), t = sr.matches || fr() ? 0 : Math.max(0, Math.min(1, (lr / e - .65) / .35)), n = rr[Math.min(Z, 4)], r = n.getPointAtLength(n.getTotalLength() * (Z === 5 ? 1 : t));
+	nr.setAttribute("transform", `translate(${r.x} ${r.y})`);
 }
 function $(e) {
-	fr = e, document.documentElement.classList.toggle("simulation-playing", e), cr.setAttribute("aria-pressed", String(e)), cr.textContent = e ? "Ⅱ Pause flow" : Z === 5 ? "↻ Replay flow" : "▶ Play flow", document.getElementById("playback-status").textContent = _r() ? "Blocked · recover the integration to continue" : e ? "Playing · illustrative timing" : "Paused · illustrative timing", mr = null, hr !== null && cancelAnimationFrame(hr), hr = e ? requestAnimationFrame(br) : null;
+	cr = e, document.documentElement.classList.toggle("simulation-playing", e), ir.setAttribute("aria-pressed", String(e)), ir.textContent = e ? "Ⅱ Pause flow" : Z === 5 ? "↻ Replay flow" : "▶ Play flow", document.getElementById("playback-status").textContent = fr() ? "Blocked · recover the integration to continue" : e ? "Playing · illustrative timing" : "Paused · illustrative timing", ur = null, dr !== null && cancelAnimationFrame(dr), dr = e ? requestAnimationFrame(mr) : null;
 }
-function br(e) {
-	if (fr) {
-		if (mr !== null && (pr += Math.min(e - mr, 100)), mr = e, pr >= 4500 / Number(lr.value)) {
-			if (_r()) {
+function mr(e) {
+	if (cr) {
+		if (ur !== null && (lr += Math.min(e - ur, 100)), ur = e, lr >= 4500 / Number(ar.value)) {
+			if (fr()) {
 				$(!1);
 				return;
 			}
@@ -1448,40 +1435,38 @@ function br(e) {
 				$(!1);
 				return;
 			}
-			xr(Z + 1);
+			hr(Z + 1);
 		}
-		yr(), hr = requestAnimationFrame(br);
+		pr(), dr = requestAnimationFrame(mr);
 	}
 }
-function xr(e) {
-	if (Q.value === "poll-error" && (e = Math.min(e, 2)), ["graph-error", "sessions-error"].includes(Q.value) && (e = Math.min(e, 4)), Z = e, pr = 0, tr.forEach((t, n) => t.setAttribute("aria-pressed", String(n === e))), nr.forEach((t, n) => {
-		t.classList.toggle("current", n === e), t.classList.toggle("complete", n < e);
-	}), document.querySelectorAll("[data-machine-stage]").forEach((t) => t.classList.toggle("machine-active", t.dataset.machineStage.split(" ").includes(String(e)))), document.getElementById("machine-hr-state").textContent = e >= 1 ? "employment: terminated" : "employment: active", document.getElementById("machine-outbox").textContent = e >= 1 ? "127 · 128 · 129 (retained)" : "127 · 128", document.getElementById("machine-iga-state").textContent = e >= 3 ? "identity: deprovisioned" : "identity: active", document.getElementById("machine-cursor").textContent = e >= 3 ? "lastSequence: 129" : "lastSequence: 128", document.getElementById("machine-sync-state").textContent = `Graph sync: ${e === 5 ? "success" : e === 4 ? "sending" : e >= 3 ? "scheduled" : "waiting"}`, document.getElementById("machine-entra-state").textContent = e === 5 || Q.value === "sessions-error" && e === 4 ? "account: disabled" : "account: enabled", document.getElementById("machine-sessions-state").textContent = e === 5 ? "sessions: revoked" : "sessions: not revoked", document.querySelectorAll("[data-stage]").forEach((t) => t.classList.toggle("active", t.dataset.stage.split(" ").includes(String(e)))), document.getElementById("step-title").textContent = `${e + 1}. ${X[e][0]}`, document.getElementById("step-description").textContent = X[e][1], document.getElementById("step-example").textContent = X[e][2], document.getElementById("previous").disabled = e === 0, document.getElementById("next").disabled = e === X.length - 1, document.getElementById("flow-caption").textContent = `${e + 1} / 6 · ${X[e][0]}`, document.getElementById("flow-summary").textContent = X[e][2], ur.hidden = !_r(), ur.textContent = Q.value === "poll-error" ? "Restore HR connection" : "Retry offboarding step", _r()) {
+function hr(e) {
+	if (Q.value === "poll-error" && (e = Math.min(e, 2)), ["graph-error", "sessions-error"].includes(Q.value) && (e = Math.min(e, 4)), Z = e, lr = 0, tr.forEach((t, n) => t.setAttribute("aria-pressed", String(n === e))), document.querySelectorAll("[data-machine-stage]").forEach((t) => t.classList.toggle("machine-active", t.dataset.machineStage.split(" ").includes(String(e)))), document.getElementById("machine-hr-state").textContent = e >= 1 ? "employment: terminated" : "employment: active", document.getElementById("machine-outbox").textContent = e >= 1 ? "127 · 128 · 129 (retained)" : "127 · 128", document.getElementById("machine-iga-state").textContent = e >= 3 ? "identity: deprovisioned" : "identity: active", document.getElementById("machine-cursor").textContent = e >= 3 ? "lastSequence: 129" : "lastSequence: 128", document.getElementById("machine-sync-state").textContent = `Graph sync: ${e === 5 ? "success" : e === 4 ? "sending" : e >= 3 ? "scheduled" : "waiting"}`, document.getElementById("machine-entra-state").textContent = e === 5 || Q.value === "sessions-error" && e === 4 ? "account: disabled" : "account: enabled", document.getElementById("machine-sessions-state").textContent = e === 5 ? "sessions: revoked" : "sessions: not revoked", document.querySelectorAll("[data-stage]").forEach((t) => t.classList.toggle("active", t.dataset.stage.split(" ").includes(String(e)))), document.getElementById("step-title").textContent = `${e + 1}. ${X[e][0]}`, document.getElementById("step-description").textContent = X[e][1], document.getElementById("step-example").textContent = X[e][2], document.getElementById("previous").disabled = e === 0, document.getElementById("next").disabled = e === X.length - 1, document.getElementById("flow-caption").textContent = `${e + 1} / 6 · ${X[e][0]}`, document.getElementById("flow-summary").textContent = X[e][2], or.hidden = !fr(), or.textContent = Q.value === "poll-error" ? "Restore HR connection" : "Retry offboarding step", fr()) {
 		let e = Q.value === "poll-error";
 		document.getElementById("flow-caption").textContent = e ? "HTTP poll failed · event remains in HR" : "Graph write failed · Entra account is still enabled", document.getElementById("flow-summary").textContent = e ? "HR outbox: 129 retained · IGA cursor: 128 · identity and Entra unchanged" : "IGA cursor: 129 · identity: deprovisioned · Entra: enabled · sync: error", document.getElementById("machine-sync-state").textContent = e ? "HR poll: connection failed" : "Graph sync: error", document.getElementById("step-description").textContent = e ? "The HR mutation has committed, but the HTTP poll failed. Event 129 remains in Elytra’s outbox. Ascendra has not applied it and its cursor is still 128. Restore the connection to consume the retained event." : "Ascendra committed event 129 and advanced its cursor, but Graph failed. The identity is deprovisioned locally while the real target account is still enabled. Retry the scheduled effect and verify the target response.", document.getElementById("step-example").textContent = document.getElementById("flow-summary").textContent, e || (document.getElementById("step-description").textContent += " The regression fix preserves deprovisioned as the access decision; failure is recorded in sync/audit events and the lifecycle step. Retry is operator-triggered, not an automatic Graph backoff loop."), Q.value === "sessions-error" && (document.getElementById("flow-caption").textContent = "Session revocation failed · account disabled, offboarding incomplete", document.getElementById("flow-summary").textContent = "Cursor: 129 · identity: deprovisioned · account: disabled · sessions: not revoked", document.getElementById("machine-sync-state").textContent = "Session revocation: error", document.getElementById("step-description").textContent = "The disable call succeeded, but revokeSignInSessions failed. The Access revoked lifecycle step remains failed. Revocation intent is retained; an operator retries the offboarding step, which runs disable and session revocation again. Existing application tokens are not guaranteed to stop immediately.", document.getElementById("step-example").textContent = document.getElementById("flow-summary").textContent);
 	}
-	yr();
+	pr();
 }
-function Sr(e) {
-	xr(e), $(!1);
+function gr(e) {
+	hr(e), $(!1);
 }
-tr.forEach((e, t) => e.addEventListener("click", () => Sr(t))), document.getElementById("previous").addEventListener("click", () => Sr(Z - 1)), document.getElementById("next").addEventListener("click", () => Sr(Z + 1)), cr.addEventListener("click", () => {
-	_r() || (!fr && Z === X.length - 1 && xr(0), $(!fr));
-}), lr.addEventListener("change", () => {
-	pr = 0, yr();
-}), Q.addEventListener("change", () => Sr(0)), ur.addEventListener("click", () => {
-	Q.value = "normal", xr(Z), $(!0);
+tr.forEach((e, t) => e.addEventListener("click", () => gr(t))), document.getElementById("previous").addEventListener("click", () => gr(Z - 1)), document.getElementById("next").addEventListener("click", () => gr(Z + 1)), ir.addEventListener("click", () => {
+	fr() || (!cr && Z === X.length - 1 && hr(0), $(!cr));
+}), ar.addEventListener("change", () => {
+	lr = 0, pr();
+}), Q.addEventListener("change", () => gr(0)), or.addEventListener("click", () => {
+	Q.value = "normal", hr(Z), $(!0);
 });
-var Cr = document.getElementById("hr-computer"), wr = () => {
-	xr(0), $(!0);
+var _r = document.getElementById("hr-computer"), vr = () => {
+	hr(0), $(!0);
 };
-if (Cr.addEventListener("click", wr), Cr.addEventListener("keydown", (e) => {
-	(e.key === "Enter" || e.key === " ") && (e.preventDefault(), wr());
+if (_r.addEventListener("click", vr), _r.addEventListener("keydown", (e) => {
+	(e.key === "Enter" || e.key === " ") && (e.preventDefault(), vr());
 }), document.addEventListener("visibilitychange", () => {
 	document.hidden && $(!1);
-}), dr.addEventListener("change", () => {
-	$(!1), yr();
-}), new ResizeObserver(vr).observe(rr), xr(0), vr(), window.parent !== window) {
+}), sr.addEventListener("change", () => {
+	$(!1), pr();
+}), hr(0), window.parent !== window) {
 	let e = () => window.parent.postMessage({
 		type: "iam-anatomy-height",
 		height: document.documentElement.scrollHeight
