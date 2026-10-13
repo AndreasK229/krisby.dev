@@ -104,7 +104,7 @@
       </section>
 
       <section id="hardening" class="section proof-section" aria-labelledby="hardening-title">
-        <div class="section-head"><p class="eyebrow">Investigation &amp; verification</p><h2 id="hardening-title">The useful part was finding where it broke.</h2><p>An architecture review exposed defects in the integration. I evaluated the findings and verified the fixes against live deployments, including real Entra membership changes.</p></div>
+        <div class="section-head"><p class="eyebrow">Investigation &amp; verification</p><h2 id="hardening-title">The useful part was finding where it broke.</h2><p>An architecture review exposed defects in the integration. I evaluated the findings and verified the original hardening fixes against live deployments, including real Entra membership changes. The later regression fix below is locally tested; deployment and a new live check are pending.</p></div>
         <div class="findings">
           <article><span class="step-number">01 / Account state</span><h3>Deprovisioning was silently reversed.</h3><p>A later HR event could re-enable a deliberately disabled account. Desired-state resolution uses both HR facts and the IGA decision. A further local regression fix preserves that decision after Graph failure; deployment and live-tenant verification are pending.</p></article>
           <article><span class="step-number">02 / Feed resilience</span><h3>One bad event could stop the feed.</h3><p>Malformed events now go to a dead-letter queue with a visible critical signal. Valid events continue, and integration health reports failures and lag.</p></article>
@@ -127,7 +127,7 @@
 
       <section id="about" class="about" aria-labelledby="about-title">
         <div><p class="eyebrow">The person behind the lab</p><h2 id="about-title">Andreas Krisby.</h2><p>I'm working toward my first IAM role. This project shows how I connect employment context to identity state, investigate integration failures and check whether a fix works in the target system.</p><div class="actions"><a class="text-link" href="https://www.linkedin.com/in/andreas-krisby-703978268/">Connect on LinkedIn ↗</a><a class="text-link" href="../identity-ops/">Explore Identity Ops Lab ↗</a></div></div>
-        <div class="contribution"><p class="eyebrow">AI-assisted work</p><h3>My contribution and the tooling.</h3><p>Claude Code produced most of the architecture, implementation and hardening recommendations. I defined the learning goal and product intent, ran the systems against live Convex deployments and my Entra tenant, requested an architecture review, evaluated its findings and verified the fixes.</p><p>This is a practical learning and verification project. The source README documents that division of work.</p></div>
+        <div class="contribution"><p class="eyebrow">AI-assisted work</p><h3>My contribution and the tooling.</h3><p>Claude Code produced most of the architecture, implementation and hardening recommendations. I defined the learning goal and product intent, ran the systems against live Convex deployments and my Entra tenant, requested an architecture review, evaluated its findings and verified the original hardening fixes.</p><p>This is a practical learning and verification project. The source README documents that division of work.</p></div>
       </section>
     </main>
     <footer class="wrap"><span>End-to-End IAM · Andreas Krisby</span><span>Elytra + Ascendra · Fictional company, real Entra lab tenant</span></footer>
