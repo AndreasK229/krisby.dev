@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Andreas Krisby's AI-assisted IAM work sample: two independent systems, real Microsoft Entra provisioning, and the investigations behind safer offboarding." />
+  <meta name="description" content="Andreas Krisby's AI-assisted IAM work sample: real Microsoft Entra provisioning, non-human identity ownership and risk, and the investigations behind safer offboarding." />
   <meta property="og:title" content="End-to-End IAM | Andreas Krisby" />
   <meta property="og:description" content="Elytra → Ascendra → Entra ID. Explore the result, an account-reactivation defect, and an interactive system demonstration." />
   <meta property="og:type" content="website" />
@@ -20,7 +20,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <div><p class="eyebrow">IAM work sample · Andreas Krisby</p>
         <h1 id="hero-title">An HR change.<br /><span>Real changes in Entra.</span></h1>
-        <p class="lead">Two independent applications connect employment data to real account provisioning. I used the lab to investigate what happens when offboarding, access decisions and synchronization disagree.</p>
+        <p class="lead">Two independent applications connect employment data to real account provisioning and non-human identity oversight. I used the lab to investigate what happens when offboarding, access decisions and synchronization disagree.</p>
         <p class="byline">AI-assisted project · Built with Claude Code</p>
         <div class="actions"><a class="button" href="./anatomy-flow.html">Explore the system demo ↗</a><a class="text-link" href="https://github.com/AndreasK229/end-to-end-iam">Read the code on GitHub ↗</a></div>
       </div>
@@ -37,6 +37,8 @@
       <ol class="architecture-strip" aria-label="The HR-to-identity pipeline"><li><span class="stage-label">HR source</span><strong>Elytra</strong><span>Employment records</span></li><li><span class="stage-label">IGA platform</span><strong>Ascendra</strong><span>Access decisions</span></li><li><span class="stage-label">Target directory</span><strong>Entra ID</strong><span>Real account state</span></li></ol>
       <p class="reading-width">I wanted to follow Joiner, Mover and Leaver changes across that boundary. Each app has its own Convex database. HR changes enter an outbox; Ascendra pulls them over HTTP and schedules provisioning. Reconciliation checks for differences the event feed can miss.</p>
     </section>
+
+    <section id="nhi" class="section" aria-labelledby="nhi-title"><p class="eyebrow">Non-human identities · NHI</p><h2 id="nhi-title">A person leaves. Their automation may keep running.</h2><p class="reading-width">Ascendra links application and automation identities to accountable owners and flags ownership and credential risks. In the lab's Finance Reconciliation Job scenario, offboarding the owner triggers a <code>terminated_owner</code> finding while the automation remains active. That separates an employee's account lifecycle from the access their automation still holds.</p></section>
 
     <section id="hardening" class="section investigation" aria-labelledby="hardening-title">
       <div><p class="eyebrow">A failure worth investigating</p><h2 id="hardening-title">A resync brought a leaver's account back.</h2><p>While testing against Entra, I found that a legitimate resync could re-enable a terminated employee. The Graph call succeeded; the account state was wrong.</p><p>The original fix made account state depend on both HR facts and IGA decisions. I verified the original hardening work against live deployments. It taught me to check the target system, not treat a successful request as proof of correct access.</p></div>
@@ -65,6 +67,13 @@
         <p>A privileged role grant or deprovisioning of a still-employed worker becomes a pending request. A different operator must approve it; the requester cannot approve their own request.</p>
         <p>Recertification campaigns snapshot role holders for Keep or Revoke decisions. Unresolved items are revoked when the campaign closes. If the original grantor is recorded, that operator cannot affirm their own grant. Older grants without grantor history cannot enforce that check.</p>
         <p>For a role mapped to an Entra group, revocation schedules membership removal and logs the result separately. A local role change does not guarantee a successful target removal. An unmapped role produces an explicit unenforced-revocation audit event.</p>
+      </div></details>
+      <details><summary>NHI: ownership, credential risk and Entra discovery</summary><div class="detail-content">
+        <p>The NHI register models service principals, app registrations, automation accounts, API keys and service accounts. Each record can link to a managed employee identity and carry business criticality, permission metadata, credential expiry and a last-use timestamp.</p>
+        <p>Offboarding and deliberate deprovisioning schedule risk evaluation for the owner's NHIs. Active records are checked for absent or departed owners, use after termination when timestamps are available, expired or soon-expiring credentials, more than one year of remaining credential validity, broad permission labels and stale low-criticality use. Findings can be reviewed, with audited local ownership transfers and risk acceptance.</p>
+        <p>Optional read-only Microsoft Graph discovery imports a bounded page of Entra app registrations, owner information, credential expiry metadata and declared resource-permission IDs. Owner email is matched to an Ascendra identity. This is not a complete service-principal inventory or an effective-permissions audit. Imported permission IDs are not resolved to scope names, so the broad-permission heuristic cannot fully assess those imported entries.</p>
+        <p><strong>Scope:</strong> NHI Disable, Rotate secret, Reduce permissions and owner transfer update the lab's records; they do not perform those changes in Entra. Last-use checks use recorded or seeded timestamps, not a live Graph sign-in-log feed. The Finance Reconciliation Job is seeded demo data. NHI behavior is implemented and covered by the risk test suite; this page does not claim a newly verified live NHI remediation.</p>
+        <a class="text-link" href="https://github.com/AndreasK229/end-to-end-iam">Explore the source repository ↗</a>
       </div></details>
       <details><summary>Hardening: the defects, regression checks and limits</summary><div class="detail-content">
         <p>An architecture review exposed a stalled feed caused by malformed events, lost source timestamps, missing HR reconciliation and a departure during leave of absence that never completed. The original fixes were verified against live deployments. The hardening plan records their scope and deliberately deferred work.</p>
