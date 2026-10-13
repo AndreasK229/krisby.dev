@@ -1392,8 +1392,8 @@ er();
 var X = [
 	[
 		"HR records the departure",
-		"An HR operator terminates the employee in Elytra. The employment record, lifecycle history and outbox event are committed together in one Convex mutation. There is no Graph call inside this transaction.",
-		"Example: E-1005 → employmentStatus: terminated"
+		"The HR operator requests termination for employee E-1005. The next view shows the employee change and outbox event committed atomically in Elytra. There is no Graph call inside this transaction.",
+		"Before commit: E-1005 active · next sequence: 129"
 	],
 	[
 		"The outbox keeps the event",
@@ -1412,17 +1412,17 @@ var X = [
 	],
 	[
 		"Provisioning runs separately",
-		"The scheduled action authenticates to Microsoft Graph and disables the Entra account for this leaver. External HTTP calls are outside the database transaction. Advancing the ingest cursor means the HR event was handled locally; it does not prove Graph succeeded.",
-		"Entra target: accountEnabled = false"
+		"The scheduled action disables the Entra account through Graph, then calls revokeSignInSessions. Both must succeed before the Access revoked lifecycle step completes. External calls are outside the database transaction. Cursor progress alone proves neither call succeeded.",
+		"Two Graph operations: disable account → revoke sign-in sessions"
 	],
 	[
 		"Results and safety nets",
-		"Sync results and errors are recorded in Ascendra. Every 15 minutes, Entra reconciliation disables an account that should be disabled but is enabled; an unexpectedly disabled active account is flagged for review. Every six hours, HR reconciliation reads snapshots over HTTP and reports deduplicated findings. Neither check writes into HR.",
-		"Two comparisons: Ascendra ↔ Entra account state · Ascendra ↔ HR facts"
+		"Successful disable and session-revocation results are logged separately. Already-issued access tokens may remain valid; this is not an immediate logout guarantee for every app. Account reconciliation runs every 15 minutes; HR snapshot reconciliation every six hours. Neither writes into HR.",
+		"Account disabled · session revocation succeeded · results recorded"
 	]
 ], Z = 0, tr = [...document.querySelectorAll("[data-step]")], nr = [...document.querySelectorAll(".flow-stop")], rr = document.querySelector(".flow-rail"), ir = document.getElementById("event-token"), ar = document.getElementById("event-route"), or = document.getElementById("machine-packet"), sr = Array.from({ length: 5 }, (e, t) => document.getElementById(`machine-route-${t}`)), cr = document.getElementById("play-flow"), lr = document.getElementById("flow-speed"), Q = document.getElementById("flow-scenario"), ur = document.getElementById("recover-flow"), dr = window.matchMedia("(prefers-reduced-motion: reduce)"), fr = !1, pr = 0, mr = null, hr = null, gr = [];
 function _r() {
-	return Q.value === "poll-error" && Z === 2 || Q.value === "graph-error" && Z === 4;
+	return Q.value === "poll-error" && Z === 2 || ["graph-error", "sessions-error"].includes(Q.value) && Z === 4;
 }
 function vr() {
 	let e = rr.getBoundingClientRect();
@@ -1461,11 +1461,11 @@ function br(e) {
 	}
 }
 function xr(e) {
-	if (Q.value === "poll-error" && (e = Math.min(e, 2)), Q.value === "graph-error" && (e = Math.min(e, 4)), Z = e, pr = 0, tr.forEach((t, n) => t.setAttribute("aria-pressed", String(n === e))), nr.forEach((t, n) => {
+	if (Q.value === "poll-error" && (e = Math.min(e, 2)), ["graph-error", "sessions-error"].includes(Q.value) && (e = Math.min(e, 4)), Z = e, pr = 0, tr.forEach((t, n) => t.setAttribute("aria-pressed", String(n === e))), nr.forEach((t, n) => {
 		t.classList.toggle("current", n === e), t.classList.toggle("complete", n < e);
-	}), document.querySelectorAll("[data-machine-stage]").forEach((t) => t.classList.toggle("machine-active", t.dataset.machineStage.split(" ").includes(String(e)))), document.getElementById("machine-hr-state").textContent = e >= 1 ? "employment: terminated" : "employment: active", document.getElementById("machine-outbox").textContent = e >= 1 ? "127 · 128 · 129 (retained)" : "127 · 128", document.getElementById("machine-iga-state").textContent = e >= 3 ? "identity: deprovisioned" : "identity: active", document.getElementById("machine-cursor").textContent = e >= 3 ? "lastSequence: 129" : "lastSequence: 128", document.getElementById("machine-sync-state").textContent = `Graph sync: ${e === 5 ? "success" : e === 4 ? "sending" : e >= 3 ? "scheduled" : "waiting"}`, document.getElementById("machine-entra-state").textContent = e === 5 ? "account: disabled" : "account: enabled", document.querySelectorAll("[data-stage]").forEach((t) => t.classList.toggle("active", t.dataset.stage.split(" ").includes(String(e)))), document.getElementById("step-title").textContent = `${e + 1}. ${X[e][0]}`, document.getElementById("step-description").textContent = X[e][1], document.getElementById("step-example").textContent = X[e][2], document.getElementById("previous").disabled = e === 0, document.getElementById("next").disabled = e === X.length - 1, document.getElementById("flow-caption").textContent = `${e + 1} / 6 · ${X[e][0]}`, document.getElementById("flow-summary").textContent = X[e][2], ur.hidden = !_r(), ur.textContent = Q.value === "poll-error" ? "Restore HR connection" : "Retry Graph write", _r()) {
+	}), document.querySelectorAll("[data-machine-stage]").forEach((t) => t.classList.toggle("machine-active", t.dataset.machineStage.split(" ").includes(String(e)))), document.getElementById("machine-hr-state").textContent = e >= 1 ? "employment: terminated" : "employment: active", document.getElementById("machine-outbox").textContent = e >= 1 ? "127 · 128 · 129 (retained)" : "127 · 128", document.getElementById("machine-iga-state").textContent = e >= 3 ? "identity: deprovisioned" : "identity: active", document.getElementById("machine-cursor").textContent = e >= 3 ? "lastSequence: 129" : "lastSequence: 128", document.getElementById("machine-sync-state").textContent = `Graph sync: ${e === 5 ? "success" : e === 4 ? "sending" : e >= 3 ? "scheduled" : "waiting"}`, document.getElementById("machine-entra-state").textContent = e === 5 || Q.value === "sessions-error" && e === 4 ? "account: disabled" : "account: enabled", document.getElementById("machine-sessions-state").textContent = e === 5 ? "sessions: revoked" : "sessions: not revoked", document.querySelectorAll("[data-stage]").forEach((t) => t.classList.toggle("active", t.dataset.stage.split(" ").includes(String(e)))), document.getElementById("step-title").textContent = `${e + 1}. ${X[e][0]}`, document.getElementById("step-description").textContent = X[e][1], document.getElementById("step-example").textContent = X[e][2], document.getElementById("previous").disabled = e === 0, document.getElementById("next").disabled = e === X.length - 1, document.getElementById("flow-caption").textContent = `${e + 1} / 6 · ${X[e][0]}`, document.getElementById("flow-summary").textContent = X[e][2], ur.hidden = !_r(), ur.textContent = Q.value === "poll-error" ? "Restore HR connection" : "Retry offboarding step", _r()) {
 		let e = Q.value === "poll-error";
-		document.getElementById("flow-caption").textContent = e ? "HTTP poll failed · event remains in HR" : "Graph write failed · Entra account is still enabled", document.getElementById("flow-summary").textContent = e ? "HR outbox: 129 retained · IGA cursor: 128 · identity and Entra unchanged" : "IGA cursor: 129 · identity: deprovisioned · Entra: enabled · sync: error", document.getElementById("machine-sync-state").textContent = e ? "HR poll: connection failed" : "Graph sync: error", document.getElementById("step-description").textContent = e ? "The HR mutation has committed, but the HTTP poll failed. Event 129 remains in Elytra’s outbox. Ascendra has not applied it and its cursor is still 128. Restore the connection to consume the retained event." : "Ascendra committed event 129 and advanced its cursor, but Graph failed. The identity is deprovisioned locally while the real target account is still enabled. Retry the scheduled effect and verify the target response.", document.getElementById("step-example").textContent = document.getElementById("flow-summary").textContent;
+		document.getElementById("flow-caption").textContent = e ? "HTTP poll failed · event remains in HR" : "Graph write failed · Entra account is still enabled", document.getElementById("flow-summary").textContent = e ? "HR outbox: 129 retained · IGA cursor: 128 · identity and Entra unchanged" : "IGA cursor: 129 · identity: deprovisioned · Entra: enabled · sync: error", document.getElementById("machine-sync-state").textContent = e ? "HR poll: connection failed" : "Graph sync: error", document.getElementById("step-description").textContent = e ? "The HR mutation has committed, but the HTTP poll failed. Event 129 remains in Elytra’s outbox. Ascendra has not applied it and its cursor is still 128. Restore the connection to consume the retained event." : "Ascendra committed event 129 and advanced its cursor, but Graph failed. The identity is deprovisioned locally while the real target account is still enabled. Retry the scheduled effect and verify the target response.", document.getElementById("step-example").textContent = document.getElementById("flow-summary").textContent, e || (document.getElementById("step-description").textContent += " The regression fix preserves deprovisioned as the access decision; failure is recorded in sync/audit events and the lifecycle step. Retry is operator-triggered, not an automatic Graph backoff loop."), Q.value === "sessions-error" && (document.getElementById("flow-caption").textContent = "Session revocation failed · account disabled, offboarding incomplete", document.getElementById("flow-summary").textContent = "Cursor: 129 · identity: deprovisioned · account: disabled · sessions: not revoked", document.getElementById("machine-sync-state").textContent = "Session revocation: error", document.getElementById("step-description").textContent = "The disable call succeeded, but revokeSignInSessions failed. The Access revoked lifecycle step remains failed. Revocation intent is retained; an operator retries the offboarding step, which runs disable and session revocation again. Existing application tokens are not guaranteed to stop immediately.", document.getElementById("step-example").textContent = document.getElementById("flow-summary").textContent);
 	}
 	yr();
 }
@@ -1504,7 +1504,7 @@ if (Cr.addEventListener("click", wr), Cr.addEventListener("keydown", (e) => {
     <div class="legend"><span><i class="hr"></i>HR facts</span><span><i class="iga"></i>IGA decisions</span><span><i class="target"></i>External account state</span><span class="example-label">Illustrative sequence numbers · No live tenant connection</span></div>
 
     <section class="flow-player" aria-label="Animated offboarding walkthrough">
-      <div class="player-toolbar"><button id="play-flow" aria-pressed="false">▶ Play flow</button><label for="flow-speed">Speed <select id="flow-speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label><label for="flow-scenario">Scenario <select id="flow-scenario"><option value="normal">Successful offboarding</option><option value="poll-error">HR poll unavailable</option><option value="graph-error">Graph write fails</option></select></label><button id="recover-flow" hidden>Restore integration</button><span id="playback-status">Paused · illustrative timing</span></div>
+      <div class="player-toolbar"><button id="play-flow" aria-pressed="false">▶ Play flow</button><label for="flow-speed">Speed <select id="flow-speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label><label for="flow-scenario">Scenario <select id="flow-scenario"><option value="normal">Successful offboarding</option><option value="poll-error">HR poll unavailable</option><option value="graph-error">Account disable fails</option><option value="sessions-error">Session revocation fails</option></select></label><button id="recover-flow" hidden>Restore integration</button><span id="playback-status">Paused · illustrative timing</span></div>
       <div class="flow-rail"><svg class="rail-svg" aria-hidden="true"><path id="event-route" /><circle id="event-token" r="7" /></svg><ol><li class="flow-stop"><span class="stop-dot">1</span><span>HR change</span></li><li class="flow-stop"><span class="stop-dot">2</span><span>Persistent outbox</span></li><li class="flow-stop"><span class="stop-dot">3</span><span>HTTP pull</span></li><li class="flow-stop"><span class="stop-dot">4</span><span>IGA commit</span></li><li class="flow-stop"><span class="stop-dot">5</span><span>Graph write</span></li><li class="flow-stop"><span class="stop-dot">6</span><span>Verify &amp; reconcile</span></li></ol></div>
       <div class="machine-scroll" tabindex="0" role="region" aria-label="Simulated computers, Convex backends and databases. Scroll horizontally on small screens."><!-- machine:start --><svg class="machine-svg" viewBox="0 0 1240 650" role="img" aria-labelledby="machine-title machine-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="machine-title">A simulated HR-to-identity machine</title>
@@ -1555,12 +1555,12 @@ if (Cr.addEventListener("click", wr), Cr.addEventListener("keydown", (e) => {
   <g class="machine-unit" data-machine-stage="4">
     <path class="machine-cloud" d="M908 184C867 180 877 122 915 125C923 86 981 87 994 120C1030 104 1061 131 1057 157C1092 161 1097 201 1062 209H912C899 207 901 190 908 184Z"/>
     <text x="920" y="165" class="machine-label target-ink">MICROSOFT GRAPH</text><text x="927" y="191" class="machine-small">App credentials</text>
-    <rect class="machine-shell" x="901" y="272" width="266" height="66" rx="9"/><text x="917" y="299" class="machine-code">PATCH /users/{id}</text><text x="917" y="321" class="machine-small target-ink">accountEnabled: false</text>
+    <rect class="machine-shell" x="901" y="272" width="266" height="90" rx="9"/><text x="917" y="299" class="machine-code">PATCH /users/{id}</text><text x="917" y="321" class="machine-small target-ink">accountEnabled: false</text><text x="917" y="347" class="machine-small target-ink">then POST revokeSignInSessions</text>
   </g>
   <g class="machine-unit" data-machine-stage="5">
     <path class="db-shell target-db" d="M934 401V491C934 525 1136 525 1136 491V401Z"/><ellipse class="db-shell target-db" cx="1035" cy="401" rx="101" ry="24"/>
     <text x="973" y="402" class="machine-label target-ink">TENANT DIRECTORY</text><circle cx="961" cy="453" r="10" fill="none" stroke="#92bfff"/><path d="M948 479Q961 459 974 479" fill="none" stroke="#92bfff"/>
-    <text x="988" y="451" class="machine-code">E-1005</text><text id="machine-entra-state" x="988" y="477" class="machine-small target-ink">account: enabled</text>
+    <text x="988" y="451" class="machine-code">E-1005</text><text id="machine-entra-state" x="988" y="477" class="machine-small target-ink">account: enabled</text><text id="machine-sessions-state" x="988" y="498" class="machine-small target-ink">sessions: not revoked</text>
   </g>
 
   <!-- Wires show the route of facts, not a shared database connection. -->
@@ -1570,7 +1570,7 @@ if (Cr.addEventListener("click", wr), Cr.addEventListener("keydown", (e) => {
     <path id="machine-route-1" d="M289 418H389V306H434"/>
     <path id="machine-route-2" d="M434 306H452V418H708"/>
     <path id="machine-route-3" d="M708 418H802V305H1035"/>
-    <path id="machine-route-4" d="M1035 338V453"/>
+    <path id="machine-route-4" d="M1035 362V453"/>
   </g>
   <rect x="363" y="281" width="107" height="47" rx="6" fill="#08131f" stroke="#59728b"/><text x="374" y="301" class="machine-small">HTTPS / pull</text><text x="374" y="317" class="machine-tiny">Bearer secret</text>
   <text x="187" y="551" class="machine-small hr-ink">Atomic HR + outbox commit</text><text x="546" y="551" class="machine-small iga-ink">Local commit → scheduled action</text><text x="927" y="551" class="machine-small target-ink">Graph result → sync log</text>
@@ -1580,7 +1580,7 @@ if (Cr.addEventListener("click", wr), Cr.addEventListener("keydown", (e) => {
 </svg>
 <!-- machine:end --></div>
       <p class="machine-caption">Conceptual machines represent the managed Convex services, not physical server topology. On small screens, scroll the drawing sideways. Press Play to send event 129 through the system.</p>      <strong id="flow-caption" class="flow-caption">1 / 6 · HR records the departure</strong><code id="flow-summary">Example: E-1005 → employmentStatus: terminated</code>
-      <p class="animation-note">The moving dot follows an event through the pipeline. The HR outbox retains its event after consumption. Animation speed does not represent cron timing.</p>
+      <p class="animation-note">The moving dot follows an event through the pipeline. Final success includes account disable and session revocation; existing access tokens may remain valid. The HR outbox retains its event after consumption. Animation speed does not represent cron timing.</p>
     </section>
 <details class="machine-details"><summary>Inspect the database tables and integration boundaries</summary><section class="diagram" aria-label="Identity pipeline with separate system and database boundaries">
       <article class="deployment hr-system">
