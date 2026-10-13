@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Andreas Krisby’s IAM portfolio lab: access investigations, business context and read-only Microsoft Graph checks of his own Entra lab tenant."
+      content="Andreas Krisby’s IAM portfolio lab: scenario-based access investigations with optional read-only Entra evidence. Connect only selected users and applications."
     />
     <meta property="og:title" content="Identity Ops Lab | Andreas Krisby" />
     <meta
       property="og:description"
-      content="An IAM simulator connected to Microsoft Entra. Explore evidence-led access investigations, governance and lifecycle failures."
+      content="An IAM simulator with optional read-only Microsoft Entra checks. Explore a FinanceApp case, the system logic and the rules behind ticket closure."
     />
     <meta property="og:type" content="website" />
     <title>Identity Ops Lab | Andreas Krisby</title>
@@ -23,7 +23,7 @@
       <div class="wrap topbar-inner">
         <a class="brand" href="#main"><span class="brand-mark" aria-hidden="true">IO</span>Identity Ops Lab</a>
         <nav aria-label="Page navigation">
-          <a href="#how-it-works">How it works</a><a href="#demo">Demo</a><a href="#about">About Andreas</a>
+          <a href="#system-logic">How it works</a><a href="#demo">Demo</a><a href="#about">About Andreas</a>
         </nav>
       </div>
     </header>
@@ -36,12 +36,13 @@
           </h1>
           <p class="lead">
             I built this lab to show how I investigate access problems: check the evidence, confirm the business need,
-            and verify the outcome. It reads identity data from my own Microsoft Entra lab tenant.
+            and verify the outcome. It runs on its own, with optional read-only evidence from my own Microsoft Entra lab
+            tenant.
           </p>
           <p class="byline">Built by <strong>Andreas Krisby</strong></p>
           <div class="actions">
             <a class="button" href="#demo"><span aria-hidden="true">▶</span> Watch the demo</a
-            ><a class="text-link" href="#how-it-works">Explore how it works <span aria-hidden="true">↗</span></a>
+            ><a class="text-link" href="#system-logic">Explore how it works <span aria-hidden="true">↗</span></a>
           </div>
           <section class="project-choices" aria-labelledby="choices-title">
             <h2 id="choices-title">Two decisions behind the lab</h2>
@@ -79,31 +80,54 @@
       </section>
       <section id="workflow" class="workflow" aria-labelledby="workflow-title">
         <div class="workflow-intro">
-          <h2 id="workflow-title">The investigation I demonstrate</h2>
-          <p>Investigate the cause, not just the symptom.</p>
+          <h2 id="workflow-title">One case: Emma loses FinanceApp access</h2>
+          <p>The evidence and decisions behind the demo.</p>
         </div>
         <ol class="flow">
           <li>
             <span class="step-number">01</span>
-            <h3>Receive a ticket</h3>
-            <p>Read the problem and ask the persona what happened.</p>
+            <h3>Locate the failure</h3>
+            <p>
+              Emma reports lost access. The scenario’s sign-in evidence points to an authorization failure. I check the
+              account and app access before changing anything.
+            </p>
           </li>
           <li>
             <span class="step-number">02</span>
-            <h3>Investigate the cause</h3>
-            <p>Check account state, access and the events behind the issue.</p>
+            <h3>Confirm the business need</h3>
+            <p>
+              Her Finance role supports the request. Anna, the access owner, confirms normal FinanceApp access—not
+              broader finance or admin privileges.
+            </p>
           </li>
           <li>
             <span class="step-number">03</span>
-            <h3>Confirm the access need</h3>
-            <p>Compare the employee’s role with the access owner’s approval.</p>
+            <h3>Check the real assignment</h3>
+            <p>
+              I inspect FinanceApp in the Entra portal and restore the approved user assignment. With the optional app
+              mapping, I can read that assignment in the lab. The simulator’s app-access state is maintained separately.
+            </p>
           </li>
           <li>
             <span class="step-number">04</span>
-            <h3>Fix &amp; verify</h3>
-            <p>Make the appropriate change. Verify and document before closing.</p>
+            <h3>Verify and explain why</h3>
+            <p>
+              A fresh scenario test checks access. I document the lifecycle cause and prevention step before closing.
+              Real FinanceApp access needs its own test.
+            </p>
           </li>
         </ol>
+        <div class="case-cause">
+          <p>
+            <strong>The scenario’s root cause:</strong> an HR cost-center change from FIN-OPS to FIN-SHARED triggers a
+            lifecycle recalculation that removes the app assignment.
+          </p>
+          <p>
+            <strong>Prevention to investigate:</strong> review the Finance access rule and approval path before another
+            source-data change removes required access.
+          </p>
+          <a class="text-link" href="#demo">Watch this case in the demo <span aria-hidden="true">↓</span></a>
+        </div>
         <div class="case-examples">
           <h3>Cases you can investigate</h3>
           <ul>
@@ -121,10 +145,10 @@
       <section id="how-it-works" class="section" aria-labelledby="system-title">
         <div class="section-head">
           <p class="eyebrow">Simulation + real identity data</p>
-          <h2 id="system-title">Investigate a case. Check Entra. Make the change.</h2>
+          <h2 id="system-title">The lab and Entra have separate jobs.</h2>
           <p>
-            The lab reads Entra. I make the approved change in the portal. The lab reads again to show the updated
-            state.
+            The animation illustrates the read → manual change → read-again pattern. Connect only the users and apps
+            needed for a case. The rest of the lab works without a tenant.
           </p>
         </div>
         <iframe
@@ -136,15 +160,92 @@
         ></iframe>
         <div class="connection-boundaries">
           <p>Personas, tickets, HR context and scenario sign-in and audit logs. <strong>Simulated.</strong></p>
-          <p>Real lab users, groups, group membership and account status. <strong>Read-only Graph.</strong></p>
-          <p><strong>You make the changes.</strong> Read Entra again to see the updated assignment in the lab.</p>
+          <p>
+            Tenant users and groups, linked account status and explicitly mapped app assignments.
+            <strong>Read-only Graph.</strong>
+          </p>
+          <p>
+            <strong>You make the changes.</strong> Read Entra again after a portal change. Assignment evidence stays
+            separate from simulator access and ticket closure.
+          </p>
         </div>
         <div class="technical">
           <h3>A persona reply is not a real sign-in test.</h3>
           <p>
-            Persona conversations, scenario logs and remote support are simulated. To prove that real app access works,
-            test the application separately with the lab account.
+            A normal retry checks the simulator. An optional, separately configured FinanceApp browser test can check
+            the protected page with Emma’s real lab account. Assignment alone does not prove a successful sign-in.
           </p>
+        </div>
+      </section>
+      <section id="system-logic" class="section" aria-labelledby="logic-title">
+        <div class="section-head">
+          <p class="eyebrow">Inside the implementation</p>
+          <h2 id="logic-title">What the app does itself</h2>
+          <p>
+            The backend creates the case, evaluates access and checks the closure rules. Persona wording is not the
+            source of truth.
+          </p>
+        </div>
+        <p class="component-path">
+          <strong>React interface</strong><span aria-hidden="true">→</span><strong>Fastify API</strong
+          ><span aria-hidden="true">→</span><strong>TypeScript services</strong><span aria-hidden="true">→</span
+          ><strong>Lab state and audit trail</strong>
+        </p>
+        <div class="logic-grid">
+          <dl class="logic-modules">
+            <div>
+              <dt>Scenario engine → linked ticket</dt>
+              <dd>
+                Activating a scenario changes a local employee’s state and creates a linked ticket with supporting
+                sign-in or lifecycle evidence. The ticket keeps a link to that scenario.
+              </dd>
+            </div>
+            <div>
+              <dt>Access engine → repeatable checks</dt>
+              <dd>
+                Rules evaluate account, MFA, device, group and application state. A retry evaluates the current state
+                and records a result; it is not an AI guess.
+              </dd>
+            </div>
+            <div>
+              <dt>Persona engine → conversation</dt>
+              <dd>
+                Employees answer from their lab context. Optional local Ollama adds generated replies, with scripted
+                fallback. Access tests and closure remain rule-based.
+              </dd>
+            </div>
+            <div>
+              <dt>Graph connector → external evidence</dt>
+              <dd>
+                Read-only requests inspect tenant users and groups, map personas to users, and refresh linked account
+                status. Only explicitly mapped apps get an assignment check, with a read timestamp and an unknown result
+                if the read fails. It does not copy them into simulator access.
+              </dd>
+            </div>
+          </dl>
+          <aside class="closure-rules" aria-labelledby="closure-title">
+            <p class="eyebrow">Emma’s closure checks</p>
+            <h3 id="closure-title">When is the ticket ready?</h3>
+            <ul>
+              <li>The target app assignment exists in the lab state.</li>
+              <li>The Finance role group remains and the account is enabled.</li>
+              <li>A successful fresh access test is recorded.</li>
+              <li>The root cause and governance decision are documented.</li>
+            </ul>
+            <p>
+              Missing requirements block closure. A later identity change invalidates the previous scenario
+              verification. The selected root cause must match the expected scenario cause; the prevention note is
+              recorded, not graded by AI.
+            </p>
+            <p class="implementation-note">
+              These are scenario checks, not a tenant-wide compliance verdict. Tickets without a guided scenario can be
+              closed manually.
+            </p>
+            <p class="implementation-note">
+              No tenant setup is needed for simulation. Start with Emma and FinanceApp for an optional connected case.
+              The connector does not create users, create apps or grant access.
+            </p>
+          </aside>
         </div>
       </section>
       <section id="proof" class="section proof-section" aria-labelledby="proof-title">
@@ -228,6 +329,10 @@
             assignment and review the lifecycle cause.
           </p>
           <p class="demo-note">Full walkthrough · Microsoft Entra lab tenant + simulated case context</p>
+          <p class="demo-note">
+            The recording predates the optional app-assignment reader. That reader is implemented and covered by
+            automated tests; live assignment reads still need a mapped lab app and tenant verification.
+          </p>
           <a class="text-link" href="https://www.youtube.com/watch?v=8vfOF626-_8" target="_blank" rel="noopener"
             >Watch on YouTube <span aria-hidden="true">↗</span></a
           >
@@ -262,8 +367,8 @@
             the operator.
           </li>
           <li>
-            <strong>Make the boundaries clear.</strong>Scenario logs are simulated. Tenant data comes from Graph. A real
-            app sign-in must be tested separately.
+            <strong>Keep the scope deliberate.</strong>A training lab, not a production provisioning or governance
+            platform.
           </li>
           <li>
             <strong>Check the outcome before closing.</strong>Scenario requirements include access verification and
