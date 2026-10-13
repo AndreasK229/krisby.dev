@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="From HR events to real Microsoft Entra accounts. Andreas Krisby's AI-assisted IAM lab with Elytra, Ascendra, lifecycle provisioning and access governance." />
+    <meta property="og:title" content="End-to-End IAM | Andreas Krisby" />
+    <meta property="og:description" content="Two independent systems. A real Entra tenant. Explore the lifecycle, access controls and integration failures behind a practical IAM work sample." />
+    <meta property="og:type" content="website" />
+    <title>End-to-End IAM | Andreas Krisby</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./anatomy-frame.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="topbar">
+      <div class="wrap topbar-inner">
+        <a class="brand" href="#main"><span class="brand-mark" aria-hidden="true">EA</span>End-to-End IAM</a>
+        <nav aria-label="Page navigation">
+          <a href="#architecture">How it works</a><a href="#proof">Evidence</a><a href="#about">About Andreas</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="wrap">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">Identity lifecycle · Working portfolio project</p>
+          <h1 id="hero-title"><span>From an HR change.</span><span class="accent">To a real Entra account.</span></h1>
+          <p class="lead">Elytra owns employment data. Ascendra turns it into governed identities and provisions accounts in Microsoft Entra ID. This lab follows the whole path, including what happens when an integration fails.</p>
+          <p class="byline">A practical IAM work sample by <strong>Andreas Krisby</strong> · Built with Claude Code</p>
+          <div class="actions">
+            <a class="button" href="#workflow">Explore the lifecycle <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="https://github.com/AndreasK229/end-to-end-iam">View the source <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <figure class="product">
+          <div class="product-top"><span>Inside Ascendra</span><span>IGA · Legatus Corp lab</span></div>
+          <a class="image-link" href="./assets/ascendra-overview.jpg" target="_blank" rel="noopener" aria-label="Open the Ascendra overview screenshot at full size">
+            <img src="./assets/ascendra-overview.jpg" width="2048" height="890" alt="Ascendra overview showing identity counts, recent Entra user updates and the provisioning queue." />
+          </a>
+          <figcaption><span>Identity provisioning, governance &amp; audit history</span><a href="./assets/ascendra-overview.jpg" target="_blank" rel="noopener">View full image ↗</a></figcaption>
+        </figure>
+      </section>
+
+      <section id="workflow" class="workflow" aria-labelledby="workflow-title">
+        <div class="workflow-intro"><h2 id="workflow-title">One lifecycle. Four steps.</h2><p>Employment facts become account state.</p></div>
+        <ol class="flow">
+          <li><span class="step-number">01</span><h3>Change the employment record</h3><p>An HR operator hires, transfers or offboards an employee in Elytra.</p></li>
+          <li><span class="step-number">02</span><h3>Publish the event</h3><p>Elytra records the change in an append-only outbox. Ascendra polls for new events every minute.</p></li>
+          <li><span class="step-number">03</span><h3>Resolve the identity state</h3><p>Ascendra combines employment facts with its own access and deprovisioning decisions.</p></li>
+          <li><span class="step-number">04</span><h3>Provision and verify</h3><p>Microsoft Graph creates, updates or disables the Entra account. Sync results and audit events record the outcome.</p></li>
+        </ol>
+        <div class="case-examples">
+          <h3>Lifecycle cases in the lab</h3>
+          <ul>
+            <li><strong>Joiner</strong>Onboard a new employee and follow the identity into Entra, including future-dated starts.</li>
+            <li><strong>Mover</strong>Update employment context and review whether existing access still fits the new role.</li>
+            <li><strong>Leaver</strong>Disable the account when employment ends, including departures during leave of absence.</li>
+          </ul>
+        </div>
+        <div class="case-cause"><p><strong>The control that matters:</strong> a resync must preserve an approved deprovisioning decision. An unrelated HR update must never silently re-enable that account.</p></div>
+      </section>
+
+      <section id="architecture" class="section" aria-labelledby="architecture-title">
+        <div class="section-head">
+          <p class="eyebrow">Two systems · Separate authority</p>
+          <h2 id="architecture-title">HR owns employment. IGA owns access.</h2>
+          <p>Elytra and Ascendra each have their own React interface and Convex deployment. They exchange data over an authenticated HTTP API and share no database. Ascendra never writes back into HR.</p>
+        </div>
+        <a class="text-link" href="./anatomy-flow.html" target="_blank" rel="noopener">Open the system anatomy at full size ↗</a>
+        <iframe class="iam-anatomy-frame" src="./anatomy-flow.html" title="Interactive system anatomy: atomic HR outbox, separate Convex databases, HTTP ingest, Graph provisioning and reconciliation" loading="lazy"></iframe>
+        <details class="technical"><summary>Inspect the architecture and integration boundaries</summary>
+          <figure class="architecture-image"><a href="./assets/architecture.svg" target="_blank" rel="noopener"><img src="./assets/architecture.svg" width="780" height="540" loading="lazy" alt="Elytra publishes outbox events, Ascendra polls them and provisions Entra accounts. Separate reconciliation checks compare Entra state and HR records." /></a><figcaption>Event-driven provisioning plus independent reconciliation checks.</figcaption></figure>
+          <p>The HTTP feed uses a shared integration secret. Ingest keeps a cursor, accepts additive fields, and quarantines malformed events with a critical audit entry. Source event time is retained for audit history and offboarding urgency.</p>
+          <p>HR reconciliation detects missing identities and divergent records. Findings are deduplicated and reported for review; it does not alter HR records. Account drift and HR drift are separate checks.</p>
+        </details>
+      </section>
+
+      <section id="governance" class="section proof-section" aria-labelledby="governance-title">
+        <div class="section-head"><p class="eyebrow">Beyond provisioning</p><h2 id="governance-title">Who can change access? Who checks it?</h2><p>An account pipeline needs controls around the people operating it and the access it leaves behind.</p></div>
+        <div class="logic-grid">
+          <dl class="logic-modules">
+            <div><dt>Operator roles → explicit capabilities</dt><dd>SecurityAdmin, AccessAdmin, Auditor and HelpDesk have distinct permissions. Managed employee roles are separate from the roles that let operators use the console.</dd></div>
+            <div><dt>Maker/checker → another operator approves</dt><dd>A privileged role grant or deprovisioning of a still-employed worker becomes a pending request. The requester cannot approve their own request.</dd></div>
+            <div><dt>Recertification → keep or revoke</dt><dd>Campaigns snapshot current role holders. Reviewers decide whether access is still needed; unresolved items are revoked when the campaign closes. A reviewer cannot affirm a grant they made themselves.</dd></div>
+            <div><dt>Mapped roles → real membership changes</dt><dd>When a role is bound to an Entra group, revocation removes membership through Graph. Without a mapping, the audit trail explicitly records that revocation was not enforced in Entra.</dd></div>
+          </dl>
+          <aside class="closure-rules" aria-labelledby="boundaries-title"><p class="eyebrow">What the evidence supports</p><h3 id="boundaries-title">A working lab with a defined scope.</h3><ul>
+            <li>Entra account provisioning and mapped group grant/revoke were tested against a real tenant.</li>
+            <li>Auth0 and the generic SCIM screens include simulated or seeded state.</li>
+            <li>The screenshots show the lab at capture time; they are not live tenant status.</li>
+            <li>Account state and group membership alone do not prove a successful application sign-in.</li>
+          </ul></aside>
+        </div>
+      </section>
+
+      <section id="proof" class="section" aria-labelledby="proof-title">
+        <div class="section-head"><p class="eyebrow">Inside the running systems</p><h2 id="proof-title">The source record, the identity and the result.</h2><p>Lab screenshots show the two applications. An Entra audit capture shows real directory operations initiated by Ascendra. Open an image to inspect it.</p></div>
+        <div class="proof-grid">
+          <figure class="proof-item"><a class="image-link" href="./assets/elytra-overview.jpg" target="_blank" rel="noopener" aria-label="Open Elytra overview at full size"><img src="./assets/elytra-overview.jpg" loading="lazy" alt="Elytra HR overview with employee headcount, departments and upcoming lifecycle transitions." /></a><figcaption><p class="eyebrow">Employment context</p><h3>What changed in HR?</h3><p>Elytra holds the employment record and the lifecycle facts that downstream identity decisions depend on.</p><p class="image-caption">Elytra overview · Fictional Legatus Corp</p></figcaption></figure>
+          <figure class="proof-item"><a class="image-link" href="./assets/ascendra-overview.jpg" target="_blank" rel="noopener" aria-label="Open Ascendra overview at full size"><img src="./assets/ascendra-overview.jpg" loading="lazy" alt="Ascendra overview listing recent Entra updates and active, pending and failed provisioning counts." /></a><figcaption><p class="eyebrow">Provisioning context</p><h3>What did IGA do?</h3><p>Ascendra materializes identities and records provisioning activity. The overview brings account state and integration activity together.</p><p class="image-caption">Ascendra overview · Lab deployment</p></figcaption></figure>
+          <figure class="proof-item"><a class="image-link evidence-image" href="./assets/entra-audit.jpg" target="_blank" rel="noopener" aria-label="Open Microsoft Entra audit evidence at full size"><img src="./assets/entra-audit.jpg" loading="lazy" width="1590" height="344" alt="Microsoft Entra audit log showing successful Add user and Update PasswordProfile operations initiated by Ascendra on 25 July 2026." /></a><figcaption><p class="eyebrow">External evidence</p><h3>Did it reach Entra?</h3><p>The directory audit log records successful user creation and a password-profile update initiated by Ascendra.</p><p class="image-caption">Real Entra lab tenant · 25 July 2026</p></figcaption></figure>
+        </div>
+      </section>
+
+      <section id="hardening" class="section proof-section" aria-labelledby="hardening-title">
+        <div class="section-head"><p class="eyebrow">Investigation &amp; verification</p><h2 id="hardening-title">The useful part was finding where it broke.</h2><p>An architecture review exposed defects in the integration. I evaluated the findings and verified the fixes against live deployments, including real Entra membership changes.</p></div>
+        <div class="findings">
+          <article><span class="step-number">01 / Account state</span><h3>Deprovisioning was silently reversed.</h3><p>A later HR event could re-enable a deliberately disabled account. Desired-state resolution now respects both employment status and Ascendra's deprovisioning decision.</p></article>
+          <article><span class="step-number">02 / Feed resilience</span><h3>One bad event could stop the feed.</h3><p>Malformed events now go to a dead-letter queue with a visible critical signal. Valid events continue, and integration health reports failures and lag.</p></article>
+          <article><span class="step-number">03 / Lifecycle timing</span><h3>A leaver on leave was missed.</h3><p>The transition job now includes employees on leave of absence. The original event timestamp also survives ingest instead of resetting the offboarding clock.</p></article>
+          <article><span class="step-number">04 / Enforcement</span><h3>A revoked role could leave real access.</h3><p>Mapped role revocation now removes the Entra group membership. Unmapped roles produce an explicit unenforced-revocation audit event.</p></article>
+        </div>
+        <div class="actions"><a class="text-link" href="https://github.com/AndreasK229/end-to-end-iam/blob/main/docs/plan-integration-hardening.md">Read the hardening plan &amp; verification log <span aria-hidden="true">↗</span></a></div>
+        <details class="technical"><summary>Implementation and current limits</summary><p>React + Vite frontends, separate Convex backends, an authenticated HTTP outbox, and Microsoft Graph provisioning. Narrow Vitest tests cover desired account state, event normalization and the HR reconciliation diff.</p><p>The lab does not implement multi-role identities or a complete role-to-group provisioning and drift subsystem. HR reconciliation is detection-only. These boundaries are documented in the hardening plan.</p></details>
+      </section>
+
+      <section id="read-more" class="section" aria-labelledby="read-more-title">
+        <div class="section-head"><p class="eyebrow">Project notes</p><h2 id="read-more-title">Follow the decisions behind the lab.</h2><p>The longer writeups explain the architecture, Graph provisioning and reconciliation work in Swedish.</p></div>
+        <ul class="reading-list">
+          <li><a href="../writeups/end-to-end-iam-arkitektur/"><strong>The architecture</strong><span>Why HR and IGA run as separate systems ↗</span></a></li>
+          <li><a href="../writeups/end-to-end-iam/"><strong>From HR to Entra</strong><span>Connecting the pipeline to a real directory ↗</span></a></li>
+          <li><a href="../writeups/end-to-end-iam-reconciliation-jml/"><strong>Reconciliation &amp; JML</strong><span>Comparing desired state with actual state ↗</span></a></li>
+        </ul>
+      </section>
+
+      <section id="about" class="about" aria-labelledby="about-title">
+        <div><p class="eyebrow">The person behind the lab</p><h2 id="about-title">Andreas Krisby.</h2><p>I'm working toward my first IAM role. This project shows how I connect employment context to identity state, investigate integration failures and check whether a fix works in the target system.</p><div class="actions"><a class="text-link" href="https://www.linkedin.com/in/andreas-krisby-703978268/">Connect on LinkedIn ↗</a><a class="text-link" href="../identity-ops/">Explore Identity Ops Lab ↗</a></div></div>
+        <div class="contribution"><p class="eyebrow">AI-assisted work</p><h3>My contribution and the tooling.</h3><p>Claude Code produced most of the architecture, implementation and hardening recommendations. I defined the learning goal and product intent, ran the systems against live Convex deployments and my Entra tenant, requested an architecture review, evaluated its findings and verified the fixes.</p><p>This is a practical learning and verification project. The source README documents that division of work.</p></div>
+      </section>
+    </main>
+    <footer class="wrap"><span>End-to-End IAM · Andreas Krisby</span><span>Elytra + Ascendra · Fictional company, real Entra lab tenant</span></footer>
+  </body>
+</html>
