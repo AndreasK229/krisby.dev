@@ -48,6 +48,24 @@ h2 { font-size:clamp(1.55rem,2.6vw,2rem); line-height:1.3; letter-spacing:-.02em
 .architecture-image { max-width:780px; margin-block-start:1.5rem; } .architecture-image img { border-radius:6px; } .proof-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; margin-block-end:1rem; } .reading-list { padding-inline-start:1.25rem; } .reading-list li { padding-block:.4rem; }
 .about { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:3rem; align-items:start; } .contact-links { display:flex; flex-direction:column; align-items:flex-start; padding-block-start:1rem; gap:.5rem; }
 footer { display:flex; flex-wrap:wrap; justify-content:space-between; gap:.5rem; padding-block:1.5rem; font-size:.8rem; color:var(--muted); }
+.hero-concrete { display:block; padding-block:2.5rem; } .hero-concrete .lead { max-width:75ch; }
+.video-frame { width:min(100%,960px); aspect-ratio:16/9; background:#000; border-radius:8px; overflow:hidden; }
+.video-frame iframe { display:block; width:100%; height:100%; border:0; }
+.video-chapters { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-block:16px; max-width:960px; }
+.video-chapters a { padding:12px; border:1px solid var(--line); border-radius:6px; text-decoration:underline; font-size:.85rem; line-height:1.5; }
+.video-chapters span { display:block; color:var(--accent); font-variant-numeric:tabular-nums; font-weight:700; margin-block-end:4px; }
+.result-evidence { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin-block:24px 12px; }
+.result-evidence figure { min-width:0; } .result-evidence img { height:240px; width:100%; object-fit:contain; background:#fff; border-radius:6px; }
+.result-evidence figcaption { font-size:.9rem; } .result-evidence figcaption strong,.result-evidence figcaption>span { display:block; } .result-evidence strong { color:var(--text); margin-block-end:4px; } .result-evidence figcaption a { display:inline-block; padding-block:8px; }
+.evidence-status { margin-block-start:32px; } .evidence-status table { width:100%; border-collapse:collapse; font-size:.88rem; } .evidence-status th,.evidence-status td { padding:12px; border-block-end:1px solid var(--line); text-align:start; vertical-align:top; } .evidence-status thead { color:var(--accent); } .evidence-status tbody th { width:170px; } .evidence-status td { color:var(--soft); }
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+.case-steps { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 40px; margin-block:24px; } .case-steps h3 { color:var(--accent); }
+.regression-note { padding:20px; border-inline-start:2px solid var(--amber); background:var(--surface); border-radius:0 6px 6px 0; } .regression-note h3 { color:var(--amber); }
+.architecture-main { max-width:780px; margin-block:24px; } .architecture-main img { border-radius:6px; }
+.simulation-fold { border:1px solid var(--line); border-radius:8px; padding-inline:16px; } .simulation-fold>summary { padding-block:16px; } .simulation-fold .compact-anatomy { margin-block-start:0; }
+.nhi-callout { margin-block-start:24px; max-width:84ch; }
+@media(max-width:800px) { .video-chapters { grid-template-columns:repeat(2,minmax(0,1fr)); } .result-evidence { gap:16px; } .result-evidence img { height:190px; } }
+@media(max-width:600px) { .result-evidence,.case-steps { grid-template-columns:minmax(0,1fr); } .result-evidence figure { max-width:440px; } .result-evidence img { height:240px; } .evidence-status th,.evidence-status td { padding:10px 6px; overflow-wrap:anywhere; } .evidence-status tbody th { width:100px; } .simulation-fold { padding-inline:8px; } }
 @media(hover:hover) { nav a:hover,.text-link:hover,summary:hover { color:var(--accent); } .button:hover { background:#9beade; } }
 @media(max-width:900px) { .hero { gap:1.5rem; } .result-layout,.investigation { gap:2rem; } .demo-teaser { align-items:start; flex-direction:column; gap:1.25rem; } }
 @media(max-width:700px) { .hero,.result-layout,.investigation,.about,.proof-grid,.contribution-top { grid-template-columns:minmax(0,1fr); } .hero { padding-block:2rem; } .section { padding-block:2rem; } .architecture-strip { gap:1.5rem; } .architecture-strip li:not(:last-child)::after { inset-inline-end:-1rem; } }
