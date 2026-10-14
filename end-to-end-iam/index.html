@@ -9,6 +9,7 @@
   <meta property="og:type" content="website" />
   <title>End-to-End IAM | Andreas Krisby</title>
   <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./compact-anatomy.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -36,7 +37,30 @@
 
     <section id="architecture" class="section" aria-labelledby="architecture-title">
       <p class="eyebrow">Why two systems?</p><h2 id="architecture-title">Employment and access have different owners.</h2>
-      <ol class="architecture-strip" aria-label="The HR-to-identity pipeline"><li><span class="stage-label">HR source</span><strong>Elytra</strong><span>Employment records</span></li><li><span class="stage-label">IGA platform</span><strong>Ascendra</strong><span>Access decisions</span></li><li><span class="stage-label">Target directory</span><strong>Entra ID</strong><span>Real account state</span></li></ol>
+      <div class="compact-anatomy">
+        <div class="compact-machines">
+          <figure class="compact-machine">
+            <svg viewBox="0 0 240 120" role="img" aria-label="HR computer and its own Convex database"><rect x="10" y="12" width="122" height="75" rx="6" class="machine-body"/><rect x="18" y="20" width="106" height="59" class="machine-screen"/><path d="M10 87H132L144 100H0Z" class="machine-body"/><circle cx="39" cy="40" r="8" class="machine-line"/><path d="M26 67Q39 45 52 67M62 43H108M62 54H100M62 65H92" class="machine-line"/><path d="M159 37V91C159 108 224 108 224 91V37Z" class="machine-db"/><ellipse cx="191.5" cy="37" rx="32.5" ry="12" class="machine-db"/><path d="M159 61C159 78 224 78 224 61" class="machine-line"/><circle cx="190" cy="89" r="5" class="compact-event"/></svg>
+            <figcaption><strong>Elytra</strong><span>HR facts · Convex database A</span></figcaption>
+            <p class="compact-state">Employee active · HR database</p>
+          </figure>
+          <div class="compact-connection connection-hr" aria-hidden="true"><span>HTTP pull</span><i></i><b>→</b></div>
+          <figure class="compact-machine">
+            <svg viewBox="0 0 240 120" role="img" aria-label="IGA backend and its separate Convex database"><rect x="30" y="10" width="76" height="99" rx="7" class="machine-body"/><rect x="41" y="22" width="54" height="19" class="machine-screen"/><rect x="41" y="50" width="54" height="19" class="machine-screen"/><rect x="41" y="78" width="54" height="19" class="machine-screen"/><circle cx="85" cy="31" r="3" class="compact-event"/><circle cx="85" cy="59" r="3" class="compact-event"/><circle cx="85" cy="87" r="3" class="compact-event"/><path d="M154 37V91C154 108 221 108 221 91V37Z" class="machine-db"/><ellipse cx="187.5" cy="37" rx="33.5" ry="12" class="machine-db"/><path d="M154 61C154 78 221 78 221 61M109 65H149" class="machine-line"/></svg>
+            <figcaption><strong>Ascendra</strong><span>Access decisions · Convex database B</span></figcaption>
+            <p class="compact-state">Employee active · IGA database</p>
+          </figure>
+          <div class="compact-connection connection-graph" aria-hidden="true"><span>Graph</span><i></i><b>→</b></div>
+          <figure class="compact-machine">
+            <svg viewBox="0 0 240 120" role="img" aria-label="Microsoft Entra target directory and user account"><path d="M39 50C13 48 15 17 42 20C52 -1 83 1 95 22C117 10 139 25 140 44C163 41 182 58 172 76H36C20 73 21 55 39 50Z" class="machine-db"/><rect x="128" y="57" width="78" height="53" rx="6" class="machine-body"/><circle cx="146" cy="73" r="6" class="machine-line"/><path d="M136 94Q146 79 156 94M165 75H193M165 89H185" class="machine-line"/><circle cx="192" cy="101" r="4" class="compact-event"/></svg>
+            <figcaption><strong>Entra ID</strong><span>External target directory</span></figcaption>
+            <p class="compact-state">Account enabled</p>
+          </figure>
+        </div>
+        <div class="compact-controls"><button type="button" aria-pressed="false">▶ Play flow</button><p class="compact-caption" aria-live="polite">1 / 6 · HR records the departure.</p></div>
+        <p class="small-note compact-note">Illustrative flow · No tenant connection · Timing is condensed. The outbox retains its event.</p>
+        <details class="compact-more"><summary>Explore database tables and failure scenarios</summary><p>Follow the event cursor, quarantine and Graph failure recovery in the full demonstration.</p><a class="text-link" href="./anatomy-flow.html">Open the detailed system anatomy ↗</a></details>
+      </div>
       <p class="reading-width">I wanted to follow Joiner, Mover and Leaver changes across that boundary. Each app has its own Convex database. HR changes enter an outbox; Ascendra pulls them over HTTP and schedules provisioning. Reconciliation checks for differences the event feed can miss.</p>
     </section>
 
